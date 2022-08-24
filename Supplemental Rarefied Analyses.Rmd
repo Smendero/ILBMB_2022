@@ -1,0 +1,2455 @@
+---
+title: "Supplemental Rarefied Analyses"
+author: 
+- \* Emily Smenderovac (corresponding author), Great Lakes Forestry Centre, Natural Resources Canada, emily.smenderovac@nrcan-rncan.gc.ca
+- Jesse Hoage,  Laurentian University, Natural Resources Canada, Jesse.hoage@gmail.com
+- Teresita M. Porter, Centre for Biodiversity Genomics and Department of Integrative Biology, University of Guelph terrimporter@gmail.com
+- Caroline Emilson, Great Lakes Forestry Centre, Natural Resources Canada, caroline.emilson@nrcan-rncan.gc.ca
+- Rob Fleming, Great Lakes Forestry Centre, Natural Resources Canada, rob.fleming@nrcan-rncan.gc.ca
+- Nathan Basiliko, Laurentian University, nbasiliko@laurentian.ca
+- Merhdad Hajibabei, Centre for Biodiversity Genomics and Department of Integrative Biology, University of Guelph mhajibab@uoguelph.ca
+- Dave Morris, Centre for Northern Forest Ecosystem Research, Ontario Ministry of Natural Resources and Forestry, Thunder Bay CA P7E 2V6, Dave.M.Morris@ontario.ca
+- Lisa Venier, Great Lakes Forestry Centre, Natural Resources Canada, lisa.venier@nrcan-rncan.gc.ca
+date: "`r Sys.Date()`"
+bibliography: bibliography.json
+csl: forest-ecology-and-management.csl
+output: 
+      bookdown::html_document2:
+            toc: true
+            number_sections: true
+            keep_md: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+
+memory.limit(size=30000) ## increase R memory limit
+
+## grab essential libraries
+library(tidyverse)
+library(ALDEx2)
+library(vegan)
+library(pheatmap)
+library(compositions)
+library(readr)
+library(ggpubr)
+source("src/HelperFunctions_CommunityData.R")
+## Load data
+
+for(d in list.files("data", full.names = T)[grepl("RData$", list.files("data", full.names = T))]){
+      load(d)
+}
+rm(d)
+
+metadat$month <- factor(metadat$month, levels = c("June", "August", "October"))
+metadat$harvest <- factor(metadat$harvest, levels = c("Full Tree", "Unharvested", "Stem Only", "Stumped", "Bladed"))
+metadat$topo[metadat$harvest == "Bladed"] <- "Bladed"
+
+
+### Prepare taxonomy for Functional assignment information for the different zOTUS
+## ITS
+FunGuild_data <- ITS[,c("ITS_GlobalESV", "Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species")]
+
+colnames(FunGuild_data)[1] <- "OTU ID"
+
+write_delim(FunGuild_data, file("FUNGuild/FunGuild.taxa.txt", encoding="UTF-8"), delim="\t")
+ rm(FunGuild_data)
+
+ ## Bacterial
+ FaproTax_data <- Bac16S
+ colnames(FaproTax_data)[1] <- "OTU ID"
+
+FaproTax_data$Genus <- ifelse(FaproTax_data$gBP >=0.5, FaproTax_data$Genus, "unidentified") 
+ ## No Species in bac df
+
+FaproTax_data$taxonomy <- paste(paste("d", FaproTax_data$Domain, sep="__"), 
+                                paste("p", FaproTax_data$Phylum, sep="__"),
+                                paste("c", FaproTax_data$Class, sep="__"),
+                                paste("o", FaproTax_data$Order, sep="__"),
+                                paste("f", FaproTax_data$Family, sep="__"),
+                                paste("g", FaproTax_data$Genus, sep="__"),
+                                sep=";")
+
+FaproTax_data<- FaproTax_data[,c("taxonomy", "OTU ID")]
+
+write_delim(FaproTax_data, file("FAPROTAX_1.2.4/FaproTax_data.tsv", encoding="UTF-8"), delim="\t")
+ 
+
+## Arthropods
+BETSI_search <- str_c(gsub('^undef_', '', c(unique(F230$Phylum), unique(F230$Class), unique(F230$Family), unique(F230$Genus[F230$gBP >= 0.3]), gsub("_", " ", unique(F230$Species[F230$sBP >= 0.7])))),
+                      collapse=";")
+
+
+BETSI_search1 <- str_c(c(unique(F230$Class), unique(F230$Family), unique(F230$Genus[F230$gBP >= 0.3])),
+                      collapse=";")
+
+BETSI_species <-  paste(c(gsub("_", " ", unique(F230$Species[F230$sBP >= 0.7]))), ";", sep="")
+write(c("Taxon_name", BETSI_species), "BETSI/BETSI_Species_check.csv")
+
+BETSI_species <- readLines("BETSI/transform.csv")[3:81]
+
+species_corrected <- data.frame()
+
+for(sp in BETSI_species){
+  species_corrected <-  rbind(species_corrected, 
+                              data.frame(original.species = str_split(sp, ";")[[1]][1], Corrected = str_split(sp, ";")[[1]][2]))
+}
+
+not_in_BETSI <- paste(sum(species_corrected$Corrected == "")/nrow(species_corrected)*100, "%")
+
+species_corrected <- species_corrected[!species_corrected$Corrected == "", ]
+
+BETSI_species_search <-  str_c(gsub("\t","", species_corrected$Corrected), collapse = ";")
+
+##Conducted search & correction on https://portail.betsi.cnrs.fr/ for diet level 2 and microhabitat level 2
+
+rm(species_corrected, not_in_BETSI, sp, BETSI_species)
+
+## compile metabarcode datasets
+metabarcode_sets <- list(Bac16S = Bac16S, ITS = ITS, F230 = F230, Euk18S = Euk18S)
+rm(Bac16S, F230, Euk18S, ITS)
+
+
+ds_list <- list()
+count = 1
+## Set up metabarcoding datasets for different hypothesis tests
+for(ds in c("Bac16S", "ITS", "F230", "Euk18S")){
+   for(set in 1:3){
+      if(set == 1){toexclude = metadat$sample[!metadat$month == "August"]}
+      if(set == 2){toexclude = metadat$sample[!(metadat$harvest %in% c("Unharvested", "Full Tree") & is.na(metadat$topo))]}
+      if(set == 3){toexclude = metadat$sample[is.na(metadat$topo)]}
+      
+      dat = metabarcode_sets[[ds]]
+      
+      colnames(dat)[1] <- "ESV"
+      
+      ds_subset <- dat %>% 
+         filter(!SampleName %in% toexclude) %>%
+         group_by(ESV) %>%
+         filter(!sum(ESVsize) == 0) %>% 
+         pivot_wider(names_from = SampleName, values_from = ESVsize, values_fill = 0) %>% 
+         data.frame()
+      
+      
+      ds_list[[count]] <- ds_subset
+      names(ds_list)[count] <- paste0(ds, "_", set)
+      count=count+1
+      
+      
+      ### Add functional & Genus grouping levels as well --> maybe bring that in at a later point if anything found with ESV
+   }   
+}
+
+rm(metabarcode_sets, ds_subset, dat, ds, count, set, toexclude)
+
+## Set a colorblind-safe palette
+cust.cols <- c("#332288", "#117733", "#44AA99", "#88CCEE", "#DDCC77", "#CC6677", "#AA4499", "#882255")
+
+num_p_tests <- 0
+figcount <- 1
+```
+
+```{asis, eval=FALSE}
+## Conducted on Powershell on Windows
+## FUNGuild fungi functional assignment
+cd FUNGuild
+
+python FUNGuild.py guild -taxa FunGuild.taxa.txt
+
+## Conducted on Powershell on Windows
+cd ..\FAPROTAX_1.2.4
+
+## Replaced is not statements with "!="
+
+python collapse_table_v2.py -i FaproTax_data.tsv -g FAPROTAX.txt -f -o functional_otu_table.tsv -r report.txt --column_names_are_in first_data_line  --keep_header_comments --non_numeric consolidate -v --row_names_are_in_column "taxonomy" --omit_columns 0 --normalize_collapsed none --group_leftovers_as 'other'
+
+## Matching was poor- as no id's to species - only 6087, 21452 leftovers
+
+```
+
+
+```{r taxa-inf}
+## Fungi
+FunGuild_data <- read.delim("FUNGuild/FunGuild.taxa.guilds.txt")
+
+## Bacteria
+FaproTax_data <- read.delim("FAPROTAX_1.2.4/functional_otu_table.tsv", skip = 2)
+
+## Arthropods
+## Pull in the Class, Order, Genus search results for diet (includes species within the genus)
+unzip("BETSI/BETSI_0_cog_diet.zip", exdir="BETSI")
+
+BETSI_db_res <- read.delim("BETSI/BETSI_A.csv")
+BETSI_db_mat <- read.delim("BETSI/BETSI_B.csv")
+
+BETSI_db_mat <- BETSI_db_mat[, 1:(ncol(BETSI_db_mat)-2)]
+
+col_repl <- data.frame(orig=colnames(BETSI_db_mat), row.2 = t(BETSI_db_mat[1,])) %>%
+  mutate(grp = cumsum(!grepl("X", orig))) %>%
+  group_by(grp) %>%
+  mutate(first.term=orig[!grepl('X', orig)])
+
+colnames(BETSI_db_mat) <- c("Taxon", paste(col_repl$first.term, col_repl$X1, sep=".")[2:ncol(BETSI_db_mat)])
+
+BETSI_db_mat_diet <- BETSI_db_mat[2:nrow(BETSI_db_mat),] %>% pivot_longer(-Taxon, values_to = "presence", names_to = "Function")
+
+## Pull in the Class, Order, Genus search results for diet (includes species within the genus)
+unzip("BETSI/BETSI_0_cog_microhabitat.zip", exdir="BETSI")
+
+BETSI_db_res <- read.delim("BETSI/BETSI_A.csv")
+BETSI_db_mat <- read.delim("BETSI/BETSI_B.csv")
+
+BETSI_db_mat <- BETSI_db_mat[, 1:(ncol(BETSI_db_mat)-2)]
+
+col_repl <- data.frame(orig=colnames(BETSI_db_mat), row.2 = t(BETSI_db_mat[1,])) %>%
+  mutate(grp = cumsum(!grepl("X", orig))) %>%
+  group_by(grp) %>%
+  mutate(first.term=orig[!grepl('X', orig)])
+
+colnames(BETSI_db_mat) <- c("Taxon", paste(col_repl$first.term, col_repl$X1, sep=".")[2:ncol(BETSI_db_mat)])
+
+BETSI_db_mat_microhabitat <- BETSI_db_mat[2:nrow(BETSI_db_mat),] %>% pivot_longer(-Taxon, values_to = "presence", names_to = "Function")
+
+## Combine trait Matrixes
+
+BETSI_db_mat_combined <- rbind(BETSI_db_mat_diet, BETSI_db_mat_microhabitat)
+
+##
+
+BETSI_db_mat_combined <- BETSI_db_mat_combined %>%
+  filter(!presence == 0) %>%
+  group_by(Taxon) %>%
+  summarize(Function = str_c(unique(Function), collapse = "-")) 
+
+
+rm(BETSI_db_mat_microhabitat, BETSI_db_mat, BETSI_db_mat_diet, BETSI_db_res, col_repl)
+
+```
+
+
+
+```{r harvest-ortho, include=FALSE}
+  ### Set defined contrasts
+  ## 1: Harvested vs Uncut control - SO FT S vs Control
+  ## 2: forest floor rremoval vs retention -  Bladed vs SO. FT. S.
+  ## 3: Stump/roots retained vs. removed - S vs SO, FT
+  ## 4: only coarse wood vs Coarse & fine woody debris  (FT vs SO)
+      harvest.contrast.matrix = data.frame(TR = c(`Full Tree` = 0.33, Unharvested = -1, `Stem Only` = 0.33, `Stumped` = 0.33, `Bladed` = 0), 
+                                   FFR = c(`Full Tree` = -0.33, Unharvested = 0, `Stem Only` = -0.33, `Stumped` = -0.33, `Bladed` = 1), 
+                                   BGBR = c(`Full Tree` = -0.5, Unharvested = 0, `Stem Only` = -0.5, `Stumped` = 1, `Bladed` = 0),
+                                   BRt = c(`Full Tree` = 1, Unharvested = 0, `Stem Only` = -1, `Stumped` = 0, `Bladed` = 0))
+
+harvest.ortho.table <- data.frame(c(Code = "TR", Contrast = "Stem-Only, Full tree and Stumped vs Uncut control", Tests = "Effect of tree removal"),
+                                  c(Code = "FFR", Contrast = "Bladed vs Stem-Only, Full tree and Stumped", Tests = "Effect of forest floor removal"),
+                                  c(Code = "BGBR", Contrast = "Stumped vs Stem-Only and Full tree", Tests = "Effect of below-ground woody biomass removal"),
+                                  c(Code = "BRt", Contrast = "Full tree vs Stem-Only", Tests = "Effect of fine and coarse woody debris retention vs only coarse wood")) %>% t()
+
+rownames(harvest.ortho.table) <- NULL
+
+knitr::kable(harvest.ortho.table, caption= "Orthagonal contrasts used to test effects of intensified harvesting.")
+```
+
+
+```{r topo-ortho, include=FALSE}
+  ### Set defined contrasts
+ 
+      topo.contrast.matrix = data.frame(T.B = c(`Bladed` = -1, Flat = 0, `Pile` = 0, `Trench` = 1), 
+                                        T.PF = c(`Bladed` = 0, Flat = -0.5, `Pile` = -0.5, `Trench` = 1),
+                                        P.F = c(`Bladed` = 0, Flat = -1, `Pile` = 1, `Trench` = 0))
+
+topo.ortho.table <- data.frame(c(Code = "T.B", Contrast = "Trench vs Bladed", Tests = "Are effects of forest floor removal buffered in trenches"),
+                                  c(Code = "T.PF", Contrast = "Trench vs Piles and Flats", Tests = "Effect of forest floor removal from trenches"),
+                                  c(Code = "P.F", Contrast = "Pile vs Flats", Tests = "Effect of mixing of soil layers in piles")) %>% t()
+
+rownames(topo.ortho.table) <- NULL
+
+knitr::kable(topo.ortho.table, caption= "Orthagonal contrasts used to test differences between topographic features.")
+```
+
+
+
+# Results
+```{r prep_CODA, cache=TRUE, include = FALSE}
+
+source("src/HelperFunctions_CommunityData.R")
+
+coda.clrs.res <- list()
+count= 1
+for(ds_n in 1:length(ds_list)){
+        ds_name <- names(ds_list)[ds_n]
+        
+        Orddf <- ds_list[[ds_name]]
+        
+        ## select just abundance columns & set ESV to rownames
+        Orddf <- Orddf %>%
+           column_to_rownames("ESV")
+        
+        Orddf <- Orddf[, colnames(Orddf) %in% metadat$sample]
+           
+        
+              ## flip for ordination
+                Orddf4aldex <- t(Orddf)
+                
+                rare.num <- quantile(rowSums(Orddf4aldex), .15)
+        
+                  ## Rarefy based on the 15th percentile
+                  Orddf4aldex <- rrarefy(Orddf4aldex, rare.num)
+
+                  ## Remove any sites with 10X less the 15th percentile
+                  Orddf4aldex <- Orddf4aldex[rowSums(Orddf4aldex) > rare.num/10, ]
+                  
+                  ## get rid of any ESVs that are now zero
+                  Orddf4aldex<-(Orddf4aldex[,colSums(Orddf4aldex) >0]) 
+                
+                ## for any datasets that are not counts, transform.
+                if(sum(Orddf4aldex > 0 & Orddf4aldex < 1) > 0){
+                  subset_aldex <- round(Orddf4aldex * 10000, 0) ## If its relative abundance, multiply by 10,000 and round
+                }else{
+                  subset_aldex <- Orddf4aldex
+                }
+                
+                ## replace zeros
+                Ord.clr <- cmultRepl(subset_aldex, method="CZM", output="p-counts") ## need to surround with "abs" to make sure there aren't negative values. ## aldex just adds 0.5 to everything... any that are negative are just changed to 0.5
+                Ord.clr[Ord.clr<0] <- 0.5
+                
+                
+                ## transform the data to ratios by sample (rows)
+                Ord.clr <- apply(Ord.clr, 1, function(x){x/sum(x)})
+
+                ## make compositional by sample (columns)
+               # Ord.test <- Ord.clr %>% data.frame(check.names = F) %>%
+               #   rownames_to_column("ESV") %>%
+               #   pivot_longer(-ESV, names_to = "sample", values_to = "proportion") %>%
+               #   group_by(sample, ESV) %>%
+               #   mutate(log.prop = log(proportion), m.log.prop = mean(log.prop), clr = log.prop - m.log.prop) %>%
+               #   filter(is.na(clr))
+                
+                Ord.clr <- apply(Ord.clr, 2, function(x){log(x) - mean(log(x))}) ## We are calculating this like aldex does.
+                coda.clrs.res[[count]] <- list(Ord.clr)
+                names(coda.clrs.res)[count] <- paste(ds_name, sep="_")
+                count=count+1
+          
+                
+        
+}
+
+rm(count, ds_name, Ord.clr, Orddf4aldex, subset_aldex, Orddf, ds_n)
+
+```
+
+
+```{r coda-pca-var, include=TRUE, fig.cap= "Compositional variance explained in first two PC axes for each metabarcoding dataset.", echo=FALSE}
+
+clr.pca.plotting <- data.frame()
+
+for(ds_n in 1:length(coda.clrs.res)){
+        ds_name <- names(coda.clrs.res)[ds_n]
+        
+        d.clr.abund <- t(coda.clrs.res[[ds_name]][[1]])
+        
+        ## SVD PCA of clr values
+        pca <- prcomp(d.clr.abund)
+        
+        clr.pca.plotting <- rbind(clr.pca.plotting, data.frame(dataset = ds_name, variance=pca$sdev^2/sum(pca$sdev^2)))
+}
+
+pca.plotting <- clr.pca.plotting %>%
+  mutate(temp = 1) %>%
+  group_by(dataset) %>%
+  mutate(PCA = cumsum(temp), max.var = max(variance)) %>% 
+  filter(PCA %in% c(1,2)) %>%
+  summarize(variance=sum(variance)) %>%
+  arrange(str_extract(dataset, ".$"), desc(variance)) %>%
+  mutate(dataset = factor(as.character(dataset), levels = unique(as.character(dataset))))
+  ggplot(pca.plotting, aes(variance, dataset)) + geom_bar(stat= "identity") + xlab("Variance Explained by PC1 and PC2") + theme_minimal()
+  
+rm(clr.pca.plotting, pca, char_data, ds_n, ds_name, d.clr.abund, pca.plotting)
+```
+
+Aside from compositional variance in datasets testing the temporal differences (test 2) the pattern of variance explained for the first two PC's in each dataset was consistent with non-rarefied analyses. 
+
+
+## Intensified Harvesting
+
+
+### Differences in diversity
+```{r alpha-diversity, eval =TRUE, echo = FALSE, fig.cap="Difference in diversity (richness, inverse Simpsons or Shannon) based on orthogonal contrasts defined in Table \\@ref(tab:harvest-ortho) (TR = harvested vs uncut, FFR = forest floor removal, BGBR = below-ground biomass removal, BRt = biomass retention). Significance is indicated with colour (darker are more significant) and shape (triangles are significant at p < 0.05 and circles are not significant at p < 0.05. Values higher than zero indicate there was an increase in diversity from the treatment, values lower than zero indicate there was a decrease in diversity from the treatment."}
+
+anov.res <- list()
+  ortho.res <- data.frame()
+  count = 1
+
+for(ds_name in grep("_1", names(ds_list), value = T)){
+  
+  Orddf <- ds_list[ds_name][[1]]
+  Orddf <- Orddf[, colnames(Orddf) %in% metadat$sample]
+  
+  if(grepl("Bac", ds_name)){
+        Orddf <- t(apply(Orddf, 2, function(x){x/sum(x)})) ## Relative abundance
+  }else{
+         Orddf <- t(apply(Orddf, 2, function(x){as.numeric(x>0)})) ## presence/absence
+  }
+  
+  
+  temp.div <- data.frame(Shannon = diversity(Orddf, index = "shannon"), Inv.simpson = diversity(Orddf, index = "invsimpson"), richness = specnumber(Orddf)) %>%
+    rownames_to_column("sample") %>%
+    pivot_longer(-sample, names_to = "metric", values_to = "value") %>%
+    left_join(metadat, by = "sample")
+  
+  
+  contrasts(temp.div$harvest) <- harvest.contrast.matrix %>% as.matrix()
+  
+  
+  for(div in unique(temp.div$metric)){
+  
+      ds.4aov <- temp.div[temp.div$metric == div,]
+      anov.res[[count]] = aov(value~harvest, data=ds.4aov)
+      names(anov.res)[count] = paste(div, ds_name)
+      #print(summary(aov(value~harvest, data=ds.4aov)))
+      #temp <- TukeyHSD(aov(value~harvest, data=ds.4aov))
+      #print(temp)
+      #temp <- temp$harvest
+      ortho.res <-rbind(ortho.res, data.frame(summary.lm(aov(value~harvest, data=ds.4aov)) %>% coefficients() %>% as.data.frame() %>% rownames_to_column("harvest"), metric = div, dataset = ds_name))
+      count = count +1
+  }
+
+}
+
+   rm(count)
+   
+ortho.res <- ortho.res %>%
+      mutate(harvest = factor(gsub("harvest", "", harvest), levels = c("TR", "FFR", "BGBR", "BRt")), 
+         dataset = gsub("_[[:digit:]]", "", dataset)) %>% 
+      filter(!is.na(harvest)) %>%
+      rename(`p-value` = Pr...t..)
+
+      ggplot(ortho.res, aes(harvest, Estimate, col = `p-value`)) +
+      geom_point(aes(shape = `p-value` < 0.05), size =3) + 
+      geom_errorbar(aes(ymin = Estimate - Std..Error, ymax=Estimate + Std..Error)) +
+      scale_color_stepsn(breaks = c(0.01, 0.05, 0.1), colours = c("black", "gray22", "gray55","gray88"), values =  c(0, 0.01, 0.05,1)) +
+      facet_wrap(metric~dataset, scales = "free_y") +
+      theme_minimal() +
+      ylab("Difference in diversity") +
+            xlab("Contrast") +
+   geom_hline(yintercept = 0, color = "black") +
+   theme(axis.text.x = element_text(angle = 90)) + 
+            labs(shape = "p-value < 0.05")+
+            xlab("Orthogonal contrasts of harvesting intensity treatments")
+      ggsave(paste0("fig", figcount, "-diversity_1.jpeg"))
+
+figcount = figcount+1
+num_p_tests <- num_p_tests + length(unique(ortho.res$dataset))
+
+rm(anov.res, ds.4aov, temp.div, Tukey.res, div, ds_name, Orddf)
+
+```
+
+
+Largely, diversity metrics did not differ across the various harvesting treatments, compared to full tree harvesting. Rarefied datasets had some differences from non-rarefied analyses: Inverse Simpson and Shannon diversity in bacterial communities were significantly increased with forest floor removal, and Shannon diversity was significantly decreased by below-ground biomass removal. Responses of ITS richness and Inverse Simpsons diversity were also changed, where there were significant impacts of biomass intensification (BRt), but the previously detected significant differences due to forest floor removal were lost.
+
+
+```{r CODA-PCA-1, include=FALSE}
+clr.pca.plots <- list()
+
+plotcount <- 1
+
+for(ds_name in names(coda.clrs.res[grep("_1", names(coda.clrs.res), value = T)])){
+        
+        ## such poor coverage in genus and functional groups that they are excluded here
+        if(grepl("Genus|functional", ds_name)){next}
+        
+        d.clr.abund <- t(coda.clrs.res[[ds_name]][[1]])
+        
+        ##PCA of the clr values
+        
+        char_data <- metadat[match(rownames(d.clr.abund), metadat$sample), ]# %>%
+          # mutate(harvest = factor(as.character(harvest), levels = c("Unharvested", "Stem Only", "Full Tree", "Stumped", "Bladed")))
+        
+           pca <- prcomp(d.clr.abund)
+        
+        pca.var.explained <- pca$sdev^2/mvar(d.clr.abund)
+        
+        ## Prepare plotting variables
+        xlab.val <- paste("PCA1", round(pca.var.explained[1], 3))
+        ylab.val <- paste("PCA2", round(pca.var.explained[2], 3))
+        
+        ## extract the same way base biplot for princomp works
+        plottingdat <- as.data.frame(pca$x/ncol(pca$x)) %>%
+          dplyr::select(PC1, PC2) %>%
+          rownames_to_column("sample") %>% 
+          left_join(char_data, by="sample") %>%
+          dplyr::select(-sample)
+        
+         ## Find Hulls of data
+      hulls = Ordination_hulls(plottingdat, c("harvest")) 
+      
+       clr.pca.plots[[plotcount]] <-ggplot(plottingdat, aes(PC1, PC2, group=harvest))+
+   geom_point(data=plottingdat, aes(color=harvest, shape = harvest), alpha=0.5, size = 2) + 
+   geom_polygon(data=hulls, aes(group=hullgrp, fill = harvest, alpha = harvest, color=harvest)) +
+   scale_color_manual(values= cust.cols[c(2, 3, 1, 6, 8)], breaks = levels(plottingdat$harvest)[c(2,3,1,4,5)])+
+   scale_fill_manual(values= cust.cols[c(2, 3, 1, 6, 8)], breaks = levels(plottingdat$harvest)[c(2,3,1,4,5)])+
+   scale_shape_manual(values= c(2, 3, 1, 5, 6), breaks = levels(plottingdat$harvest)[c(2,3,1,4,5)])+
+   scale_alpha_manual(values= c(0.2, 0.2, 0.2, 0.2, 0.2), breaks = levels(plottingdat$harvest)[c(2,3,1,4,5)])+
+   xlab(xlab.val)+
+   ylab(ylab.val)+
+   theme_minimal()+
+     ggtitle(ds_name) 
+   
+       #print(clr.pca.plots[[plotcount]])
+       
+names(clr.pca.plots)[plotcount] <- ds_name
+        plotcount <- plotcount +1
+}
+
+
+   
+rm(plotcount, ds_name, char_data, d.clr.abund, hulls, pca, plottingdat, pca.var.explained, xlab.val, ylab.val)
+```
+
+### Compositional PCA plots {.tabset}
+
+#### Bacterial (16S) {.unnumbered}
+
+```{r PCA1}
+clr.pca.plots[[1]]
+```
+
+#### Fungal (ITS) {.unnumbered}
+
+```{r PCA2}
+clr.pca.plots[[2]]
+```
+
+#### Arthropods (F230){.unnumbered}
+
+```{r PCA3}
+clr.pca.plots[[3]]
+```
+
+#### Eukaryotes (18S){.unnumbered}
+
+```{r PCA4}
+clr.pca.plots[[4]]
+
+rm(clr.pca.plots)
+```
+
+
+
+
+
+
+```{r CODA-PERMANOVA, include=FALSE}
+clr.PERM.res <- list()
+clr.adon.res <- data.frame()
+clr.betadisper.res <- data.frame()
+count <- 1
+
+for(ds_name in names(coda.clrs.res[grep("_1", names(coda.clrs.res), value = T)])){
+        
+        ## such poor coverage in genus and functional groups that they are excluded here
+        #if(grepl("Genus|functional", ds_name)){next}
+        
+        d.clr.abund <- t(coda.clrs.res[[ds_name]][[1]])
+        
+        ##char data
+        
+        char_data <- metadat[match(rownames(d.clr.abund), metadat$sample), ]
+        
+        ##OVERALL PERMANOVA
+        adon.res.tmp <- adonis(d.clr.abund~harvest, data=char_data, method = "euclidean")$aov.tab %>%
+           rownames_to_column("Parameter") %>%
+           mutate(contrast = "overall",
+                  dataset = ds_name) %>% data.frame()
+        
+        ##OVERALL BETADISPER
+        betadisper.res.tmp <- anova(betadisper(vegdist(d.clr.abund, method = "euclidean"), char_data$harvest)) %>%
+           rownames_to_column("Parameter") %>%
+           mutate(contrast = "overall",
+                  dataset = ds_name) %>% data.frame()
+        
+        ##PAIRWISE PERMANOVA
+        adon.res.tmp <- ortho_adonis(d.clr.abund, harvest.contrast.matrix, c("harvest"), char_data, method="euclidean") %>%
+           mutate(dataset = ds_name, Parameter = "") %>% rbind(adon.res.tmp)
+        
+        ##PAIRWISE BETADISPER
+        
+          betadisper.res.tmp <- ortho_betadisper(d.clr.abund, harvest.contrast.matrix, c("harvest"), char_data, method="euclidean") %>%
+           mutate(dataset = ds_name, Parameter = "") %>% rbind(betadisper.res.tmp)
+       
+          
+         clr.adon.res <- rbind(clr.adon.res, adon.res.tmp)
+         clr.betadisper.res <- rbind(clr.betadisper.res, betadisper.res.tmp)
+         
+         
+         clr.PERM.res[[count]] <- list(adonis = adonis(d.clr.abund~harvest, data=char_data, method = "euclidean"), betadisper = betadisper(vegdist(d.clr.abund, method = "euclidean"), char_data$harvest))
+         names(clr.PERM.res)[count] <- ds_name
+         count = count + 1
+}
+
+num_p_tests <- num_p_tests + length(unique(clr.adon.res$dataset)) + length(unique(clr.adon.res$dataset))
+   
+rm(count, ds_name, adon.res.tmp, betadisper.res.tmp, char_data, d.clr.abund)
+```
+
+#### PERMANOVA results {.unnumbered}
+
+
+```{r CODA-adonis-plot-1, fig.cap = "Results of community structure PERMANOVA tests performed with the orthogonal contrasts described in Table \\@ref(tab:harvest-ortho) (TR = harvesting vs uncut, FFR = forest floor removal, BGBR = below-ground biomass removal, BRt = biomass retention). The variance explained by each comparison (R^2^) is shown on the x axis, and the probability of the effect is shown on the y axis (Pr (>F)). A black line is used to display p = 0.05.", fig.width = 8}
+adon.plotting <- clr.adon.res[!clr.adon.res$Parameter %in% c("Residuals", "Total", "harvest") , ] %>%
+      mutate(contrast = factor(as.character(contrast), levels = c("overall", "TR", "BRt", "BGBR", "FFR")))
+adon.plotting$dataset <- gsub("_.$", "", adon.plotting$dataset)
+
+ggplot(adon.plotting, aes(R2, Pr..F., color=contrast, fill = contrast, shape = contrast)) +
+   geom_point(size = 3) + 
+   geom_hline(yintercept = 0.05, color="black") +
+   facet_wrap(~dataset, scales = "free") +  
+   scale_color_manual(values= c("black", cust.cols[c(2, 3, 6, 8)]))+
+   scale_fill_manual(values= c("black", cust.cols[c(2, 3, 6, 8)]))+
+   scale_shape_manual(values= c(2, 3, 5, 6, 8))+
+   theme_minimal() +
+   xlab(expression("Effect Size (R"^2*")")) + ylab("Pr (>F)")
+   
+rm(clr.adon.res, adon.plotting)
+```
+
+
+#### Betadispersion {.unnumbered} 
+
+```{r CODA-bd-plot-1, fig.cap="Results of betadispersion tests comparing community structures of the different harvesting treatments. The betadispersion of each treatment is shown on the y axis, and the treatment is shown along the x axis. Significant contrast tests as outlined in Table \\@ref(tab:harvest-ortho) (TR = harvested vs uncut, FFR = forest floor removal, BGBR = below-ground biomass removal, BRt = biomass retention) are indicated along the top of the figure with lines and symbols designating test significance (* = p < 0.05, ** = p < 0.01, *** = p < 0.001).", fig.width= 8, fig.height = 4}
+
+plot.betadisper <- data.frame()
+
+for(ds_name in names(clr.PERM.res)){
+   temp <- clr.PERM.res[[ds_name]]$betadisper$distances
+   
+   ## pull distances for plotting
+   temp <- data.frame(temp, sample = names(temp)) %>%
+     left_join(metadat, by = "sample") %>%
+     mutate(dataset=ds_name) %>%
+     rename(distance = temp) %>%
+     mutate(harvest = factor(as.character(harvest), levels = c("Unharvested", "Stem Only", "Full Tree", "Stumped", "Bladed")))
+   
+   plot.betadisper <- rbind(plot.betadisper, temp)
+     
+     
+}
+
+## Get min distances for each set
+mins  <- plot.betadisper %>%
+  group_by(dataset) %>%
+  summarize(distance = min(distance))
+
+## Get max distances for each set
+maxs  <- plot.betadisper %>%
+  group_by(dataset) %>%
+  summarize(distance = max(distance))
+
+ ### Pull test result
+     temp.sig <- clr.betadisper.res %>%
+      filter(contrast != "overall") %>%
+     dplyr::select(-Parameter) %>%
+           mutate(firstseg.start = ifelse(contrast == "TR", 
+                                   0.75, 
+                                   ifelse(contrast == "FFR", 1.75, 
+                                          ifelse(contrast == "BGBR", 1.75, 1.75))), 
+                  firstseg.end = ifelse(contrast == "TR", 
+                                   1.25, 
+                                   ifelse(contrast == "FFR", 4.25, 
+                                          ifelse(contrast == "BGBR", 3.25, 2.25))), 
+                  secondseg.start = ifelse(contrast == "TR", 
+                                   1.75, 
+                                   ifelse(contrast == "FFR", 4.75, 
+                                          ifelse(contrast == "BGBR", 3.75, 2.75))), 
+                  secondseg.end = ifelse(contrast == "TR", 
+                                   4.25, 
+                                   ifelse(contrast == "FFR", 5.25, 
+                                          ifelse(contrast == "BGBR", 4.25, 3.25)))) %>%
+       group_by(dataset) %>%
+     mutate(sig.level = ifelse(Pr..F. < 0.001, paste("***", contrast), ifelse(Pr..F. < 0.01, paste("**", contrast), ifelse(Pr..F. < 0.05, paste("*", contrast), contrast))), 
+            text.col = ifelse(grepl("\\*", sig.level), "significant at p-value < 0.05", "non-significant")) %>%
+       left_join(maxs, by = "dataset") %>%
+           mutate(dataset = gsub("_[[:digit:]]", "", dataset), 
+                  distance = ifelse(contrast == "TR", 
+                                   distance * 1.4, 
+                                   ifelse(contrast == "FFR", distance* 1.3, 
+                                          ifelse(contrast == "BGBR", distance*1.2, distance*1.1))))
+
+## plot as boxplots with significance
+     ggplot(plot.betadisper %>% mutate(dataset = gsub("_[[:digit:]]", "", dataset)), aes(harvest, distance, fill = harvest))+
+     geom_boxplot(alpha = 0.5)+
+       geom_text(data= temp.sig, inherit.aes = F, aes(5.75, distance*0.9, label = sig.level, color = text.col))+
+           geom_segment(data = temp.sig, inherit.aes = F, aes(y = distance*0.9, yend = distance*0.9, x = firstseg.start, xend = firstseg.end, color = text.col)) +
+           geom_segment(data = temp.sig, inherit.aes = F, aes(y = distance*0.9, yend = distance*0.9, x = secondseg.start, xend = secondseg.end, color = text.col)) +
+       theme_minimal()+
+       scale_fill_manual(values= c(cust.cols[c(2, 3, 1, 6, 8)]), breaks = levels(temp$harvest)) +
+       scale_color_manual(name = "significance", values= c("black", "red")) +
+       facet_wrap(~dataset, scales = "free") + coord_cartesian(xlim = c(0, 5.8))
+     
+     rm(plot.betadisper, temp.sig, mins, clr.betadisper.res, clr.PERM.res, ds_name)
+```
+
+
+## {-}
+
+
+Community differences in rarefied datasets had similar amounts of variance explained by harvesting, stump removal, below-ground biomass removal and forest floor removal compared to unrarefied datasets. 
+
+
+```{r CODA-RDA-1, include=FALSE}
+clr.rda.plots <- list()
+
+clr.rda.plotting <- data.frame()
+
+plotcount <- 1
+
+for(ds_name in names(coda.clrs.res[grep("_1", names(coda.clrs.res), value = T)])){
+        
+        ## such poor coverage in genus and functional groups that they are excluded here
+        #if(grepl("Genus|functional", ds_name)){next}
+        
+        d.clr.abund <- t(coda.clrs.res[[ds_name]][[1]])
+        
+        ##RDA of the clr values
+        
+        char_data <- metadat[match(rownames(d.clr.abund), metadat$sample), ]# %>%
+          # mutate(harvest = factor(as.character(harvest), levels = c("Unharvested", "Stem Only", "Full Tree", "Stumped", "Bladed")))
+        
+        rda.res <- rda(d.clr.abund, char_data[, c("harvest")])
+        ## unscaled, is ok b/c all in same units
+        
+        clr.rda.plotting <- rbind(clr.rda.plotting, data.frame(data.frame(t(summary(rda.res)$cont$importance)) %>%
+                                                                 rownames_to_column("PC") %>% 
+                                                                 mutate(const = ifelse(grepl("PC", PC), "unconstrained", "constrained")) %>%
+                                                                 group_by(const) %>% 
+                                                                 summarize(proportion.explained = sum(Proportion.Explained)), model = ds_name))
+        
+        rda.vecs <- rda.res$CCA$biplot %>% as.data.frame()
+        rownames(rda.vecs) <- gsub("^Y", "", rownames(rda.vecs))
+        
+        ## Prepare plotting variables
+        xlab.val <- paste("RDA1", round(summary(rda.res)$cont$importance[2, 1], 3))
+        ylab.val <- paste("RDA2", round(summary(rda.res)$cont$importance[2, 2], 3))
+        
+        ## extract the same way base biplot for princomp works
+        plottingdat <- as.data.frame(rda.res$CCA$wa) %>%
+          dplyr::select(RDA1, RDA2) %>%
+          rownames_to_column("sample") %>% 
+          left_join(char_data, by="sample") %>%
+          dplyr::select(-sample)
+          
+        ## Find Hulls of data
+      hulls = Ordination_hulls(plottingdat, c("harvest"))
+      
+      if(grepl("Genus|functional", ds_name)){next}
+      
+       clr.rda.plots[[plotcount]] <-ggplot(plottingdat, aes(RDA1, RDA2, group=harvest))+
+   geom_point(data=plottingdat, aes(color=harvest, shape = harvest), alpha=0.5, size = 2) + 
+   geom_polygon(data=hulls, aes(group=hullgrp, fill = harvest, alpha = harvest, color=harvest)) +
+   geom_text(inherit.aes = FALSE, data = rda.vecs, aes(label=row.names(rda.vecs), x=RDA1, y=RDA2), color="black") +
+   geom_segment(inherit.aes = FALSE, data = rda.vecs, aes(x=0, y=0, xend=RDA1, yend=RDA2), color="black",arrow = arrow()) +
+   scale_color_manual(values= cust.cols[c(2, 3, 1, 6, 8)], breaks = levels(plottingdat$harvest)[c(2,3,1,4,5)])+
+   scale_fill_manual(values= cust.cols[c(2, 3, 1, 6, 8)], breaks = levels(plottingdat$harvest)[c(2,3,1,4,5)])+
+   scale_shape_manual(values= c(2, 3, 1, 5, 6), breaks = levels(plottingdat$harvest)[c(2,3,1,4,5)])+
+   scale_alpha_manual(values= c(0.2, 0.2, 0.2, 0.2, 0.2), breaks = levels(plottingdat$harvest)[c(2,3,1,4,5)])+
+   xlab(xlab.val)+
+   ylab(ylab.val)+
+   theme_minimal()+
+     ggtitle(ds_name) 
+   
+names(clr.rda.plots)[plotcount] <- ds_name
+        plotcount <- plotcount +1
+}
+
+
+   
+rm(plotcount, ds_name, hulls, xlab.val, ylab.val,  rda.res, plottingdat, char_data, temp)
+```
+
+
+
+
+
+### Compositional RDA plots {.tabset}
+
+#### Explained Variance in RDA's{.unnumbered}
+
+```{r RDAsummaryPlots, include=TRUE, fig.cap = "Proportion of community structural variance explained by RDA axes constrained by the harvesting treatments. Model names are described as the targeted gene (16S, 18S, ITS, or, F230), summarization level (ESV, genus, or functional groupings) and the soil layers represented in the rda model (MIN = 0-10 cm depth mineral soil samples, LFH = L, FH, or LFH samples)."}
+### create plot that summarizes constrained vs unconstrained variance for each dataset
+clr.rda.plotting$const <- factor(as.character(clr.rda.plotting$const), levels = c("unconstrained", "constrained"))
+
+ggplot(clr.rda.plotting[!clr.rda.plotting$const == "unconstrained", ], aes(proportion.explained, model, fill = const)) +
+  geom_bar(stat = "identity") +
+  scale_fill_manual(values = c(cust.cols[c(2)])) + 
+  theme_minimal() + 
+  theme(legend.position = "none")+
+  xlab("Proportion of variance explained") + 
+  ylab("")
+
+rm(clr.rda.plotting)
+```
+
+#### Bacterial (16S){.unnumbered}
+
+```{r RDA1}
+clr.rda.plots[[1]]
+```
+
+#### Fungal (ITS){.unnumbered}
+
+```{r RDA2}
+clr.rda.plots[[2]]
+```
+
+#### Arthropods (F230){.unnumbered}
+
+```{r RDA3}
+clr.rda.plots[[3]]
+```
+
+#### Eukaryotes (18S){.unnumbered}
+
+```{r RDA4}
+clr.rda.plots[[4]]
+
+rm(clr.rda.plots)
+```
+
+
+## {-}
+
+The RDA axes associated with Unharvested and Bladed treatments explained more variance (0.132 - 0.274) than other axes, these differences were confirmed by the significantly different compositions of Bladed and Unharvested treatments from Full-tree harvesting found in PERMANOVA. The remaining RDA axes associated with Stumped and Stem Only treatments explained smaller amounts of variance (0.037 - 0.095). Stumped treatments were significantly different from full-tree harvesting, but there was no significant difference between stem only and full tree harvesting.
+
+
+### Differences in specific organisms {.tabset}
+```{r aldex_glm_modelling, cache=TRUE, include=FALSE}
+
+aldex.glm.res <- data.frame()
+
+for(ds_name in grep("_1", names(ds_list), value = T)){
+        
+        Orddf <- ds_list[[ds_name]]
+                
+                Orddf4aldex <- Orddf %>%
+                  column_to_rownames("ESV") %>%
+                  dplyr::select(colnames(Orddf)[match(metadat$sample, colnames(Orddf))[!is.na(match(metadat$sample, colnames(Orddf)))]])
+                
+                ## Run aldex.glm on the G/L matrix.
+                sam_inf <- metadat[match(colnames(Orddf4aldex), metadat$sample), ]
+                contrasts(sam_inf$harvest) <- harvest.contrast.matrix %>% as.matrix()
+                
+                ##Scale and centre all columns so effect sizes are comparable
+                for(cln in colnames(sam_inf)){
+                  if(is.numeric(sam_inf[,cln])){
+                    sam_inf[,cln] <- scale(sam_inf[,cln])
+                  }
+                }
+                
+                mm <- model.matrix(~ harvest, sam_inf)
+                
+                if(sum(Orddf4aldex > 0 & Orddf4aldex < 1) > 0){
+                  subset_aldex <- round(Orddf4aldex * 10000, 0) ## If its relative abundance, multiply by 10,000 and round
+                }else{
+                  subset_aldex <- Orddf4aldex
+                }
+                
+                
+                ## select denominators as ESV that are similar amongst all samples
+                
+                aldex.ob <- aldex.clr(subset_aldex, mm, denom="all")
+                
+                glm.res <- aldex.glm(aldex.ob)
+                
+                glm.res <- data.frame(glm.res)
+                
+                glm.res.sum <- glm.res %>% mutate(zOTU=row.names(glm.res)) %>%
+                        pivot_longer(-zOTU, values_to = "Value", names_to = "Metric") %>% 
+                        mutate(Parameter = gsub("\\.Estimate$|\\.Std..Error$|\\.t.value$|\\.Pr...t..$|\\.Pr...t...BH$", "", Metric), Variable= str_extract(Metric,"\\.Estimate$|\\.Std..Error$|\\.t.value$|\\.Pr...t..$|\\.Pr...t...BH$")) %>%
+                        mutate(Variable = gsub("\\.+", "_", gsub("^\\.|\\.+$", "", Variable))) %>%
+                        pivot_wider(id_cols = c("zOTU", "Parameter"), values_from = Value, names_from = Variable) %>%
+                        mutate(Set = ds_name)
+                
+                aldex.glm.res <- rbind(aldex.glm.res, glm.res.sum)
+                
+                num_p_tests = num_p_tests + 1
+                
+}
+
+rm(glm.res, glm.res.sum, Orddf4aldex, Orddf, aldex.ob, mm, subset_aldex, sam_inf, ds_name)
+```
+
+
+```{r plot-aldex-glm, include=FALSE}
+
+aldex.plots <- list()
+
+aldex.tax <- data.frame()
+  
+count = 1
+for(set in unique(aldex.glm.res$Set)){
+  
+  plottingdat <- aldex.glm.res %>%
+    filter(Set == set) %>%
+  mutate(Parameter = str_remove(Parameter, "model.harvest"),
+         Parameter = str_extract(Parameter, "TR|FFR|BGBR|BRt")) %>%
+  filter(!Parameter == "X Intercept") %>%
+  mutate(Parameter = factor(Parameter, levels = c("TR", "FFR", "BGBR", "BRt"))) %>%
+    group_by(Parameter) %>%
+    arrange(desc(abs(Estimate)), Pr_t_BH) %>% 
+    mutate(rank = 1:n()) %>% group_by()
+  
+
+plot1 <- ggplot(plottingdat %>% filter(rank < 21), aes(Pr_t_BH, Estimate, color=Parameter, shape = Parameter)) +
+  geom_point(alpha=0.5) +
+  geom_errorbar(aes(ymin= Estimate - Std_Error, ymax = Estimate + Std_Error), alpha= 0.5) +
+  geom_vline(xintercept = 0.05) +
+  scale_color_manual(values= cust.cols[c(2, 5, 6, 3)])+
+  scale_fill_manual(values= cust.cols[c(2, 5, 6, 3)])+
+  scale_shape_manual(values= c(2, 3, 5, 6))+
+  theme_minimal() 
+
+
+zOTUsin <- unique((plottingdat %>% filter(Pr_t_BH < 0.05))$zOTU)
+add.text <- "(Benjamini-Hochberg corrected p < 0.05)"
+if(length(zOTUsin) <= 1){
+  zOTUsin <- unique((plottingdat %>% filter(Pr_t < 0.05))$zOTU)
+  add.text <- "(p < 0.05)"
+}
+if(length(zOTUsin) <= 1){
+  zOTUsin <- unique((plottingdat %>% filter(Pr_t < 0.1))$zOTU)
+  add.text <- "(p < 0.1)"
+}
+if(length(zOTUsin) <= 1){
+      aldex.plots[[count]] <- list(mods = plot1, heatmap = NULL)
+      names(aldex.plots)[count] <- set
+      count = count+1
+      next
+}
+
+coda.Ord <- coda.clrs.res[[set]][[1]]
+coda.Ord <- coda.Ord[zOTUsin,]
+
+if(grepl("ITS", set)){Gthreshold = 0.7; Sthreshold = 0.6} # 80% correct
+if(grepl("16S", set)){Gthreshold = 0.5; Sthreshold = 1} # 95% correct - 0 results in 79-90% correct
+if(grepl("F230", set)){Gthreshold = 0; Sthreshold = 0} # 90% correct
+if(grepl("18S", set)){Gthreshold = 0.95; Sthreshold = 1} # 90% correct
+
+aldex.tax <- rbind(aldex.tax, ds_list[[set]] %>%
+                     filter(ESV %in% zOTUsin) %>%
+  dplyr::select(!matches("seq|Strand|Root|rBP|_|Rank")) %>%
+  mutate_all(as.character) %>%
+  pivot_longer(-ESV, values_to = "value", names_to = "names") %>%
+  mutate(count = 1,
+         count = cumsum(count),
+         Rank = ifelse(!grepl("BP", names), 
+                             names,
+                              lag(names, 1)), 
+         type = ifelse(grepl("BP", names), 
+                       "BP", 
+                       "Taxonomy")) %>%
+  dplyr::select(ESV, value, Rank, type) %>%
+  pivot_wider(names_from = type, values_from = value) %>%
+  mutate(BP = as.numeric(BP), 
+         dataset = set) %>%
+  filter(!(BP<Gthreshold & Taxonomy == "Genus"), !(BP<Sthreshold & Taxonomy == "Species")))
+
+sam_dat <- metadat[match(colnames(coda.Ord), metadat$sample), ]
+
+sam_dat <- sam_dat[order(factor(as.character(sam_dat$harvest), levels = c("Unharvested", "Stem Only", "Full Tree", "Stumped", "Bladed"))), ]
+
+coda.Ord <- coda.Ord[, match(sam_dat$sample, colnames(coda.Ord))]
+
+row.labs <- ds_list[[set]] %>%
+                     filter(ESV %in% zOTUsin) %>%
+  arrange(match(ESV, rownames(coda.Ord)))
+row.labs <- gsub("_uncultured|undef_|_unidentified|_1|_genera_incertae_sedis", "", row.labs$Genus)
+
+plot2 <- pheatmap(coda.Ord, labels_col = sam_dat$harvest, labels_row = row.labs, main = paste0("ESVs significantly associated with a treatment ", add.text), cluster_cols=F)
+
+aldex.plots[[count]] <- list(mods = plot1, heatmap = plot2)
+names(aldex.plots)[count] <- set
+
+count = count+1
+
+}
+ 
+
+rm(set, plot1, plot2, sam_dat, coda.Ord, zOTUsin, plottingdat, count)
+```
+
+
+#### Bac16S{.unnumbered}
+
+```{r}
+aldex.plots[["Bac16S_1"]]$mods
+```
+
+
+Graph shows 20 most significant organisms for each parameter.
+
+
+```{r}
+aldex.plots[["Bac16S_1"]]$heatmap
+
+```
+
+#### ITS{.unnumbered}
+
+```{r}
+aldex.plots[["ITS_1"]]$mods
+```
+
+
+Graph shows 20 most significant organisms for each parameter.
+
+
+```{r}
+aldex.plots[["ITS_1"]]$heatmap
+
+```
+
+#### F230{.unnumbered}
+
+```{r}
+aldex.plots[["F230_1"]]$mods
+```
+
+
+Graph shows 20 most significant organisms for each parameter.
+
+
+```{r}
+aldex.plots[["F230_1"]]$heatmap
+```
+
+
+#### Euk18S{.unnumbered}
+
+```{r}
+aldex.plots[["Euk18S_1"]]$mods
+```
+
+
+Graph shows 20 most significant organisms for each parameter.
+
+
+```{r}
+aldex.plots[["Euk18S_1"]]$heatmap
+```
+
+# {-}
+
+
+```{r spec-tab-1}
+if(nrow(aldex.tax) > 0) {
+      aldex.tax %>%
+  dplyr::select(-BP) %>%
+  pivot_wider(names_from = Rank, values_from = Taxonomy) %>%
+  dplyr::select(dataset, Domain, Kingdom, Phylum, Class, Order, Family, Genus, Species) %>%
+      distinct() %>%
+            filter(!Species == "Encephalartos") %>%
+  knitr::kable(caption = "Taxonomic information for ESVs identified as significantly responding to harvest treatment.")
+}else{
+            cat("No ESVs responded to harvesting treatment")
+      }
+
+```
+
+
+The ESVs that had significant compositional differences were largely identified as the same phylogenetic groups that were detected in non-rarefied analyses. However, several Bacterial ESVs with different identifications were identified in the rarefied analyses (i.e., *Acidibacter*, *Povalibacter*, *Athalassotoga*, *Aliidongia*, *Mycobacterium*, *Caballeronia*, *Rhodoplanes*, *Pseudorhodoplanes*, *Bradyrhizobium*). Rarefied fungal (ITS) communities also had some significant changes to ESV's identified to phylogenetic groups that were not detected in nonrarefied communities (i.e., *Oidiodendron*, *Piloderma*, *Umbelopsis*, *Hygrophorus*, *Trichomaceae*, *Phialocephela*, *Pyronemataceae*, *Rhizoscyphus*, *Ophiocordyceps*).  There were two ESVs detected at a Benjamini-Hochberg corrected p-value of 0.05, while none were detected at that level of significance in the non-rarefied dataset, with the two genus that were detected being detected at p = 0.05 in the non-rarefied dataset. There were only three ESVs in rarefied data from phylogenetic groups that were not detected in nonrarefied 18S communities, (*Athelia*, *Archaeperidinium*).  
+
+
+The eukaryotic groups that were identified generally support non-rarefied results, that forest floor removal generally selects for organisms more adapted to harsher conditions or grasses/meadow species (e.g., *Trichomaceae*, *Acidibacter*, *Athalassotoga*, *Odiodendron*, *Rhizoscyphus*) and harvesting generally changes community structure by reducing mycorrhizae and encouraging saprotrophy (e.g., higher *Piloderma*).
+
+## Topographic differences
+
+
+### Differences in diversity
+```{r alpha-diversity-3, include=FALSE}
+
+anov.res <- list()
+  ortho.res <- data.frame()
+  count = 1
+
+for(ds_name in grep("_3", names(ds_list), value = T)){
+  
+  Orddf <- ds_list[ds_name][[1]]
+  Orddf <- Orddf[, colnames(Orddf) %in% metadat$sample ]
+  
+   if(grepl("Bac", ds_name)){
+        Orddf <- t(apply(Orddf, 2, function(x){x/sum(x)})) ## Relative abundance
+  }else{
+         Orddf <- t(apply(Orddf, 2, function(x){as.numeric(x>0)})) ##  presence/absence
+  }
+  
+  temp.div <- data.frame(Shannon = diversity(Orddf, index = "shannon"), Inv.simpson = diversity(Orddf, index = "invsimpson"), richness = specnumber(Orddf)) %>%
+    rownames_to_column("sample") %>%
+    pivot_longer(-sample, names_to = "metric", values_to = "value") %>%
+    left_join(metadat, by = "sample") %>%
+        mutate(topo = as.factor(topo))
+  
+  contrasts(temp.div$topo) <- topo.contrast.matrix %>% as.matrix()
+  
+  for(div in unique(temp.div$metric)){
+  
+      ds.4aov <- temp.div[temp.div$metric == div,]
+      anov.res[[count]] = aov(value~topo, data=ds.4aov)
+      names(anov.res)[count] = paste(div, ds_name)
+      #print(summary(aov(value~topo, data=ds.4aov)))
+     # temp <- TukeyHSD(aov(value~topo, data=ds.4aov))
+      #print(temp)
+    #  temp <- temp$topo
+      ortho.res <-rbind(ortho.res, data.frame(summary.lm(aov(value~topo, data=ds.4aov)) %>% coefficients() %>% as.data.frame() %>% rownames_to_column("topo"), metric = div, dataset = ds_name))
+      count = count +1
+  }
+
+}
+  
+   rm(count, temp)
+   
+ortho.res <- ortho.res %>% mutate(dataset = gsub("_[[:digit:]]", "", dataset))
+```
+
+```{r Microtopography-diversity, fig.cap = "Orthogonal contrasts between microtopography features as described in Table \\@ref(tab:topo-ortho) (T.B = Trench vs Bladed, T.PF = Trench vs Piles and Flats, P.F = Piles vs Flats). Values lower than zero indicate the first term in the contrast is lower in diversity, values higher than zero indicate the first term in the contrast has higher diversity as an effect."}
+ortho.res <- ortho.res %>%
+      mutate(topo = factor(gsub("topo", "", topo), levels = c("T.B", "T.PF", "P.F")), 
+         dataset = gsub("_[[:digit:]]", "", dataset)) %>% 
+      filter(!is.na(topo)) %>% rename(`p-value` = Pr...t..)
+
+      ggplot(ortho.res, aes(topo, Estimate, col = `p-value`)) +
+      geom_point(aes(shape = `p-value` < 0.05), size = 4) + 
+      geom_errorbar(aes(ymin = Estimate - Std..Error, ymax=Estimate + Std..Error)) +
+      scale_color_stepsn(breaks = c(0.01, 0.05, 0.1), colours = c("black", "gray22", "gray55","gray88"), values =  c(0, 0.01, 0.05,1)) +
+      facet_wrap(metric~dataset, scales = "free_y") +
+      theme_minimal() +
+      ylab("Difference in diversity") +
+            xlab("Orthogonal contrast of microtopography features") +
+   geom_hline(yintercept = 0, color = "black") +
+   theme(axis.text.x = element_text(angle = 90)) + 
+            labs(shape = "p-value < 0.05")
+
+num_p_tests <- num_p_tests + length(unique(ortho.res$dataset)) 
+
+rm(anov.res, ds.4aov, temp.div, ortho.res, div, ds_name, Orddf)
+```
+
+
+Generally, though the magnitude of differences changed, tests performed on rarefied diversity metrics supported the results of the non-rarefied analyses. Bacterial Shannon and Simpsons diversities gained significance after rarefying for Trench-Bladed comparisons, and Forest Floor removal comparisons, but lost significance for the forest floor removal effect in Eukaryotic 18S communities. The pattern of responses were mostly the same in direction, with the exception of Bacterial 16S Simpsons diversity, which gained effects. 
+
+
+```{r CODA-PCA-3}
+clr.pca.plots <- list()
+
+plotcount <- 1
+
+for(ds_name in names(coda.clrs.res[grep("_3", names(coda.clrs.res), value = T)])){
+        
+        ## such poor coverage in genus and functional groups that they are excluded here
+        #if(grepl("Genus|functional", ds_name)){next}
+        
+        d.clr.abund <- t(coda.clrs.res[[ds_name]][[1]])
+        
+        ##PCA of the clr values
+        
+        char_data <- metadat[match(rownames(d.clr.abund), metadat$sample), ]# %>%
+          # mutate(harvest = factor(as.character(harvest), levels = c("Unharvested", "Stem Only", "Full Tree", "Stumped", "Bladed")))
+        
+           pca <- prcomp(d.clr.abund)
+        
+        pca.var.explained <- pca$sdev^2/mvar(d.clr.abund)
+        
+        ## Prepare plotting variables
+        xlab.val <- paste("PCA1", round(pca.var.explained[1], 3))
+        ylab.val <- paste("PCA2", round(pca.var.explained[2], 3))
+        
+        ## extract the same way base biplot for princomp works
+        plottingdat <- as.data.frame(pca$x/ncol(pca$x)) %>%
+          dplyr::select(PC1, PC2) %>%
+          rownames_to_column("sample") %>% 
+          left_join(char_data, by="sample") %>%
+          dplyr::select(-sample)
+        
+         ## Find Hulls of data
+      hulls = Ordination_hulls(plottingdat, c("topo")) 
+      
+      if(grepl("Genus|functional", ds_name)){next}
+      
+       clr.pca.plots[[plotcount]] <-ggplot(plottingdat, aes(PC1, PC2, group=topo))+
+   geom_point(data=plottingdat, aes(color=topo, shape = topo), size = 2) + 
+   geom_polygon(data=hulls, aes(group=hullgrp, fill = topo, color=topo), alpha = 0.5) +
+   scale_color_manual(values= c(cust.cols[8] ,"palegreen4", "burlywood4", "tan"))+
+   scale_fill_manual(values= c(cust.cols[8], "palegreen4", "burlywood4", "tan"))+
+   scale_shape_manual(values= c(6, 2, 3, 1))+
+   xlab(xlab.val)+
+   ylab(ylab.val)+
+   theme_minimal()+
+     ggtitle(ds_name) 
+   
+       #print(clr.pca.plots[[plotcount]])
+       
+names(clr.pca.plots)[plotcount] <- ds_name
+        plotcount <- plotcount +1
+}
+
+
+   
+rm(plotcount, ds_name, char_data, d.clr.abund, hulls, pca, plottingdat, pca.var.explained, xlab.val, ylab.val)
+```
+
+
+
+
+### Compositional PCA plots {.tabset}
+
+#### Bacterial (16S){.unnumbered}
+
+```{r PCA9}
+clr.pca.plots[[1]]
+```
+
+#### Fungal (ITS){.unnumbered}
+
+```{r PCA10}
+clr.pca.plots[[2]]
+```
+
+#### Arthropods (F230){.unnumbered}
+
+```{r PCA11}
+clr.pca.plots[[3]]
+```
+
+#### Eukaryotes (18S){.unnumbered}
+
+```{r PCA12}
+clr.pca.plots[[4]]
+rm(clr.pca.plots)
+```
+
+
+
+
+
+```{r CODA-PERMANOVA-3, include=FALSE}
+clr.PERM.res <- list()
+clr.adon.res <- data.frame()
+clr.betadisper.res <- data.frame()
+count <- 1
+
+for(ds_name in names(coda.clrs.res[grep("_3", names(coda.clrs.res), value = T)])){
+        
+        ## such poor coverage in genus and functional groups that they are excluded here
+        #if(grepl("Genus|functional", ds_name)){next}
+        
+        d.clr.abund <- t(coda.clrs.res[[ds_name]][[1]])
+        
+        ##char data
+        
+        char_data <- metadat[match(rownames(d.clr.abund), metadat$sample), ]
+        
+        ##OVERALL PERMANOVA
+        adon.res.tmp <- adonis(d.clr.abund~topo, data=char_data, method = "euclidean")$aov.tab %>%
+           rownames_to_column("Parameter") %>%
+           mutate(contrast = "overall",
+                  dataset = ds_name) %>% data.frame()
+        
+        ##OVERALL BETADISPER
+        betadisper.res.tmp <- anova(betadisper(vegdist(d.clr.abund, method = "euclidean"), char_data$topo)) %>%
+           rownames_to_column("Parameter") %>%
+           mutate(contrast = "overall",
+                  dataset = ds_name) %>% data.frame()
+        
+        ##PAIRWISE PERMANOVA
+        adon.res.tmp <- ortho_adonis(d.clr.abund, topo.contrast.matrix, c("topo"), char_data, method="euclidean") %>%
+           mutate(dataset = ds_name, Parameter = "") %>% rbind(adon.res.tmp)
+        
+        ##PAIRWISE BETADISPER
+        
+          betadisper.res.tmp <- ortho_betadisper(d.clr.abund, topo.contrast.matrix, c("topo"), char_data, method="euclidean") %>%
+           mutate(dataset = ds_name, Parameter = "") %>% rbind(betadisper.res.tmp)
+       
+          
+         clr.adon.res <- rbind(clr.adon.res, adon.res.tmp)
+         clr.betadisper.res <- rbind(clr.betadisper.res, betadisper.res.tmp)
+         
+         
+         clr.PERM.res[[count]] <- list(adonis = adonis(d.clr.abund~topo, data=char_data, method = "euclidean"), betadisper = betadisper(vegdist(d.clr.abund, method = "euclidean"), char_data$topo))
+         names(clr.PERM.res)[count] <- ds_name
+         count = count + 1
+}
+
+num_p_tests <- num_p_tests + length(unique(clr.adon.res$dataset)) + length(unique(clr.adon.res$dataset))
+   
+rm(count, ds_name, adon.res.tmp, betadisper.res.tmp, char_data)
+```
+
+#### PERMANOVA results{.unnumbered}
+
+```{r CODA-adonis-plot-3, fig.cap="Results of orthogonal PERMANOVA tests comparing community structures of the different microtopography features and Bladed sites,orthogonal contrasts are outlined in Table \\@ref(tab:topo-ortho). The variance explained by each comparison (R^2^) is shown on the x axis, and the probability of the effect is along the y axis (Pr (>F)). A black line is used to display p = 0.05."}
+adon.plotting <- clr.adon.res[!clr.adon.res$Parameter %in% c("Residuals", "Total", "topo") , ] %>%
+  mutate(contrast = factor(as.character(contrast), levels = c("T.B", "T.PF", "P.F")), 
+         dataset = gsub("_[[:digit:]]", "", dataset))
+
+
+ggplot(adon.plotting, aes(R2, Pr..F., color=contrast, shape = contrast)) +
+   geom_point(size = 4) + 
+   geom_text(aes(label = contrast, y=Pr..F.+.005), show.legend = FALSE) +
+   geom_hline(yintercept = 0.05, color="black") + 
+   scale_color_manual(values= c(cust.cols[8] ,"tan", "burlywood4"))+
+   scale_fill_manual(values= cust.cols[c(cust.cols[8] ,"tan", "burlywood4")])+
+   scale_shape_manual(values= c(2, 1, 3, 4, 5, 6))+
+   theme_minimal() +
+   facet_wrap(~dataset, scales = "free") + 
+   xlab(expression("Effect Size (R"^2*")")) + ylab("Pr (>F)")
+   
+```
+
+#### Betadispersion{.unnumbered}
+
+```{r CODA-bd-plot-3, fig.height=6, fig.cap="Results of orthogonal betadispersion tests comparing community structures of the different microtopography features on full-tree sites, tests are outlined in Table 2. The betadispersion of each treatment (R^2^) is shown on the y axis, and the treatment is shown along the x-axis. Significant differences are indicated in red text (* = p < 0.05, ** = p < 0.01, *** = p < 0.001). A. Bacterial 16S, B. Fungal ITS, C. Arthropod F230, D. Eukaryotic 18S."}
+
+plot.betadisper <- data.frame()
+
+for(ds_name in names(clr.PERM.res)){
+   temp <- clr.PERM.res[[ds_name]]$betadisper$distances
+   
+   ## pull distances for plotting
+   temp <- data.frame(temp, sample = names(temp)) %>%
+     left_join(metadat, by = "sample") %>%
+     mutate(dataset=ds_name) %>%
+     rename(distance = temp) 
+   
+   plot.betadisper <- rbind(plot.betadisper, temp)
+     
+     
+}
+
+## Get min distances for each set
+mins  <- plot.betadisper %>%
+  group_by(dataset) %>%
+  summarize(distance = min(distance))
+
+ ### Pull test result
+     temp.sig <- clr.betadisper.res %>%
+      filter(contrast != "overall") %>%
+     dplyr::select(-Parameter) %>%
+     mutate(topo = ifelse(contrast == "T.B", 
+                          "Bladed", 
+                          ifelse(contrast == "T.PF",
+                                 "Trench", 
+                                 "Pile"))) %>% 
+       group_by(dataset) %>%
+     mutate(sig.level = ifelse(Pr..F. < 0.001, "***", ifelse(Pr..F. < 0.01, "**", ifelse(Pr..F. < 0.05, "*", ""))), 
+            sig.level = paste(sig.level, ifelse(sig.level !="", contrast, ""))) %>%
+       left_join(mins, by = "dataset") %>%
+       filter(!grepl("^ $|^$", sig.level)) %>%
+           group_by(dataset, topo) %>%
+           mutate(distance = unique(distance), 
+                  sig.level = str_c(sig.level, collapse = "\n"))
+
+## plot as boxplots with significance
+     betadisp.plots <- list()
+     count =1
+     for(ds in unique(plot.betadisper$dataset)){
+           betadisp.plots[[count]] <- ggplot(plot.betadisper[plot.betadisper$dataset == ds, ], aes(topo, distance, fill = topo))+
+     geom_boxplot(alpha = 0.5)+
+       geom_text(data= temp.sig[temp.sig$dataset == ds,], inherit.aes = F, aes(topo, distance, label = sig.level), color = "red")+
+       theme_minimal()+
+       scale_fill_manual(values= c(cust.cols[8], "palegreen4", "burlywood4", "tan")) +
+                 coord_cartesian(ylim = c(round(min(plot.betadisper[plot.betadisper$dataset == ds, ]$distance)*.8, -1), round(max(plot.betadisper[plot.betadisper$dataset == ds, ]$distance), -1)))
+           names(betadisp.plots)[count] <- ds
+           count = count +1
+     }
+     
+     ggarrange(betadisp.plots[["Bac16S_3"]], betadisp.plots[["ITS_3"]], betadisp.plots[["F230_3"]], betadisp.plots[["Euk18S_3"]], ncol=2, nrow=2, common.legend = TRUE, labels = "AUTO")
+     
+```
+
+
+
+
+## {-}
+
+There was much more overlap between Trench and Bladed communities in rarefied datasets than in non-rarefied analyses. However, this did not eliminate the conclusion that the community assemblages in Trenched and Bladed sites were different. In fact, the results of permanova tests in rarefied and non-rarefied datasets were very similar, with the main differences between the results being generally, a slightly lower amount of explained variance for rarefied tests versus their unrarefied equivalent.
+
+
+```{r CODA-RDA-3, include=FALSE}
+clr.rda.plots <- list()
+
+clr.rda.plotting <- data.frame()
+
+plotcount <- 1
+
+for(ds_name in names(coda.clrs.res[grep("_3", names(coda.clrs.res), value = T)])){
+        
+        ## such poor coverage in genus and functional groups that they are excluded here
+        #if(grepl("Genus|functional", ds_name)){next}
+        
+        d.clr.abund <- t(coda.clrs.res[[ds_name]][[1]])
+        
+        ##RDA of the clr values
+        
+        char_data <- metadat[match(rownames(d.clr.abund), metadat$sample), ] %>%
+           mutate(topo = factor(topo))
+        
+        rda.res <- rda(d.clr.abund, char_data[, c("topo")])
+        ## unscaled, is ok b/c all in same units
+        
+        clr.rda.plotting <- rbind(clr.rda.plotting, data.frame(data.frame(t(summary(rda.res)$cont$importance)) %>%
+                                                                 rownames_to_column("PC") %>% 
+                                                                 mutate(const = ifelse(grepl("PC", PC), "unconstrained", "constrained")) %>%
+                                                                 group_by(const) %>% 
+                                                                 summarize(proportion.explained = sum(Proportion.Explained)), model = ds_name))
+        
+        rda.vecs <- rda.res$CCA$biplot %>% as.data.frame()
+        rownames(rda.vecs) <- gsub("^Y", "", rownames(rda.vecs))
+        
+        ## Prepare plotting variables
+        xlab.val <- paste("RDA1", round(summary(rda.res)$cont$importance[2, 1], 3))
+        ylab.val <- paste("RDA2", round(summary(rda.res)$cont$importance[2, 2], 3))
+        
+        ## extract the same way base biplot for princomp works
+        plottingdat <- as.data.frame(rda.res$CCA$wa) %>%
+          dplyr::select(RDA1, RDA2) %>%
+          rownames_to_column("sample") %>% 
+          left_join(char_data, by="sample") %>%
+          dplyr::select(-sample)
+          
+        ## Find Hulls of data
+      hulls = Ordination_hulls(plottingdat, c("topo"))
+      
+      if(grepl("Genus|functional", ds_name)){next}
+      
+       clr.rda.plots[[plotcount]] <-ggplot(plottingdat, aes(RDA1, RDA2, group=topo))+
+   geom_point(data=plottingdat, aes(color=topo, shape = topo), size = 2) + 
+   geom_polygon(data=hulls, aes(group=hullgrp, fill = topo, color=topo), alpha = 0.5) +
+   geom_text(inherit.aes = FALSE, data = rda.vecs, aes(label=row.names(rda.vecs), x=RDA1, y=RDA2), color="black") +
+   geom_segment(inherit.aes = FALSE, data = rda.vecs, aes(x=0, y=0, xend=RDA1, yend=RDA2), color="black",arrow = arrow()) +
+   scale_color_manual(values= c(cust.cols[8], "palegreen4", "burlywood4", "tan"))+
+   scale_fill_manual(values= c(cust.cols[8], "palegreen4", "burlywood4", "tan"))+
+   scale_shape_manual(values= c(6, 2, 3, 1))+
+   xlab(xlab.val)+
+   ylab(ylab.val)+
+   theme_minimal()+
+     ggtitle(ds_name) 
+   
+names(clr.rda.plots)[plotcount] <- ds_name
+        plotcount <- plotcount +1
+}
+
+
+   
+rm(plotcount, ds_name, hulls, xlab.val, ylab.val,  rda.res, plottingdat, char_data, temp)
+```
+
+
+
+
+
+### Compositional RDA plots {.tabset}
+
+#### Explained Variance in RDA's{.unnumbered}
+
+```{r RDAsummaryPlots3, include=TRUE, fig.cap="Proportion of community structural variance explained by RDA axes constrained by microtopography. Model names are described as the targeted gene (16S, 18S, ITS, or, F230), summarization level (ESV, genus, or functional groupings) and the soil layers represented in the rda model (MIN = 0-10 cm depth mineral soil samples, LFH = L, FH, or LFH samples)."}
+### create plot that summarizes constrained vs unconstrained variance for each dataset
+clr.rda.plotting$const <- factor(as.character(clr.rda.plotting$const), levels = c("unconstrained", "constrained"))
+
+ggplot(clr.rda.plotting[!clr.rda.plotting$const == "unconstrained", ], aes(proportion.explained, model, fill = const)) +
+  geom_bar(stat = "identity") +
+  scale_fill_manual(values = c(cust.cols[c(2)])) + 
+  theme_minimal() + 
+  theme(legend.position = "none")+
+  xlab("Proportion of variance explained") + 
+  ylab("")
+rm(clr.rda.plotting)
+```
+
+#### Bacterial (16S){.unnumbered}
+
+```{r RDA9}
+clr.rda.plots[[1]]
+```
+
+#### Fungal (ITS){.unnumbered}
+
+```{r RDA10}
+clr.rda.plots[[2]]
+```
+
+#### Arthropods (F230){.unnumbered}
+
+```{r RDA11}
+clr.rda.plots[[3]]
+```
+
+#### Eukaryotes (18S){.unnumbered}
+
+```{r RDA12}
+clr.rda.plots[[4]]
+rm(clr.rda.plots)
+```
+
+
+## {-}
+
+Across all metabarcoding communities, the RDA axes associated with the most explainable variance were associated with Trench features. The Bacterial community was the most different between trench and flat features, with 20% of the community variance explained by the trench axis. This was consistent with the results from non-rarefied analyses. There was more separation between Flat and Pile sites in the rarefied, versus unrarefied dataset however. Most other RDA's were similar in both amount of variance explained on the axes, and the direction of responses.  
+
+
+### Differences in specific organisms {.tabset}
+```{r aldex_glm_modelling-3, cache=TRUE, include=FALSE}
+
+aldex.glm.res <- data.frame()
+
+for(ds_name in grep("_3", names(ds_list), value = T)){
+        
+        Orddf <- ds_list[[ds_name]]
+                
+        #Orddf <- Orddf[, !grepl("_B._", colnames(Orddf))]
+        
+                Orddf4aldex <- Orddf %>%
+                  column_to_rownames("ESV") %>%
+                  dplyr::select(colnames(Orddf)[match(metadat$sample, colnames(Orddf))[!is.na(match(metadat$sample, colnames(Orddf)))]])
+                
+                ## Run aldex.glm on the G/L matrix.
+                sam_inf <- metadat[match(colnames(Orddf4aldex), metadat$sample), ] %>%
+                    mutate(topo = factor(as.character(topo), levels = c("Bladed", "Flat", "Pile", "Trench")))
+                 contrasts(sam_inf$topo) <- topo.contrast.matrix %>% as.matrix()
+                
+                ##Scale and centre all columns so effect sizes are comparable
+                for(cln in colnames(sam_inf)){
+                  if(is.numeric(sam_inf[,cln])){
+                    sam_inf[,cln] <- scale(sam_inf[,cln])
+                  }
+                }
+                
+                mm <- model.matrix(~ topo, sam_inf)
+                
+                if(sum(Orddf4aldex > 0 & Orddf4aldex < 1) > 0){
+                  subset_aldex <- round(Orddf4aldex * 10000, 0) ## If its relative abundance, multiply by 10,000 and round
+                }else{
+                  subset_aldex <- Orddf4aldex
+                }
+                
+                
+                ## select denominators as ESV that are similar amongst all samples
+                
+                aldex.ob <- aldex.clr(subset_aldex, mm, denom="all")
+                
+                glm.res <- aldex.glm(aldex.ob)
+                
+                glm.res <- data.frame(glm.res)
+                
+                glm.res.sum <- glm.res %>% mutate(zOTU=row.names(glm.res)) %>%
+                        pivot_longer(-zOTU, values_to = "Value", names_to = "Metric") %>% 
+                        mutate(Parameter = gsub("\\.Estimate$|\\.Std..Error$|\\.t.value$|\\.Pr...t..$|\\.Pr...t...BH$", "", Metric), Variable= str_extract(Metric,"\\.Estimate$|\\.Std..Error$|\\.t.value$|\\.Pr...t..$|\\.Pr...t...BH$")) %>%
+                        mutate(Variable = gsub("\\.+", "_", gsub("^\\.|\\.+$", "", Variable))) %>%
+                        pivot_wider(id_cols = c("zOTU", "Parameter"), values_from = Value, names_from = Variable) %>%
+                        mutate(Set = ds_name)
+                
+                aldex.glm.res <- rbind(aldex.glm.res, glm.res.sum)
+                
+                num_p_tests = num_p_tests + 1
+                
+}
+
+rm(glm.res, glm.res.sum, Orddf4aldex, Orddf, aldex.ob, mm, subset_aldex, sam_inf, ds_name)
+```
+
+
+```{r plot-aldex-glm-3, include=FALSE}
+
+aldex.plots <- list()
+aldex.tax <- data.frame()
+count = 1
+for(set in unique(aldex.glm.res$Set)){
+  
+  plottingdat <- aldex.glm.res %>%
+    filter(Set == set, !Parameter == "X.Intercept.") %>%
+  mutate(Parameter = str_remove(Parameter, "model.topo"),
+         Parameter = str_extract(Parameter, "T.B|T.PF|P.F")) %>%
+  mutate(Parameter = factor(Parameter)) %>%
+    group_by(Parameter) %>%
+    arrange(desc(abs(Estimate)), Pr_t_BH) %>% 
+    mutate(rank = 1:n()) %>% group_by()
+  
+
+plot1 <- ggplot(plottingdat %>% filter(rank < 21), aes(Pr_t_BH, Estimate, color=Parameter, shape = Parameter)) +
+  geom_point(alpha=0.5) +
+  geom_errorbar(aes(ymin= Estimate - Std_Error, ymax = Estimate + Std_Error), alpha= 0.5) +
+  geom_vline(xintercept = 0.05) +
+  scale_color_manual(values= c(cust.cols[8], "tan", "burlywood4"))+
+  scale_fill_manual(values= c(cust.cols[8], "tan", "burlywood4"))+
+  scale_shape_manual(values= c(2, 1, 3))+
+  theme_minimal() 
+
+
+zOTUsin <- unique((plottingdat %>% filter(Pr_t_BH < 0.05))$zOTU)
+add.text <- "(Benjamini-Hochberg corrected p < 0.05)"
+if(length(zOTUsin) <= 1){
+  zOTUsin <- unique((plottingdat %>% filter(Pr_t < 0.05))$zOTU)
+  add.text <- "(p < 0.05)"
+}
+if(length(zOTUsin) <= 1){
+  zOTUsin <- unique((plottingdat %>% filter(Pr_t < 0.1))$zOTU)
+  add.text <- "(p < 0.1)"
+}
+if(length(zOTUsin) <= 1){
+      aldex.plots[[count]] <- list(mods = plot1, heatmap = NULL)
+      names(aldex.plots)[count] <- set
+      count = count+1
+      next
+}
+
+coda.Ord <- coda.clrs.res[[set]][[1]]
+coda.Ord <- coda.Ord[zOTUsin,]
+
+
+if(grepl("ITS", set)){Gthreshold = 0.7; Sthreshold = 0.6} # 80% correct
+if(grepl("16S", set)){Gthreshold = 0.5; Sthreshold = 1} # 95% correct - 0 results in 79-90% correct
+if(grepl("F230", set)){Gthreshold = 0; Sthreshold = 0} # 90% correct
+if(grepl("18S", set)){Gthreshold = 0.95; Sthreshold = 1} # 90% correct
+
+aldex.tax <- rbind(aldex.tax, ds_list[[set]] %>%
+                     filter(ESV %in% zOTUsin) %>%
+  dplyr::select(!matches("seq|Strand|Root|rBP|_|Rank")) %>%
+  mutate_all(as.character) %>%
+  pivot_longer(-ESV, values_to = "value", names_to = "names") %>%
+  mutate(count = 1,
+         count = cumsum(count),
+         Rank = ifelse(!grepl("BP", names), 
+                             names,
+                              lag(names, 1)), 
+         type = ifelse(grepl("BP", names), 
+                       "BP", 
+                       "Taxonomy")) %>%
+  dplyr::select(ESV, value, Rank, type) %>%
+  pivot_wider(names_from = type, values_from = value) %>%
+  mutate(BP = as.numeric(BP), 
+         dataset = set) %>%
+  filter(!(BP<Gthreshold & Taxonomy == "Genus"), !(BP<Sthreshold & Taxonomy == "Species")))
+
+sam_dat <- metadat[match(colnames(coda.Ord), metadat$sample), ]
+
+sam_dat <- sam_dat[order(factor(as.character(sam_dat$topo), levels = c("Flat", "Pile", "Trench", "Bladed"))), ]
+
+coda.Ord <- coda.Ord[, match(sam_dat$sample, colnames(coda.Ord))]
+
+row.labs <- ds_list[[set]] %>%
+                     filter(ESV %in% zOTUsin) %>%
+  arrange(match(ESV, rownames(coda.Ord)))
+row.labs <- gsub("_uncultured|undef_|_unidentified|_1|_genera_incertae_sedis", "", row.labs$Genus)
+
+plot2 <- pheatmap(coda.Ord, labels_col = paste(sam_dat$topo), labels_row = row.labs, main = paste0("ESVs significantly associated with a treatment ", add.text), cluster_cols = F)
+
+aldex.plots[[count]] <- list(mods = plot1, heatmap = plot2)
+names(aldex.plots)[count] <- set
+count = count+1
+}
+ 
+
+rm(set, plot1, plot2, sam_dat, coda.Ord, zOTUsin, plottingdat)
+```
+
+
+#### Bac16S{.unnumbered}
+
+```{r}
+aldex.plots[["Bac16S_3"]]$mods
+```
+
+
+Graph shows 20 most significant organisms for each parameter.
+
+
+```{r}
+aldex.plots[["Bac16S_3"]]$heatmap
+```
+
+
+#### ITS{.unnumbered}
+
+```{r}
+aldex.plots[["ITS_3"]]$mods
+```
+
+
+Graph shows 20 most significant organisms for each parameter.
+
+
+```{r}
+aldex.plots[["ITS_3"]]$heatmap
+```
+
+
+#### F230{.unnumbered}
+
+```{r}
+aldex.plots[["F230_3"]]$mods
+```
+
+
+Graph shows 20 most significant organisms for each parameter.
+
+
+```{r}
+aldex.plots[["F230_3"]]$heatmap
+```
+
+
+#### Euk18S{.unnumbered}
+
+```{r}
+aldex.plots[["Euk18S_3"]]$mods
+```
+
+
+Graph shows 20 most significant organisms for each parameter.
+
+
+```{r}
+aldex.plots[["Euk18S_3"]]$heatmap
+```
+
+
+# {-}
+
+```{r spec-tab-3}
+if(nrow(aldex.tax) > 0 ){
+aldex.tax %>%
+  dplyr::select(-BP) %>%
+  pivot_wider(names_from = Rank, values_from = Taxonomy) %>%
+  dplyr::select(dataset, Domain, Kingdom, Phylum, Class, Order, Family, Genus, Species) %>%
+      distinct() %>%
+  knitr::kable(caption = "Taxonomic information for ESVs identified as significantly different amongst topographic features.")
+}else{
+            cat("No ESVs responded to harvesting treatment")
+      }
+
+```
+
+
+There were many bacterial ESVs with significant changes in composition between topographic features in rarefied datasets that were identified to phylogenies that were not found in unrarefied datasets (i.e, *Caballeronia*, *Variibacter*, *Bradyrhizobium*, *Paraburkholderia*, *Rhodoplanes*, *Pseudorhodoplanes*, *Acidipila*, *Rosearcus*). Rarefying of ITS communities detected *Heliotales* and *Cadophora* ESVS that had similar compositions across sites to the unrarefied datasets, and detected differences in two ESVs identified as *Agaricomycetes* and *Mortierella* which were not detected in unrarafied datasets. All of the phylogenic groups of ESVs with significantly changed compositional abundance (p <0.05) in F230 communities were detected in the unrarefied communities. Compositional abundance of 18S ESVs from rarefied analyses had ESVs that were identified as phylogenies that were not present in unrarefied datasets (*Polytrichum*, *Rosulabryum*, *Archaeperidinium*, *Limnognathia*). 
+
+These groups consisted of generalist chemoheterotrophic fungi that could be decomposing wood or associated with plants being increased in flats and piles (e.g., *Paraburkholderia*, *Mortierella*), and organisms that are more associated with living in environments with high temperatures or nutrient limitations (e.g., *Acidipila*).
+
+
+## Seasonal Patterns
+
+
+### Differences in diversity
+```{r alpha-diversity-2, fig.cap = "Diversity (Shannon, Inverse Simpsons, and ESV richness) for each metabarcode target (Bacterial 16S and Fungal ITS2) across three months of sampling for full tree and unharvested treatments. Unharvested is shown in green, and full tree is displayed in blue."}
+
+anov.res <- list()
+  Tukey.res <- data.frame()
+  count = 1
+
+  div.res <- data.frame()
+for(ds_name in grep("_2", names(ds_list), value = T)){
+  
+  Orddf <- ds_list[ds_name][[1]]
+  Orddf <- Orddf[, colnames(Orddf) %in% metadat$sample]
+  
+   if(grepl("Bac", ds_name)){
+        Orddf <- t(apply(Orddf, 2, function(x){x/sum(x)})) ## Relative abundance
+  }else{
+         Orddf <- t(apply(Orddf, 2, function(x){as.numeric(x>0)})) ## presence-absence
+  }
+  
+  temp.div <- data.frame(Shannon = diversity(Orddf, index = "shannon"), Inv.simpson = diversity(Orddf, index = "invsimpson"), richness = specnumber(Orddf)) %>%
+    rownames_to_column("sample") %>%
+    pivot_longer(-sample, names_to = "metric", values_to = "value") %>%
+    left_join(metadat, by = "sample") %>%
+    mutate(harvest = factor(as.character(harvest), levels = c("Unharvested", "Full Tree"))) %>%
+    mutate(dataset = ds_name)
+  
+  div.res <- rbind(div.res, temp.div)
+  
+  for(div in unique(temp.div$metric)){
+  
+      ds.4aov <- temp.div[temp.div$metric == div,]
+      anov.res[[count]] = aov(value~ month * harvest, data=ds.4aov)
+      names(anov.res)[count] = paste(div, ds_name)
+      #print(names(anov.res)[count])
+      #print(summary(anov.res[[count]]))
+      temp <- TukeyHSD(anov.res[[count]])
+      #print(temp)
+      temp <- temp$harvest
+      Tukey.res <-rbind(Tukey.res, data.frame(p.val = summary(anov.res[[count]])[[1]]$`Pr(>F)`[1:3], param = str_trim(row.names(summary(anov.res[[count]])[[1]])[1:3]), metric = div, dataset = ds_name))
+      count = count +1
+  }
+
+}
+
+   rm(count, temp)
+   
+Tukey.res <- Tukey.res %>%
+  mutate(dataset = str_remove(dataset, "_2"))
+
+#ggplot(Tukey.res, aes(dataset, p.val, color = param, shape= param)) +
+#      geom_point() + 
+#      facet_wrap(~metric, scales = "free_y") +
+#      theme_minimal() +
+#      ylab(expression("Significance of Harvesting and seasonal interaction term")) +
+#   geom_hline(yintercept = 0.05, color = "black") +
+#   theme(axis.text.x = element_text(angle = 90))
+
+ggplot(div.res%>%
+  mutate(dataset = str_remove(dataset, "_2")), aes(month, value, col = harvest, fill = harvest)) +
+      geom_boxplot(alpha = 0.5) + 
+      scale_color_manual(values = cust.cols[c(2,1)]) +
+      scale_fill_manual(values = cust.cols[c(2,1)]) +
+      facet_grid(metric~dataset, scales = "free") +
+      theme_minimal() +
+      ylab(expression("Diversity")) +
+   theme(axis.text.x = element_text(angle = 90))
+
+num_p_tests <- num_p_tests + length(unique(Tukey.res$dataset))
+
+rm(anov.res, ds.4aov, temp.div, Tukey.res, div, ds_name, Orddf)
+```
+
+
+
+Just as in unrarefied datasets, while community compositions had responses to harvesting and season, there were no differences in the seasonal responses related to harvesting. There were increased inverse simpsons diversity metrics in rarefied bacterial communities, but decreased inverse Simpsons diversity in Eukaryotic 18S sequences. The pattern and magnitudes of Shannon and richness across samples were very similar between rarefied and non-rarefied datasets, through richnesses were lower in rarefied datsets. 
+
+
+
+```{r CODA-PCA-2, include=FALSE}
+clr.pca.plots <- list()
+
+plotcount <- 1
+
+for(ds_name in names(coda.clrs.res[grep("_2", names(coda.clrs.res), value = T)])){
+        
+        ## such poor coverage in genus and functional groups that they are excluded here
+        #if(grepl("Genus|functional", ds_name)){next}
+        
+        d.clr.abund <- t(coda.clrs.res[[ds_name]][[1]])
+        
+        ##PCA of the clr values
+        
+        char_data <- metadat[match(rownames(d.clr.abund), metadat$sample), ]# %>%
+          # mutate(harvest = factor(as.character(harvest), levels = c("Unharvested", "Stem Only", "Full Tree", "Stumped", "Bladed")))
+        
+           pca <- prcomp(d.clr.abund)
+        
+        pca.var.explained <- pca$sdev^2/mvar(d.clr.abund)
+        
+        ## Prepare plotting variables
+        xlab.val <- paste("PCA1", round(pca.var.explained[1], 3))
+        ylab.val <- paste("PCA2", round(pca.var.explained[2], 3))
+        
+        ## extract the same way base biplot for princomp works
+        plottingdat <- as.data.frame(pca$x/ncol(pca$x)) %>%
+          dplyr::select(PC1, PC2) %>%
+          rownames_to_column("sample") %>% 
+          left_join(char_data, by="sample") %>%
+          dplyr::select(-sample)
+        
+         ## Find Hulls of data
+      hulls = Ordination_hulls(plottingdat, c("harvest", "month")) 
+      
+      if(grepl("Genus|functional", ds_name)){next}
+      
+       clr.pca.plots[[plotcount]] <-ggplot(plottingdat, aes(PC1, PC2, group=harvest))+ 
+   geom_polygon(data=hulls, aes(group=hullgrp, fill = month), alpha = 0.5) +
+   geom_point(data=plottingdat, aes(color=harvest, shape = harvest), size = 2) +
+   scale_color_manual(values= cust.cols[c(2,1)], breaks = levels(plottingdat$harvest)[c(2,1)])+
+   scale_fill_manual(values= c("orchid", "green3", "orange"), breaks = levels(plottingdat$month))+
+   scale_shape_manual(values= c(2, 1), breaks = levels(plottingdat$harvest)[c(2,1)])+
+   xlab(xlab.val)+
+   ylab(ylab.val)+
+   theme_minimal()+
+     ggtitle(ds_name) 
+   
+       #print(clr.pca.plots[[plotcount]])
+       
+names(clr.pca.plots)[plotcount] <- ds_name
+        plotcount <- plotcount +1
+}
+
+
+   
+rm(plotcount, ds_name, char_data, d.clr.abund, hulls, pca, plottingdat, pca.var.explained, xlab.val, ylab.val)
+```
+
+### Compositional PCA plots {.tabset}
+
+#### Bacterial (16S){.unnumbered}
+
+```{r PCA5}
+clr.pca.plots[[1]]
+```
+
+#### Fungal (ITS){.unnumbered}
+
+```{r PCA6}
+clr.pca.plots[[2]]
+```
+
+#### Arthropods (F230){.unnumbered}
+
+```{r PCA7}
+clr.pca.plots[[3]]
+```
+
+#### Eukaryotes (18S){.unnumbered}
+
+```{r PCA8}
+clr.pca.plots[[4]]
+rm(clr.pca.plots)
+```
+
+
+
+```{r CODA-PERMANOVA-2, include=FALSE}
+clr.PERM.res <- list()
+clr.adon.res <- data.frame()
+clr.betadisper.res <- data.frame()
+count <- 1
+
+for(ds_name in names(coda.clrs.res[grep("_2", names(coda.clrs.res), value = T)])){
+        
+        ## such poor coverage in genus and functional groups that they are excluded here
+        #if(grepl("Genus|functional", ds_name)){next}
+        
+        d.clr.abund <- t(coda.clrs.res[[ds_name]][[1]])
+        
+        ##char data
+        
+        char_data <- metadat[match(rownames(d.clr.abund), metadat$sample), ] %>%
+           mutate(harvest = factor(as.character(harvest), levels = c("Unharvested", "Full Tree")))
+        
+        ##OVERALL PERMANOVA
+        adon.res.tmp <- adonis(d.clr.abund~month*harvest, data=char_data, method = "euclidean")$aov.tab %>%
+           rownames_to_column("Parameter") %>%
+           mutate(test_pair = "overall",
+                  dataset = ds_name) %>% data.frame()
+        
+        ##OVERALL BETADISPER
+        betadisper.res.tmp <- anova(betadisper(vegdist(d.clr.abund, method = "euclidean"), paste(char_data$harvest, char_data$month))) %>%
+           rownames_to_column("Parameter") %>%
+           mutate(test_pair = "overall",
+                  dataset = ds_name) %>% data.frame()
+        
+        ##PAIRWISE PERMANOVA
+        adon.res.tmp <- pairwise_adonis(d.clr.abund, c("harvest", "month"), char_data, method="euclidean") %>% 
+           mutate(dataset = ds_name, Parameter = "") %>% rbind(adon.res.tmp)
+        
+        ##PAIRWISE BETADISPER
+        
+          betadisper.res.tmp <- pairwise_betadisper(d.clr.abund, c("harvest", "month"), char_data, method="euclidean") %>% 
+           mutate(dataset = ds_name, Parameter = "") %>% rbind(betadisper.res.tmp)
+       
+          
+         clr.adon.res <- rbind(clr.adon.res, adon.res.tmp)
+         clr.betadisper.res <- rbind(clr.betadisper.res, betadisper.res.tmp)
+         
+         
+         clr.PERM.res[[count]] <- list(adonis = adonis(d.clr.abund~month*harvest, data=char_data, method = "euclidean"), betadisper = betadisper(vegdist(d.clr.abund, method = "euclidean"), paste(char_data$harvest, char_data$month)))
+         names(clr.PERM.res)[count] <- ds_name
+         count = count + 1
+}
+
+num_p_tests <- num_p_tests + length(unique(clr.adon.res$dataset)) + length(unique(clr.adon.res$dataset))
+   
+rm(count, ds_name, adon.res.tmp, betadisper.res.tmp, char_data)
+```
+
+#### PERMANOVA results{.unnumbered}
+
+```{r CODA-adonis-plot-2, fig.cap = "Results of PERMANOVA tests comparing community structures of months (J = June, A = August, O = October) within full tree and unharvested treatments. A) Results of interaction of months and harvest treatments. B) Results of pairwise comparisons. The variance explained by each comparison or model parameter (R^2^) is shown on the x axis, and the probability of the effect is along the y axis (Pr (>F)). A black line is used to represent p = 0.05."}
+
+Perm.plotting <- data.frame()
+
+for(ds in names(clr.PERM.res)){
+      Perm.plotting <- rbind(Perm.plotting, clr.PERM.res[[ds]]$adonis$aov.tab %>% rownames_to_column("Parameter") %>% mutate(dataset = ds))
+}
+
+plot1 <- ggplot(Perm.plotting %>% filter(!Parameter %in% c("Total", "Residuals")) %>% mutate(dataset = gsub("_2", "", dataset)), aes(R2, `Pr(>F)`, color=Parameter, shape = Parameter)) +
+   geom_point(size = 4) + 
+   geom_hline(yintercept = 0.05, color="black") + 
+   scale_color_manual(name = "", values= cust.cols[c(2, 4, 7)])+
+   scale_shape_manual(name = "", values= c(2, 1, 3))+
+   theme_minimal() +
+   facet_wrap(~dataset, scales = "free") + 
+   xlab(expression("Effect Size (R"^2*")")) + ylab("Pr (>F)") +
+        theme(legend.position="bottom")
+
+adon.plotting <- clr.adon.res[clr.adon.res$test_pair != "overall", ]
+
+adon.plotting <- adon.plotting %>%
+  mutate(month1 = str_extract(test_pair, "^[[:alpha:]]+"), 
+         month2 = str_remove(str_extract(test_pair, ":[[:alpha:]]+"), ":"),
+         harvest1 = gsub(":|-", "", str_extract(test_pair, "-.+:")), 
+         harvest2 = gsub("^.+-", "", str_extract(test_pair, "-.+$"))) %>%
+  filter(harvest1 == harvest2) %>%
+  mutate(months = factor(ifelse(month2 == "June",
+                         paste(str_sub(month2, 1, 1), str_sub(month1, 1, 1), sep = "-"), 
+                         ifelse(month1 == "June", 
+                                paste(str_sub(month1, 1, 1),str_sub(month2, 1, 1), sep = "-"), 
+                                ifelse(month2 == "August", 
+                                       paste(str_sub(month2, 1, 1), str_sub(month1, 1, 1), sep = "-"),
+                                       paste(str_sub(month1, 1, 1), str_sub(month2, 1, 1), sep = "-")))), 
+                         levels= c("J-A", "A-O", "J-O"))) %>%
+  rename(harvest = harvest1) %>%
+  mutate(harvest = factor(harvest, levels = c("Unharvested", "Full Tree"))) %>%
+  dplyr::select(-harvest2, -month1, -month2, -Parameter)
+
+adon.plotting$dataset <- gsub("_.$", "", adon.plotting$dataset)
+
+plot2 <- ggplot(adon.plotting, aes(R2, Pr..F., color=harvest, shape = harvest)) +
+   geom_point(size = 4) + 
+   geom_text(aes(label = months, y=Pr..F.+.05), show.legend = FALSE) +
+   geom_hline(yintercept = 0.05, color="black") + 
+   scale_color_manual(name = "", values= cust.cols[c(2, 1)], breaks = levels(adon.plotting$harvest))+
+   scale_fill_manual(name = "", values= cust.cols[c(2, 1)], breaks = levels(adon.plotting$harvest))+
+   scale_shape_manual(name = "", values= c(2, 1), breaks = levels(adon.plotting$harvest))+
+   theme_minimal() +
+   facet_wrap(~dataset, scales = "free") + 
+   xlab(expression("Effect Size (R"^2*")")) + ylab("Pr (>F)")+
+        theme(legend.position="bottom")
+
+ggarrange(plot1, plot2, labels = c("A", "B"))
+   
+```
+
+
+#### Betadispersion{.unnumbered}
+
+
+```{r CODA-bd-plot-2, fig.cap = "Results of pairwise betadispersion tests comparing community structures of months within full tree and unharvested treatments. The betadispersion of each treatment (R^2^) is shown on the y axis, and the treatment is shown along the x-axis. Significant contrasts are indicated at the top of the graph with colour to indicate whether they are harvested or unharvested and significance levels supplied symbolically (* = p < 0.05, ** = p < 0.01, *** = p < 0.001)."}
+
+plot.betadisper <- data.frame()
+
+for(ds_name in names(clr.PERM.res)){
+   temp <- clr.PERM.res[[ds_name]]$betadisper$distances
+   
+   ## pull distances for plotting
+   temp <- data.frame(temp, sample = names(temp)) %>%
+     left_join(metadat, by = "sample") %>%
+     mutate(dataset=ds_name) %>%
+     rename(distance = temp) %>%
+     mutate(harvest = factor(as.character(harvest), levels = c("Unharvested", "Stem Only", "Full Tree", "Stumped", "Bladed")))
+   
+   plot.betadisper <- rbind(plot.betadisper, temp)
+     
+     
+}
+
+## Get min distances for each set
+maxs  <- plot.betadisper %>%
+  group_by(dataset) %>%
+  summarize(distance = max(distance))%>%
+  mutate(dataset = str_remove(dataset, "_2"))
+
+ ### Pull test result
+     temp.sig <- clr.betadisper.res %>%
+      filter(test_pair != "overall") %>%
+     mutate(month1 = str_extract(test_pair, "^[[:alpha:]]+"), 
+         month2 = str_remove(str_extract(test_pair, ":[[:alpha:]]+"), ":"),
+         harvest1 = factor(gsub(":|-", "", str_extract(test_pair, "-.+:")), levels = c("Unharvested", "Full Tree")), 
+         harvest2 = gsub("^.+-", "", str_extract(test_pair, "-.+$"))) %>%
+  filter(harvest1 == harvest2) %>%
+  mutate(months = factor(ifelse(month2 == "June",
+                         paste(str_sub(month2, 1, 3), str_sub(month1, 1, 3), sep = "-"), 
+                         ifelse(month1 == "June", 
+                                paste(str_sub(month1, 1, 3),str_sub(month2, 1, 3), sep = "-"), 
+                                ifelse(month2 == "August", 
+                                       paste(str_sub(month2, 1, 3), str_sub(month1, 1, 3), sep = "-"),
+                                       paste(str_sub(month1, 1, 3), str_sub(month2, 1, 3), sep = "-")))), 
+                         levels= c("Jun-Aug", "Aug-Oct", "Jun-Oct"))) %>%
+     dplyr::select(-Parameter) %>%
+       group_by(dataset) %>%
+     mutate(sig.level = ifelse(Pr..F. < 0.001, "***", ifelse(Pr..F. < 0.01, "**", ifelse(Pr..F. < 0.05, "*", "")))) %>%
+  mutate(dataset = str_remove(dataset, "_2"))%>%
+           group_by(dataset) %>%
+           arrange(harvest1, months) %>%
+           filter(!sig.level == "") %>%
+           mutate(seg1.start = ifelse(month1 == "June", .75, ifelse(month1 == "August", 1.75, 2.75)), 
+                  seg1.end = ifelse(month1 == "June", 1.25, ifelse(month1 == "August", 2.25, 3.25)), 
+                  seg2.start = ifelse(month2 == "June", .75, ifelse(month2 == "August", 1.75, 2.75)), 
+                  seg2.end = ifelse(month2 == "June", 1.25, ifelse(month2 == "August", 2.25, 3.25)), 
+                  harvest = harvest1
+                  ) %>%
+           left_join(maxs, by = "dataset") %>%
+           mutate(numcount =n():1, 
+                  height = distance *(1+(numcount*.1)))
+           
+
+     plot.betadisper <- plot.betadisper %>%
+           mutate(month = factor(str_extract(month, ".{3}"), levels = c("Jun", "Aug", "Oct")))
+     
+## plot as boxplots with significance
+     ggplot(plot.betadisper%>%
+  mutate(dataset = str_remove(dataset, "_2")), aes(month, distance, fill = harvest))+
+     geom_boxplot(alpha = 0.5)+
+     geom_text(data= temp.sig, inherit.aes = F, aes(3.5, height, label = sig.level, group= harvest1, color = harvest))+
+           geom_segment(data = temp.sig, inherit.aes = F, aes(y = height, yend = height, x = seg1.start, xend = seg1.end, color = harvest)) +
+           geom_segment(data = temp.sig, inherit.aes = F, aes(y = height, yend = height, x = seg2.start, xend = seg2.end, color = harvest)) +
+       theme_minimal()+
+        scale_color_manual(values= cust.cols[c(2, 1)], breaks = levels(adon.plotting$harvest))+
+       scale_fill_manual(values= cust.cols[c(2, 1)], breaks = levels(adon.plotting$harvest))+
+       scale_shape_manual(values= c(2, 1), breaks = levels(adon.plotting$harvest))+
+       facet_wrap(~dataset, scales = "free") + ylab("betadispersion")
+```
+
+## {-}
+
+Community compositional differences were also highly similar between both rarefied and non-rarefied analyses. The only notable differences in beta diversity tests would be lower amounts of variance explained in rarefied analyses, and one less test found significant at p = 0.05 (Full-tree june/october differences). Betadispersion had no significant differences in rarefied datasets, while there were some differences in full tree datasets of unrarefied analyses.
+
+
+```{r CODA-RDA-2, include=FALSE}
+clr.rda.plots <- list()
+
+clr.rda.plotting <- data.frame()
+
+plotcount <- 1
+
+for(ds_name in names(coda.clrs.res[grep("_2", names(coda.clrs.res), value = T)])){
+        
+        ## such poor coverage in genus and functional groups that they are excluded here
+        #if(grepl("Genus|functional", ds_name)){next}
+        
+        d.clr.abund <- t(coda.clrs.res[[ds_name]][[1]])
+        
+        ##RDA of the clr values
+        
+        char_data <- metadat[match(rownames(d.clr.abund), metadat$sample), ] %>%
+           mutate(harvest = factor(as.character(harvest), levels = c("Unharvested","Full Tree")))
+        
+        rda.res <- rda(d.clr.abund, char_data[, c("month")], char_data[, c("harvest")])
+        ## unscaled, is ok b/c all in same units
+        
+        clr.rda.plotting <- rbind(clr.rda.plotting, data.frame(data.frame(t(summary(rda.res)$cont$importance)) %>%
+                                                                 rownames_to_column("PC") %>% 
+                                                                 mutate(const = ifelse(grepl("PC", PC), "unconstrained", "constrained")) %>%
+                                                                 group_by(const) %>% 
+                                                                 summarize(proportion.explained = sum(Proportion.Explained)), model = ds_name))
+        
+        rda.vecs <- rda.res$CCA$biplot %>% as.data.frame()
+        rownames(rda.vecs) <- gsub("^Y", "", rownames(rda.vecs))
+        
+        ## Prepare plotting variables
+        xlab.val <- paste("RDA1", round(summary(rda.res)$cont$importance[2, 1], 3))
+        ylab.val <- paste("RDA2", round(summary(rda.res)$cont$importance[2, 2], 3))
+        
+        ## extract the same way base biplot for princomp works
+        plottingdat <- as.data.frame(rda.res$CCA$wa) %>%
+          dplyr::select(RDA1, RDA2) %>%
+          rownames_to_column("sample") %>% 
+          left_join(char_data, by="sample") %>%
+          dplyr::select(-sample)
+          
+        ## Find Hulls of data
+      hulls = Ordination_hulls(plottingdat, c("harvest", "month"))
+      
+      if(grepl("Genus|functional", ds_name)){next}
+      
+       clr.rda.plots[[plotcount]] <-ggplot(plottingdat, aes(RDA1, RDA2, group=harvest))+ 
+   geom_polygon(data=hulls, aes(group=hullgrp, fill = month), alpha = 0.5) +
+   geom_point(data=plottingdat, aes(color=harvest, shape = harvest), alpha=0.5, size = 2) +
+   geom_text(inherit.aes = FALSE, data = rda.vecs, aes(label=row.names(rda.vecs), x=RDA1, y=RDA2), color="black") +
+   geom_segment(inherit.aes = FALSE, data = rda.vecs, aes(x=0, y=0, xend=RDA1, yend=RDA2), color="black",arrow = arrow()) +
+   scale_color_manual(values= cust.cols[c(2,1)], breaks = levels(plottingdat$harvest)[c(1,2)])+
+   scale_fill_manual(values= c("orchid", "green3", "orange"), breaks = levels(plottingdat$month))+
+   scale_shape_manual(values= c(2, 1), breaks = levels(plottingdat$harvest)[c(1, 2)])+
+   xlab(xlab.val)+
+   ylab(ylab.val)+
+   theme_minimal()+
+     ggtitle(ds_name) 
+   
+names(clr.rda.plots)[plotcount] <- ds_name
+        plotcount <- plotcount +1
+}
+
+
+   
+rm(plotcount, ds_name, hulls, xlab.val, ylab.val,  rda.res, plottingdat, char_data, temp)
+```
+
+
+
+
+
+### Compositional RDA plots {.tabset}
+
+#### Explained Variance in RDA's{.unnumbered}
+
+```{r RDAsummaryPlots2, include=TRUE, fig.cap = "Proportion of community structural variance explained by RDA axes constrained by season. Model names are described as the targeted gene (16S, 18S, ITS, or, F230), summarization level (ESV, genus, or functional groupings) and the soil layers represented in the rda model (MIN = 0-10 cm depth mineral soil samples, LFH = L, FH, or LFH samples)."}
+### create plot that summarizes constrained vs unconstrained variance for each dataset
+clr.rda.plotting$const <- factor(as.character(clr.rda.plotting$const), levels = c("unconstrained", "constrained"))
+
+ggplot(clr.rda.plotting[!clr.rda.plotting$const == "unconstrained", ], aes(proportion.explained, model, fill = const)) +
+  geom_bar(stat = "identity") +
+  scale_fill_manual(values = c(cust.cols[c(2)])) + 
+  theme_minimal() + 
+  theme(legend.position = "none")+
+  xlab("Proportion of variance explained") + 
+  ylab("")
+rm(clr.rda.plotting)
+```
+
+#### Bacterial (16S){.unnumbered}
+
+```{r RDA5}
+clr.rda.plots[[1]]
+```
+
+#### Fungal (ITS){.unnumbered}
+
+```{r RDA6}
+clr.rda.plots[[2]]
+```
+
+#### Arthropods (F230){.unnumbered}
+
+```{r RDA7}
+clr.rda.plots[[3]]
+```
+
+#### Eukaryotes (18S){.unnumbered}
+
+```{r RDA8}
+clr.rda.plots[[4]]
+rm(clr.rda.plots)
+```
+
+## {-}
+
+RDAs of rarefied datasets and unrarefied datasets were both low (less than 10% of variance explained by seasonal variation). Seasonal impacts on both Unharvested and Harvested treatments were very similar in rarefied an unrarefied analyses. There were no changes to the conclusions made from the unrarefied analyses.
+
+
+### Differences in specific organisms {.tabset}
+```{r aldex_glm_modelling-2, cache=TRUE, include=FALSE}
+
+aldex.glm.res <- data.frame()
+
+for(ds_name in grep("_2", names(ds_list), value = T)){
+        
+        Orddf <- ds_list[[ds_name]]
+                
+                Orddf4aldex <- Orddf %>%
+                  column_to_rownames("ESV") %>%
+                  dplyr::select(colnames(Orddf)[match(metadat$sample, colnames(Orddf))[!is.na(match(metadat$sample, colnames(Orddf)))]])
+                
+                rare.num <- quantile(colSums(Orddf4aldex), .15)
+        
+        ## Rarefy based on the 15th percentile
+        Orddf4aldex <- rrarefy(t(Orddf4aldex), rare.num)
+
+        ## Remove any sites with 10X less the 15th percentile
+        Orddf4aldex <- Orddf4aldex[, colSums(Orddf4aldex) > rare.num/10]
+        ## get rid of any ESVs that are now zero
+        Orddf4aldex<-t(Orddf4aldex[rowSums(Orddf4aldex) >0, ]) 
+                
+                ## Run aldex.glm on the G/L matrix.
+                sam_inf <- metadat[match(colnames(Orddf4aldex), metadat$sample), ] %>%
+                    mutate(harvest = factor(as.character(harvest), levels = c("Unharvested", "Full Tree")))
+                
+                
+                ##Scale and centre all columns so effect sizes are comparable
+                for(cln in colnames(sam_inf)){
+                  if(is.numeric(sam_inf[,cln])){
+                    sam_inf[,cln] <- scale(sam_inf[,cln])
+                  }
+                }
+                
+                mm <- model.matrix(~ harvest * month, sam_inf)
+                
+                if(sum(Orddf4aldex > 0 & Orddf4aldex < 1) > 0){
+                  subset_aldex <- round(Orddf4aldex * 10000, 0) ## If its relative abundance, multiply by 10,000 and round
+                }else{
+                  subset_aldex <- Orddf4aldex
+                }
+                
+                
+                ## select denominators as ESV that are similar amongst all samples
+                
+                aldex.ob <- aldex.clr(subset_aldex, mm, denom="all")
+                
+                glm.res <- aldex.glm(aldex.ob)
+                
+                glm.res <- data.frame(glm.res)
+                
+                glm.res.sum <- glm.res %>% mutate(zOTU=row.names(glm.res)) %>%
+                        pivot_longer(-zOTU, values_to = "Value", names_to = "Metric") %>% 
+                        mutate(Parameter = gsub("\\.Estimate$|\\.Std..Error$|\\.t.value$|\\.Pr...t..$|\\.Pr...t...BH$", "", Metric), Variable= str_extract(Metric,"\\.Estimate$|\\.Std..Error$|\\.t.value$|\\.Pr...t..$|\\.Pr...t...BH$")) %>%
+                        mutate(Variable = gsub("\\.+", "_", gsub("^\\.|\\.+$", "", Variable))) %>%
+                        pivot_wider(id_cols = c("zOTU", "Parameter"), values_from = Value, names_from = Variable) %>%
+                        mutate(Set = ds_name)
+                
+                aldex.glm.res <- rbind(aldex.glm.res, glm.res.sum)
+                
+                num_p_tests = num_p_tests + 1
+                
+}
+
+rm(glm.res, glm.res.sum, Orddf4aldex, Orddf, aldex.ob, mm, subset_aldex, sam_inf, ds_name)
+```
+
+
+```{r plot-aldex-glm-2, include=FALSE}
+
+aldex.plots <- list()
+aldex.tax <- data.frame()
+count = 1
+for(set in unique(aldex.glm.res$Set)){
+  
+  plottingdat <- aldex.glm.res %>%
+    filter(Set == set) %>%
+  mutate(Parameter = str_remove(Parameter, "model.harvest"),
+         Parameter = str_replace_all(Parameter, c("\\.$" = "", "\\." = " "))) %>%
+  mutate(Parameter = factor(Parameter)) %>%
+    group_by(Parameter) %>%
+    arrange(desc(abs(Estimate)), Pr_t_BH) %>% 
+    mutate(rank = 1:n()) %>% group_by()
+  
+
+plot1 <- ggplot(plottingdat %>% filter(rank < 21), aes(Pr_t_BH, Estimate, color=Parameter, shape = Parameter)) +
+  geom_point(alpha=0.5) +
+  geom_errorbar(aes(ymin= Estimate - Std_Error, ymax = Estimate + Std_Error), alpha= 0.5) +
+  geom_vline(xintercept = 0.05) +
+  scale_color_manual(values= cust.cols[c(2, 3, 1, 6, 8, 7)])+
+  scale_fill_manual(values= cust.cols[c(2, 3, 1, 6, 8, 7)])+
+  scale_shape_manual(values= c(2, 3, 1,  5, 6, 7))+
+  theme_minimal() 
+
+
+zOTUsin <- unique((plottingdat %>% filter(Pr_t_BH < 0.05))$zOTU)
+add.text <- "(Benjamini-Hochberg corrected p < 0.05)"
+if(length(zOTUsin) == 0){
+  zOTUsin <- unique((plottingdat %>% filter(Pr_t < 0.05))$zOTU)
+  add.text <- "(p < 0.05)"
+}
+if(length(zOTUsin) < 2){
+  zOTUsin <- unique((plottingdat %>% filter(Pr_t < 0.25))$zOTU)
+  add.text <- "(p < 0.25)"
+}
+
+if(length(zOTUsin) == 0){next}
+
+coda.Ord <- coda.clrs.res[[set]][[1]]
+coda.Ord <- coda.Ord[zOTUsin,]
+
+
+if(grepl("ITS", set)){Gthreshold = 0.7; Sthreshold = 0.6} # 80% correct
+if(grepl("16S", set)){Gthreshold = 0.5; Sthreshold = 1} # 95% correct - 0 results in 79-90% correct
+if(grepl("F230", set)){Gthreshold = 0; Sthreshold = 0} # 90% correct
+if(grepl("18S", set)){Gthreshold = 0.95; Sthreshold = 1} # 90% correct
+
+aldex.tax <- rbind(aldex.tax, ds_list[[set]] %>%
+                     filter(ESV %in% zOTUsin) %>%
+  dplyr::select(!matches("seq|Strand|Root|rBP|_|Rank")) %>%
+  mutate_all(as.character) %>%
+  pivot_longer(-ESV, values_to = "value", names_to = "names") %>%
+  mutate(count = 1,
+         count = cumsum(count),
+         Rank = ifelse(!grepl("BP", names), 
+                             names,
+                              lag(names, 1)), 
+         type = ifelse(grepl("BP", names), 
+                       "BP", 
+                       "Taxonomy")) %>%
+  dplyr::select(ESV, value, Rank, type) %>%
+  pivot_wider(names_from = type, values_from = value) %>%
+  mutate(BP = as.numeric(BP), 
+         dataset = set) %>%
+  filter(!(BP<Gthreshold & Taxonomy == "Genus"), !(BP<Sthreshold & Taxonomy == "Species")))
+
+sam_dat <- metadat[match(colnames(coda.Ord), metadat$sample), ]
+
+sam_dat <- sam_dat[order(factor(as.character(sam_dat$harvest), levels = c("Unharvested", "Full Tree")), sam_dat$month), ]
+
+coda.Ord <- coda.Ord[, match(sam_dat$sample, colnames(coda.Ord))]
+
+row.labs <- ds_list[[set]] %>%
+                     filter(ESV %in% zOTUsin) %>%
+  arrange(match(ESV, rownames(coda.Ord)))
+row.labs <- gsub("_uncultured|undef_|_unidentified|_1|_genera_incertae_sedis", "", row.labs$Genus)
+
+plot2 <- pheatmap(coda.Ord, labels_col = paste(sam_dat$harvest, sam_dat$month), labels_row = row.labs, main = paste0("ESVs significantly associated with a treatment ", add.text), cluster_cols = F)
+
+aldex.plots[[count]] <- list(mods = plot1, heatmap = plot2)
+names(aldex.plots)[count] <- set
+count = count+1
+}
+ 
+
+rm(set, plot1, plot2, sam_dat, coda.Ord, zOTUsin, plottingdat)
+```
+
+#### Bac16S{.unnumbered}
+
+```{r}
+aldex.plots[["Bac16S_2"]]$mods
+```
+
+
+Graph shows 20 most significant organisms for each parameter.
+
+
+```{r}
+aldex.plots[["Bac16S_2"]]$heatmap
+```
+
+#### ITS{.unnumbered}
+
+```{r}
+aldex.plots[["ITS_2"]]$mods
+```
+
+
+Graph shows 20 most significant organisms for each parameter.
+
+
+```{r}
+aldex.plots[["ITS_2"]]$heatmap
+
+```
+
+#### F230{.unnumbered}
+
+```{r}
+
+aldex.plots[["F230_2"]]$mods
+```
+
+
+Graph shows 20 most significant organisms for each parameter.
+
+
+```{r}
+aldex.plots[["F230_2"]]$heatmap
+
+```
+
+#### Euk18S{.unnumbered}
+
+```{r}
+aldex.plots[["Euk18S_2"]]$mods
+```
+
+
+Graph shows 20 most significant organisms for each parameter.
+
+
+```{r}
+aldex.plots[["Euk18S_2"]]$heatmap
+```
+
+
+# {-}
+
+```{r spec-tab-2}
+aldex.tax %>%
+  dplyr::select(-BP) %>%
+  pivot_wider(names_from = Rank, values_from = Taxonomy) %>%
+  dplyr::select(dataset, Domain, Kingdom, Phylum, Class, Order, Family, Genus, Species) %>%
+      distinct() %>%
+  knitr::kable(caption = "Taxonomic information for ESVs identified as significantly responding to seasonal effects.")
+
+```
+
+
+Bacterial ESV with significant changes in rarefied datasets did not have strong, clear trends of seasonal change, with seasonal patterns being much less clear than those observed for bacterial ESV in unrarefied datasets. Across the remaining datasets, detected effects were mostly related to harvest treatment differences, not seasonal differences, in both rarefied and unrarefied analyses. All of the phylogenetic groups identified in rarefied 16S ITS, and F230 datasets were also found in unrarefied analyses. There was only one group that was detected in rarefied analyses of 18S communities that was not detected in the unrarefied analyses.
