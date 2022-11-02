@@ -409,7 +409,7 @@ The rarecurve function in vegan was used to visually examine samples for suffici
 
 
 
-```{r tax-summary, include=TRUE}
+```{r tax-summary, include=FALSE}
 cutoffs <- c(ITS = 0.7, `Bac16S` = 0.5, F230 = 0.3, `Euk18S` = 0.95) # Cutoffs used for at least 80% accuracy from MetaWorks ITS, C01, 18S classifiers or RDP classifier
 
 ds_tax_sum <- data.frame()
@@ -436,10 +436,48 @@ knitr::kable(ds_tax_sum, caption = "Percentage of ESV classified to Genus for ea
 rm(metabarcode_sets, ds, numESV, ds_tax_sum, percent_ESV_Genus)
 ```
 
+```{r taxa-activity-table}
+
+taxa_inf <- list(c(group = "Bacteria",taxa = "*Chloroacidibacterium*", Activity = "photoheterotrophy", reference = "[@tank2018]"),
+                 c(group = "Bacteria",taxa = "*Blastochloris*", Activity = "photoheterotrophy", reference = "[@imhoff2020]"),
+                 c(group = "Bacteria",taxa = "*Aggregiococcus*", Acitvity = "microbial lytic", reference = '[@sood2015]'), 
+                 c(group = "Bacteria",taxa = "*Fimbriiglobus*", Activity = "chitinolytic", reference = "[@dedysh2020]"), 
+                 c(group = "Bacteria", taxa = "*Thermanaerothrix*", Activity = "anaerobic, moderately thermophilic", reference = "[@yamada2018]"), 
+                 c(group = "Bacteria", taxa = "*Thermoflexus*", Activity = "moderately thermophilic", reference = "[@thomas2021]"),
+                 c(group = "Bacteria", taxa = "*Anaeromyxobacter*", Activity = "anaerobic", reference = "[@reichenbach2015]"), 
+                 c(group = "Bacteria", taxa = "*Thermanaerothrix*", Activity = "anaerobic", reference = "[@schnurer2018]"), 
+                 c(group = "Bacteria", taxa = "*Acidipila*", Activity = "chemoheterotrophy, aerophilic", reference = "[@hiraishi2019]"), 
+                 c(group = "Bacteria", taxa = "*Edaphobacter*", Activity = "chemoheterotrophy, aerophilic", reference = "[@thrash2015]"), 
+                 c(group = "Bacteria", taxa = "*Povalibacter*", Activity = "chemoheterotrophy, aerophilic", reference = "[@nogi2014]"), 
+                 c(group = "Bacteria", taxa = "*Gemmatimonas*", Activity = "chemoheterotrophy, aerophilic, generalist", reference = "[@kamagata2015]"), 
+                 c(group = "Bacteria", taxa = "*Aliidongia*", Activity = "chemoheterotrophy, aerophilic", reference = "[@chen2017]"), 
+                 c(group = "Bacteria", taxa = "*Spartobacteria*", Activity = "common soil organism", reference = "[@janssen2015]"), 
+                 
+                 c(group = "Fungi", taxa = "*Geminibasidium*", Activity = "decay of fruits", reference = "[@ainsworth2008]"), 
+                 c(group = "Fungi", taxa = "*Collophora*", Activity = "decay of fruits", reference = "[@ainsworth2008]"), 
+                 c(group = "Fungi", taxa = "*Agaricomycetes*", Activity = "wood saprotrophy", reference = "[@ainsworth2008]"), 
+                 c(group = "Fungi", taxa = "*Trechispora*", Activity = "wood pathogen", reference = "[@ainsworth2008]"), 
+                 c(group = "Fungi", taxa = "*Mortierella*", Activity = "saprotroph", reference = "[@ainsworth2008]"), 
+                 c(group = "Fungi", taxa = "*Tricholoma*", Activity = "mycorrhizal", reference = "[@ainsworth2008]"),
+                 c(group = "Fungi", taxa = "*Cortinarius*", Activity = "mycorrhizal", reference = "[@ainsworth2008]"),
+                 c(group = "Fungi", taxa = "*Hygrophorus*", Activity = "mycorrhizal", reference = "[@ainsworth2008]"), 
+                 c(group = "18S", taxa = "*Limnognathia*", Activity = "aquatic", reference = "[@hess2013]"),
+                 c(group = "18S", taxa = "*Orciraptor*", Activity = "aquatic", reference = "[@hess2013]"),
+                 c(group = "18S", taxa = "*Viridiraptor*", Activity = "aquatic", reference = "[@hess2013]"),
+                 c(group = "18S", taxa = "*Rotaria*", Activity = "aquatic", reference = "[@xiang2016]"), 
+                 c(group = "18S", taxa = "Pohlia", Activity = "terrestrial moss", reference = "[@klips2017]"),
+                 c(group = "18S", taxa = "Pottia", Activity = "terrestrial moss", reference = "[@klips2017]"),
+                 c(group = "18S", taxa = "Rosulabryum", Activity = "terrestrial moss", reference = "[@klips2017]") )
+
+taxa_inf <- t(as.data.frame(taxa_inf))
 
 
+knitr::kable(taxa_inf, caption = "Supporting references for functional activities of select taxonomic groups.", row.names = FALSE)      
 
-# Results
+```
+
+
+# Additional Results
 ```{r prep_CODA, cache=TRUE, include = FALSE}
 
 source("src/HelperFunctions_CommunityData.R")
@@ -2630,3 +2668,6 @@ aldex.tax %>%
 
 
 While there were some differences in response between harvested and unharvested treatments for some seasonally impacted bacteria, the patterns in the ITS, F230 and Euk18S communities were less clear, and lower significance. While some bacterial ESVs had decreases or increases consistent across most samples from given months, ITS, F230 and Euk18S compositional abundance were less consistent, and resulted in the months of these treatments being much less clearly separated with hierarchical clustering (i.e., June, August and October often fell into the same clusters). In general, changes to seasonal trends were small. There were no ESVs from any metabarcoding target that had clear, significant changes across the seasons (Supplemental Materials 2.3.4).
+
+
+# References

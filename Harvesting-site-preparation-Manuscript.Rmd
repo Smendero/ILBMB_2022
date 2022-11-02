@@ -28,6 +28,11 @@ The market for forest products has diversified to include biomass energy product
 
 Key words: soil, Bacteria, Fungi, Arthropods, Harvesting, Biomass, microtopography, DNA metabarcoding, enzyme activity
 
+```{r graphical-abstract, fig.cap= "Simplified summary of results of the effects of harvesting, microtopographical differences, and seasonal variation on soil potential functions and community diversity and structure.", fig.width= 8, message=FALSE, echo=FALSE}
+## include experimental plot design fig from ILBMB report
+knitr::include_graphics("graphical abstract.jpeg")
+
+```
 
 
 ```{r setup, include=FALSE}
@@ -157,6 +162,16 @@ rm(metabarcode_sets, ds_subset, dat, ds, count, set, toexclude)
 ## Set a colorblind-safe palette
 cust.cols <- c("#332288", "#117733", "#44AA99", "#88CCEE", "#DDCC77", "#CC6677", "#AA4499", "#882255")
 
+harv.cols <- c(Unharvested = "#117733", `Stem Only`="#44AA99",`Full Tree` = "#332288", Stumped = "#CC6677", Bladed = "#882255")
+harv.shapes <- c(Unharvested = 2, `Stem Only` =3, `Full Tree` = 1, Stumped = 5, Bladed =6)
+
+harv.orth.cols <- c(TR = "black", FFR = "#CC6677", BGBR = "#44AA99", BRt = "#117733")
+      
+topo.ortho.cols <- c(T.B = "#882255", T.PF= "tan", P.F = "burlywood4")
+
+topo.cols <- c(Bladed = "#882255", Flat = "palegreen4", Pile = "burlywood4", Trench = "tan")
+topo.shapes <- c(Bladed = 6, Flat = 2, Pile = 3, Trench = 1)
+
 num_p_tests <- 0
 figcount <- 1
 ```
@@ -268,11 +283,11 @@ Our study objective is to assess the impact of harvest (tree removal), alternati
 
 ## Site description
 
-This study was conducted at the Island Lake Biomass Trial sites near Chapleau, Ontario, which are previously well described [@kwiaton2014a; @venier2017]. In brief, the study site was established in a 40 year old second growth jack pine stand. Main treatment plots (70 m by 70 m, with a 10 m surrounding buffer to minimize edge effects) were harvested in the winters of 2010/2011 and included four increasing levels of biomass removal 1) stem-only (leaving the live branches and tops of harvested trees at the stump), 2) full-tree (removing the above ground tree biomass, including the removal of poor or undersized trees), 3) full-tree biomass with stump removal and, 4) blading (removal of all biomass including stumps, downed woody debris and forest floor). All treatments had five replicate plots, with a portion of the stand left in-tact, where uncut control plots were established (Fig \@ref(fig:site-map) B). All treatment plots (excluding bladed plots) were site prepared using a power disc trencher. The main treatment plots were split and planted with either jack pine or black spruce container stock in May 2012. The main plots were then split again, with one half recieving glycophosate treatment. Only the portion of the plot without herbicide were used in this study. 
+This study was conducted at the Island Lake Biomass Trial sites near Chapleau, Ontario, which have been extensively described [@kwiaton2014a; @venier2017]. In brief, the study site was established in 2011 in a 40 year old second growth jack pine stand. Main treatment plots (70 m by 70 m, with a 10 m surrounding buffer to minimize edge effects) were harvested in the winters of 2010/2011 and included four increasing levels of biomass removal 1) stem-only (leaving the live branches and tops of harvested trees at the stump), 2) full-tree (removing the above ground tree biomass, including the removal of poor or undersized trees), 3) full-tree biomass with stump removal and, 4) blading (removal of all biomass including stumps, downed woody debris and forest floor). All treatments had five replicate plots, with a portion of the stand left in-tact, where uncut control plots were established (Fig \@ref(fig:site-map) B). All treatment plots (excluding bladed plots) were site prepared using a power disc trencher. The main treatment plots were split and planted with either jack pine or black spruce container stock in May 2012. The main plots were then split again, with one half receiving glyphosate treatment. Only the portion of the plot without herbicide were used in this study. 
 
 ```{r site-map, fig.cap= "Visual depiction of experimental features A) Map of the Island Lake Biomass Harvest Research and Demonstration Area, modified from Kwiaton et al, (2014) Figure 2.4. For the biomass removal plots, the numbers indicate the block number and the letters indicate the harvest treatment: T = Stem Only, F = Full-tree, S = Stump removal, B = Bladed, C = Uncut Control. The location of the sites in Ontario is provided in a map in the upper left corner. B) Depiction of trench, pile and flat microtopography features.", fig.width= 8}
 ## include experimental plot design fig from ILBMB report
-knitr::include_graphics("site-map-microtopography.png", dpi = 200)
+knitr::include_graphics("site-map-microtopography.png")
 
 ```
 
@@ -281,7 +296,7 @@ knitr::include_graphics("site-map-microtopography.png", dpi = 200)
 
 The organic horizons (i.e., litter and fermentation-humus horizons) and upper mineral soil were sampled during the 2016 growing season. Each soil sample was collected in a 5cm diameter PVC pipe to a depth of 10 cm. PVC pipes were sanitized with bleach before sampling was performed. All sampling was completed with gloves to reduce cross-contamination. Samples were immediately frozen at -20˚C after sampling and held at that temperature until analysis. All samples were shipped to the Great Lakes Forestry Centre (Sault Ste. Marie) where soils were split into organic and mineral horizons and homogenized according to the experimental design (see below), and subsamples were taken for enzyme and metabarcoding analyses. 
 
-Sampling to assess harvesting, microtopography and seasonal effects were conducted on the biomass harvesting sites. Harvesting samples were collected from soils in August 2016 from unharvested control plots and from the flats of the four harvesting treatments. Micro-topographic samples were collected in June 2016 from full tree sites, from three micro-topographic features: flats, where the soil horizons were not disturbed by disc trenching; piles, where a mixure of organic and mineral soil was created from the excavating of the trenches; and, trenches, which consisted of troughs of exposed mineral soil \@ref(fig:site-map) B). Seasonal sampling (June, August and October 2016) was conducted on the flats of the full tree biomass and unharvested control plots.  
+Sampling to assess seasonal effects, harvesting, and microtopography were conducted on the biomass harvesting sites. Seasonal sampling (June, August and October 2016) was conducted on the flats of the full tree biomass and unharvested control plots. Harvesting samples were collected from soils in August 2016 from unharvested control plots and from the flats of the four harvesting treatments. Micro-topographic samples were collected in June 2016 from full tree sites, from three micro-topographic features: flats, where the soil horizons were not disturbed by disc trenching; piles, where a mixure of organic and mineral soil was created from the excavating of the trenches; and, trenches, which consisted of troughs of exposed mineral soil \@ref(fig:site-map) B).  
 
 
 ## Sample Processing
@@ -298,18 +313,18 @@ Enzyme analyses were performed for the ecologically important enzymes N-acetylgl
 ## Metabarcoding
 
 
-DNA extractions were performed using 0.25g of homogenized bulk soil samples using Qiagen DNeasy PowerSoil extraction kits. Extracted DNA was then amplified using primers targeted for specific groups of organisms (Supplemental Materials, Tables S1.1, S1.2). Paired-end sequencing for Arthropods (F230), Fungi (ITS), broad Eukaryotes (all groups with 18S, i.e., Protists, Fungi, Plants) and Bacteria (16S) were performed on the Illumina MiSeq platform in the Hajibabaei lab at the Centre for Biodiversity  Genomics, University of Guelph. A total of ~113 million paired-end reads were generated from 4 amplicons (Supplemental Materials, Table S1.3). Data was processed into ESVs (Exact Sequence Variants) using the MetaWorks pipeline v1.4.0 [@porter2020]. Sequence retention details are provided in Tables S1.3 and S1.4 of the Supplemental Materials. Samples with less than 1000 reads were removed. Taxonomic assignments with at least 80% accuracy were retained using the bootstrap cutoff values for the ITS, COI and 18S classifiers genus level for 200 bp reads. We used a cut off value of 80% for the 16S region as recommended by the RDP classifier documentation. Taxonomy of 16S data was assigned using the RDP 2.1.3 database included with MetaWorksv1.4.0. Taxonomic assignment of 18S sequences was completed with SILVA 138 SSURef Nr99 trained to work with the RDP 2.13 classifier [@wang2007a]. F230 sequences were classified using the CO1 Classifier v4 [@porter2018]. ITS sequences were classified with the UNITE v8.2 ITS reference set database[@koljalg2019; @porter2020a]. Functional guilds were assigned through FAPROTAX (16S), FUNGuild (ITS) or using the BETSI database (F230) [@FAPROTAX; @nguyen2016; @hedde2012]. A summary of the percent of ESVs identified to Genus using the appropriate cut-off values are provided in Table S1.5 of the Supplemental Materials.
+DNA extractions were performed using 0.25g of homogenized bulk soil samples using Qiagen DNeasy PowerSoil extraction kits. Extracted DNA was then amplified using primers targeted for specific groups of organisms (Supplemental Materials, Tables S1.1, S1.2). Paired-end sequencing for Arthropods (F230), Fungi (ITS), broad Eukaryotes (all groups with 18S, i.e., Protists, Fungi, Plants) and Bacteria (16S) were performed on the Illumina MiSeq platform in the Hajibabaei lab at the Centre for Biodiversity  Genomics, University of Guelph. A total of ~113 million ~300 bp paired-end reads were generated from 4 amplicons (Supplemental Materials, Table S1.3). Data was processed into ESVs (Exact Sequence Variants) using the MetaWorks pipeline v1.4.0 [@porter2022]. Sequence retention details are provided in Tables S1.3 and S1.4 of the Supplemental Materials. Samples with less than 1000 reads were removed. Taxonomic assignments with at least 80% accuracy were retained using the bootstrap cutoff values for the ITS, COI and 18S classifiers genus level for 200 bp reads. We used a cut off value of 80% for the 16S region as recommended by the RDP classifier documentation. Taxonomy of 16S data was assigned using the RDP 2.1.3 database included with MetaWorksv1.4.0. Taxonomic assignment of 18S sequences was completed with SILVA 138 SSURef Nr99 trained to work with the RDP 2.13 classifier [@wang2007a]. F230 sequences were classified using the CO1 Classifier v4 [@porter2018]. ITS sequences were classified with the UNITE v8.2 ITS reference set database[@koljalg2019; @porter2020a]. <!--- Functional guilds were assigned through FAPROTAX (16S), FUNGuild (ITS) or using the BETSI database (F230) [@FAPROTAX; @nguyen2016; @hedde2012]. A summary of the percent of ESVs identified to Genus using the appropriate cut-off values are provided in Table S1.5 of the Supplemental Materials. --->
 
 
 ## Statistical analysis
 
-All statistical analyses were performed in R, with graphics construction in ggplot2 and ggpubr [@R2021, @ggplot22016, @R-ggpubr].
+All statistical analyses were performed in R version 4.1.1, with graphics construction in ggplot2 version 3.3.6 and ggpubr version 0.4.0 [@R2021; @ggplot22016; @R-ggpubr].
 
 
-The following were performed on each metabarcode dataset before subsequent analysis: Shannon, Inverse Simpsons, and richness diversity metrics were calculated using the diversity and specnumber functions in the vegan package [@R-vegan], on relative abundance (Bacterial 16S) or presence-absence data (Fungal ITS, Arthropod F230, Eukaryote 18S); Centred-log-ratio values were computed for each experimental set of samples for compositional PCA and RDA analyses by subtracting the log of the mean relative abundance (with zeros replaced with 0.5) for each sample from the log of the relative abundance of each ESV in each sample [@aitchison2000]. The clr transformation was performed as part of a compositional analysis approach, which has been proposed to be more appropriate for analyzing metabarcoding data [@gloor2016; @fernandes2014]. To assess if this approach introduced biases, RDA and PCA analyses were also performed on clr transformed datasets rarefied to the 15th percentile of read counts, and on Bray Curtis distances of relative abundance (Bacterial 16S) or Jaccard distances of presence-absence data (Fungal ITS, Arthropod F230, Eukaryote 18S) (Supplemental Rarefied Analyses, Supplemental Traditional Analyses). Diversity metrics were also assessed on the rarefied datasets (Supplemental Rarefied Analyses). There were no significant changes to overall conclusions so we applied centered log ratio compositional data analyses without rarefying. 
+We sought to evaluate community level differences using measures of gamma diversity and community composition. Different diversity metrics have their own biases that can influence the interpretation of results (e.g., Shannon is more sensitive to rare species than inverse Simpsons), by using multiple metrics we were able to observe whether diversity responses were influenced by rare ESVs (Shannon, ESV richness), or more likely were due to broad changes in more dominant groups (Inverse Simpsons). We calculated Shannon, Inverse Simpsons, and ESV richness diversity metrics using the diversity and specnumber functions in the vegan package (version 2.6-2) [@R-vegan], on relative abundance (Bacterial 16S) or presence-absence data (Fungal ITS, Arthropod F230, Eukaryote 18S). To determine whether there were overall community structural differences, centred-log-ratio (clr) values were computed for each experimental set of samples for compositional PCA and RDA analyses by subtracting the log of the mean relative abundance (with zeros replaced with 0.5) for each sample from the log of the relative abundance of each ESV in each sample [@aitchison2000]. The clr transformation was performed as part of a compositional analysis approach, which has been proposed to be more appropriate for analyzing metabarcoding data [@gloor2016; @fernandes2014]. Alternative approaches can involve rarefying and applying analyses on the relative abundance or presence-absence data. We confirmed that our application of centred-log ratio without rarefying did not introduced biases by performing analyses with two other approaches; clr transformed datasets rarefied to the 15th percentile of read counts, and on Bray Curtis distances of relative abundance (Bacterial 16S) or Jaccard distances of presence-absence data (Fungal ITS, Arthropod F230, Eukaryote 18S) (Supplemental Rarefied Analyses, Supplemental Traditional Analyses). The different approaches supported the same overall conclusions. 
 
 
-Enzyme activities were assessed with ANOVA using harvesting intensity as a predictor with the orthogonal contrasts outlined in Table \@ref(tab:harvest-ortho). Samples from bladed treatments were included in the analysis of micro-topographic features as a comparison to trench disturbance. The diversity metrics for each metabarcode target (i.e., 16S, 18S, ITS, or F230) were assessed using the orthogonal contrasts outlined in Tables \@ref(tab:harvest-ortho) and \@ref(tab:topo-ortho), while seasonal trends were assessed with a mixed-model anova which included a harvest treatment x seasonal interaction term. 
+We used defined orthogonal contrasts to evaluate the responses to particular harvesting treatments (Table \@ref(tab:harvest-ortho)) and differences between topographic features (Table \@ref(tab:topo-ortho)) and a model with a harvest treatment x seasonal interaction term to evaluate seasonal effects. Enzyme activities and diversity metrics for each metabarcode target (i.e., 16S, 18S, ITS, or F230) were assessed with ANOVA. 
 
 
 ```{r harvest-ortho}
@@ -350,7 +365,7 @@ knitr::kable(topo.ortho.table, caption= "Orthogonal contrasts used to test diffe
 ```
 
 
-PCA was performed on compositional data for the harvesting treatment samples, micro-topographic or seasonal samples and graphed for visual examination. PERMANOVA and betadispersion of the compositional community structures were calculated via the adonis and betadisper functions in vegan, using the comparisons outlined in Table \@ref(tab:harvest-ortho) and \@ref(tab:topo-ortho) or PERMANOVA with a harvest-season interaction term followed by pairwise PERMANOVA. RDA with harvesting, microtopography or season as a constraining variable was used to confirm that PERMANOVA results were not due to differences in betadispersion. ALDEx2 glm modelling was also performed, using the comparisons outlined in Table \@ref(tab:harvest-ortho) and \@ref(tab:topo-ortho) or with a model including a harvest-season interaction term. ESVs with significant differences in response to treatments were visualized as heatmaps. For seasonal analyses, sites were clustered using Ward's agglomerative hierarchical clustering. 
+We applied a combination of visual examination of community structural differences with statistical testing to understand community structural shifts. To visualize differences between groups, PCA was performed on compositional data for the harvesting treatment samples, micro-topographic or seasonal samples and graphed. To assess the significance of differences between specific contrasts, PERMANOVA and betadispersion of the compositional community structures were calculated via the adonis and betadisper functions in vegan version 2.6-2 [@R-vegan], using the comparisons outlined in Table \@ref(tab:harvest-ortho) and \@ref(tab:topo-ortho) or PERMANOVA with a harvest-season interaction term followed by pairwise PERMANOVA. RDA with harvesting, microtopography or season as a constraining variable were used to confirm that PERMANOVA results were not due to differences in betadispersion. ALDEx2 glm modelling was also performed using the ALDEx2 package (version 1.22.0) [@ALDEx22013], using the comparisons same comparisons as applied in PERMANOVA. ESVs with significant differences in response to treatments were visualized as heatmaps using the pheatmap package (version 1.0.12) [@R-pheatmap]. For seasonal analyses, sites were clustered using Ward's agglomerative hierarchical clustering. 
 
 
 
@@ -422,7 +437,7 @@ rm(count, ds_name, Ord.clr, Orddf4aldex, subset_aldex, Orddf, ds_n)
 ## Harvest Intensity
 
 ### Enzyme Activity
-```{r intensity-enzymes, echo=FALSE, fig.cap="Difference in enzyme activity based on orthogonal contrasts defined in Table \\@ref(tab:harvest-ortho) (TR = clearcut tree removal, FFR = forest floor removal, BGBR = below-ground biomass removal, BRt = biomass retention). Significance is indicated with colour (darker are more significant) and shape (triangles are significant at p < 0.05 and circles are not significant at p < 0.05. Values higher than zero indicate there was an increase in activity from the treatment, values lower than zero indicate there was a decrease in activity from the treatment."}
+```{r intensity-enzymes, echo=FALSE, fig.cap="Difference in enzyme activity based on orthogonal contrasts defined in Table \\@ref(tab:harvest-ortho) (TR = clearcut tree removal, FFR = forest floor removal, BGBR = below-ground biomass removal, BRt = biomass retention). Significance is indicated with colour (light grey are not significant at p <0.05) and shape (triangles are significant at p < 0.05 and circles are not significant at p < 0.05).  Values higher than zero indicate there was an increase in activity from the treatment, values lower than zero indicate there was a decrease in activity from the treatment."}
 enzyme_anal <- enzymes %>%
       mutate(sample = gsub("-", "_", sample.name)) %>%
       left_join(metadat, by = "sample")
@@ -445,19 +460,22 @@ for(enz in unique(enzyme_anal$enzyme)){
 
 rm(count)
 
-ortho.res <- ortho.res %>%
-      mutate(harvest = factor(gsub("harvest", "", harvest), levels = c("TR", "FFR", "BGBR", "BRt"))) %>% 
-      filter(!is.na(harvest)) %>% 
-      rename(`p-value` = `Pr...t..`)
+ortho.res <- ortho.res %>% 
+      rename(`p-value` = `Pr...t..`)%>%
+      mutate(harvestcol = ifelse(`p-value` < 0.05, gsub("harvest", "", harvest), "NS"), 
+             harvest = factor(gsub("harvest", "", harvest), levels = c("TR", "FFR", "BGBR", "BRt"))) %>%
+      mutate(harvestcol = factor(harvestcol, levels = c("TR", "FFR", "BGBR", "BRt", "NS"))) %>% 
+      filter(!is.na(harvest)) 
 
- ggplot(ortho.res, aes(harvest, Estimate, col = `p-value`)) +
+ ggplot(ortho.res, aes(harvest, Estimate, color = harvestcol)) +
       geom_point(aes(shape = `p-value` < 0.05), size = 4) + 
       geom_errorbar(aes(ymin = Estimate - Std..Error, ymax=Estimate + Std..Error)) +
-      scale_color_stepsn(breaks = c(0.01, 0.05, 0.1), colours = c("black", "gray22", "gray55","gray88"), values =  c(0, 0.01, 0.05,1)) +
+      #scale_color_stepsn(breaks = c(0.01, 0.05, 0.1), colours = c("black", "gray22", "gray55","gray88"), values =  c(0, 0.01, 0.05,1)) +
+      scale_color_manual(values= c(harv.orth.cols, NS = "gray88")) +
       facet_wrap(~enzyme, scales = "free") +
       theme_minimal() +
       ylab(expression("Difference in enzyme activity (nmol h g" ["dry soil"]^-1*")")) +xlab("Orthogonal contrasts of harvesting intensity treatments") +
-       labs(shape = "p-value < 0.05") +
+       labs(shape = "p-value < 0.05", alpha = "p-value < 0.05", color ="contrast") +
    geom_hline(yintercept = 0, color = "black") +
    theme(axis.text.x = element_text(angle = 90))
 
@@ -472,7 +490,7 @@ NAG activity was significantly decreased by forest floor removal and below-groun
 
 
 ### Diversity and Community Structure
-```{r alpha-diversity, eval =TRUE, echo = FALSE, fig.cap="Difference in diversity (richness, inverse Simpsons or Shannon) based on orthogonal contrasts defined in Table \\@ref(tab:harvest-ortho) (TR = clearcut tree removal, FFR = forest floor removal, BGBR = below-ground biomass removal, BRt = biomass retention). Significance is indicated with colour (darker are more significant) and shape (triangles are significant at p < 0.05 and circles are not significant at p < 0.05. Values higher than zero indicate there was an increase in diversity from the treatment, values lower than zero indicate there was a decrease in diversity from the treatment."}
+```{r alpha-diversity, eval =TRUE, echo = FALSE, fig.cap="Difference in diversity (ESV richness, inverse Simpsons or Shannon) based on orthogonal contrasts defined in Table \\@ref(tab:harvest-ortho) (TR = clearcut tree removal, FFR = forest floor removal, BGBR = below-ground biomass removal, BRt = biomass retention).  Significance is indicated with colour (light grey are not significant at p <0.05) and shape (triangles are significant at p < 0.05 and circles are not significant at p < 0.05). Values higher than zero indicate there was an increase in diversity from the treatment, values lower than zero indicate there was a decrease in diversity from the treatment.", fig.height=7}
 
 anov.res <- list()
   ortho.res <- data.frame()
@@ -490,7 +508,7 @@ for(ds_name in grep("_1", names(ds_list), value = T)){
   }
   
   
-  temp.div <- data.frame(Shannon = diversity(Orddf, index = "shannon"), Inv.simpson = diversity(Orddf, index = "invsimpson"), richness = specnumber(Orddf)) %>%
+  temp.div <- data.frame(Shannon = diversity(Orddf, index = "shannon"), Inv.simpson = diversity(Orddf, index = "invsimpson"), `ESV richness` = specnumber(Orddf)) %>%
     rownames_to_column("sample") %>%
     pivot_longer(-sample, names_to = "metric", values_to = "value") %>%
     left_join(metadat, by = "sample")
@@ -517,22 +535,25 @@ for(ds_name in grep("_1", names(ds_list), value = T)){
    rm(count)
    
 ortho.res <- ortho.res %>%
-      mutate(harvest = factor(gsub("harvest", "", harvest), levels = c("TR", "FFR", "BGBR", "BRt")), 
-         dataset = gsub("_[[:digit:]]", "", dataset)) %>% 
-      filter(!is.na(harvest)) %>%
-      rename(`p-value` = Pr...t..)
+       rename(`p-value` = `Pr...t..`)%>%
+      mutate(harvestcol = ifelse(`p-value` < 0.05, gsub("harvest", "", harvest), "NS"), 
+             harvest = factor(gsub("harvest", "", harvest), levels = c("TR", "FFR", "BGBR", "BRt")), 
+         dataset = gsub("_[[:digit:]]", "", dataset)) %>%
+      mutate(harvestcol = factor(harvestcol, levels = c("TR", "FFR", "BGBR", "BRt", "NS"))) %>% 
+      filter(!is.na(harvest))
 
-      ggplot(ortho.res, aes(harvest, Estimate, col = `p-value`)) +
+      ggplot(ortho.res, aes(harvest, Estimate, col = harvestcol)) +
       geom_point(aes(shape = `p-value` < 0.05), size =3) + 
       geom_errorbar(aes(ymin = Estimate - Std..Error, ymax=Estimate + Std..Error)) +
-      scale_color_stepsn(breaks = c(0.01, 0.05, 0.1), colours = c("black", "gray22", "gray55","gray88"), values =  c(0, 0.01, 0.05,1)) +
+      scale_color_manual(values= c(harv.orth.cols, NS = "gray88")) +
+      #scale_color_stepsn(breaks = c(0.01, 0.05, 0.1), colours = c("black", "gray22", "gray55","gray88"), values =  c(0, 0.01, 0.05,1)) +
       facet_wrap(metric~dataset, scales = "free_y") +
       theme_minimal() +
       ylab("Difference in diversity") +
             xlab("Contrast") +
    geom_hline(yintercept = 0, color = "black") +
    theme(axis.text.x = element_text(angle = 90)) + 
-            labs(shape = "p-value < 0.05")+
+            labs(shape = "p-value < 0.05", alpha = "p-value < 0.05", color ="contrast")+
             xlab("Orthogonal contrasts of harvesting intensity treatments")
       ggsave(paste0("fig", figcount, "-diversity_1.jpeg"))
 
@@ -544,7 +565,7 @@ rm(anov.res, ds.4aov, temp.div, Tukey.res, div, ds_name, Orddf)
 ```
 
 
-There were only a few taxon and metric-specific responses to harvesting disturbances. Tree removal did significantly (p < 0.05) decrease arthropod (F230) diversity metrics compared to unharvested treatments and resulted in an increase in fungal (ITS) richness and inverse Simpsons diversity. Forest floor removal significantly decreased eukaryotic (18S) and arthropod (F230) diversity metrics, Fungal (ITS) richness and inverse Simpson's diversity but increased bacterial (16S) richness. There were no significant responses of any diversity metrics to below-ground biomass removal (stumping treatment) or retention of woody debris (stem only treatment) (Fig \@ref(fig:alpha-diversity)).
+There were only a few taxon and metric-specific responses to harvesting disturbances. Tree removal did significantly (p < 0.05) decrease arthropod (F230) diversity metrics compared to unharvested treatments and resulted in an increase in fungal (ITS) ESV richness and inverse Simpsons diversity. Forest floor removal significantly decreased eukaryotic (18S) and arthropod (F230) diversity metrics, Fungal (ITS) ESV richness and inverse Simpson's diversity but increased bacterial (16S) ESV richness. There were no significant responses of any diversity metrics to below-ground biomass removal (stumping treatment) or retention of woody debris (stem only treatment) (Fig \@ref(fig:alpha-diversity)).
 
 
 ```{r CODA-PCA-1, include=FALSE}
@@ -585,10 +606,10 @@ for(ds_name in names(coda.clrs.res[grep("_1", names(coda.clrs.res), value = T)])
        clr.pca.plots[[plotcount]] <-ggplot(plottingdat, aes(PC1, PC2, group=harvest))+
    geom_point(data=plottingdat, aes(color=harvest, shape = harvest), alpha=0.5, size = 2) + 
    geom_polygon(data=hulls, aes(group=hullgrp, fill = harvest, alpha = harvest, color=harvest)) +
-   scale_color_manual(values= cust.cols[c(2, 3, 1, 6, 8)], breaks = levels(plottingdat$harvest)[c(2,3,1,4,5)])+
-   scale_fill_manual(values= cust.cols[c(2, 3, 1, 6, 8)], breaks = levels(plottingdat$harvest)[c(2,3,1,4,5)])+
-   scale_shape_manual(values= c(2, 3, 1, 5, 6), breaks = levels(plottingdat$harvest)[c(2,3,1,4,5)])+
-   scale_alpha_manual(values= c(0.2, 0.2, 0.2, 0.2, 0.2), breaks = levels(plottingdat$harvest)[c(2,3,1,4,5)])+
+   scale_color_manual(values= harv.cols)+
+   scale_fill_manual(harv.cols)+
+   scale_shape_manual(harv.shapes)+
+   scale_alpha_manual(values= c(0.2, 0.2, 0.2, 0.2, 0.2))+
    xlab(xlab.val)+
    ylab(ylab.val)+
    theme_minimal()+
@@ -673,8 +694,8 @@ ggplot(adon.plotting, aes(R2, Pr..F., color=contrast, fill = contrast, shape = c
       geom_point(aes(x=R2+0.01), col = "#00000000") +
    geom_text(aes(label = contrast, y=Pr..F.+max.pr), show.legend = FALSE) +
    facet_wrap(~dataset, scales = "free") +  
-   scale_color_manual(values= c("black", cust.cols[c(2, 3, 6, 8)]))+
-   scale_fill_manual(values= c("black", cust.cols[c(2, 3, 6, 8)]))+
+   scale_color_manual(values= harv.orth.cols)+
+   scale_fill_manual(values= harv.orth.cols)+
    scale_shape_manual(values= c(2, 3, 5, 6, 8))+
    theme_minimal() +
    xlab(expression("Effect Size (R"^2*")")) + ylab("Pr (>F)") + 
@@ -750,7 +771,7 @@ maxs  <- plot.betadisper %>%
            geom_segment(data = temp.sig, inherit.aes = F, aes(y = distance*0.9, yend = distance*0.9, x = firstseg.start, xend = firstseg.end, color = text.col)) +
            geom_segment(data = temp.sig, inherit.aes = F, aes(y = distance*0.9, yend = distance*0.9, x = secondseg.start, xend = secondseg.end, color = text.col)) +
        theme_minimal()+
-       scale_fill_manual(values= c(cust.cols[c(2, 3, 1, 6, 8)]), breaks = levels(temp$harvest)) +
+       scale_fill_manual(values= harv.cols) +
        scale_color_manual(name = "significance", values= c("black", "red")) +
        facet_wrap(~dataset, scales = "free_y") + coord_cartesian(xlim = c(0, 5.8)) + 
            theme(legend.position = 'none', axis.text.x = element_text(angle = 90))
@@ -763,9 +784,9 @@ maxs  <- plot.betadisper %>%
 Intensification of harvesting beyond full tree harvesting resulted in significant changes in community compositional structure for all metabarcode communities. While both below-ground biomass removal and forest floor removal resulted in significant changes, the amount of variance explained by forest floor removal was much greater (below-ground biomass removal explained  ~0.1 or less of the variance) (Fig \@ref(fig:CODA-adonis-plot-1)). Some of this variance was due to differences in dispersion, but the average composition of the bladed treatments was different from that of the other harvested treatments, (i.e., in 18S and F230 communities, where bladed community compositions were more consistent, and had a different average composition compared to the full tree treatment) (Fig \@ref(fig:CODA-bd-plot-1), Supplemental Materials 2.1.2, 2.1.3). The average compositional structure and betadispersion of the unharvested forest was also significantly different from that of the treatments with tree removal, and PCA of community structures showed visually distinct clusters of treatments. The amount of variance explained by harvesting treatments, generally less than 0.15, in each of the communities assessed was due to differences in within-group variation and between group variation.
 
 
-### Differences in specific organisms
+### Taxonomic responses
 
-The ESVs that had significant compositional differences were responding to tree removal or forest floor removal. There were no ESVs that differed due to biomass retention (were different between stem-only and full tree treatments), and only one Eukaryotic (18S) ESV that responded to below-ground biomass removal (Supplemental Materials 2.1.4). There was only one arthropod ESV that had any significant compositional change. The bacterial genera that had a higher compositional component after forest floor removal had characteristics indicative of nutrient limitation, low oxygen, and high temperature tolerance (e.g., *Chloracidobacterium* and *Blastochloris* are photoheterotrophs; *Aggregicoccus* and *Fimbriiglobus* have chitinolytic or microbial lytic capabilities; *Thermoanaerothrix* and *Thermoflexus* can be moderately thermophilic; *Anaeromyxobacter*, *Thermanaerothrix*, *Syntrophaceticus* all have anaerobic or facultatively anaerobic metabolism) [@dedysh2020; @imhoff2020; @reichenbach2015; @schnurer2018; @sood2015; @tank2018; @watanabe2015; @yamada2018]. Bacterial genera that were lower in bladed sites were typically chemoheterotrophic (e.g., *Acidipila*, *Edaphobacter*, *Povalibacter*) and most were aerophilic [@hiraishi2019; @thrash2015; @nogi2014]. Fungal ESVs that increased after forest floor removal were generally saprotrophic, with a notable increase in species associated with decay of fruits (i.e. *Geminibasidium*, *Collophora*) while the ESVs that were decreased after forest floor removal were wood saprotrophs or plant pathogens (e.g., *Auriculariales*, *Agaricomycetes*, *Trametes*, *Trechispora*, *Mortierella*) [@ainsworth2008]. Unharvested plots had higher dominance of the mycorrhizal fungi *Tricholoma*, *Cortinarius* and *Hygrophorus* compared to tree removal. Eukaryotic (18S) ESVs that decreased with forest floor removal were generally associated with aquatic or high-moisture environments (e.g., the algae and bacteriovorus organisms *Limnognathia*, *Orciraptor* and *Viridiraptor*; the aquatic invertebrate *Rotaria*) [@hess2013]. ESVs identified as mosses (i.e., *Pohlia*, *Pottia* and *Rosulabryum*) had higher compositional dominance after forest floor removal [@klips2017]. 
+The ESVs that had significant compositional differences were responding to tree removal or forest floor removal. There were no ESVs that differed due to biomass retention (were different between stem-only and full tree treatments), and only one Eukaryotic (18S) ESV that responded to below-ground biomass removal (Supplemental Materials 2.1.4). There was only one arthropod ESV that had any significant compositional change. The bacterial genera that had a higher compositional component after forest floor removal had characteristics indicative of nutrient limitation, low oxygen, and high temperature tolerance (e.g., *Chloracidobacterium* and *Blastochloris* are photoheterotrophs; *Aggregicoccus* and *Fimbriiglobus* have chitinolytic or microbial lytic capabilities; *Thermoanaerothrix* and *Thermoflexus* can be moderately thermophilic; *Anaeromyxobacter*, *Thermanaerothrix*, *Syntrophaceticus* all have anaerobic or facultatively anaerobic metabolism). Bacterial genera that were lower in bladed sites were typically chemoheterotrophic (e.g., *Acidipila*, *Edaphobacter*, *Povalibacter*) and most were aerophilic. Fungal ESVs that increased after forest floor removal were generally saprotrophic, with a notable increase in species associated with decay of fruits (i.e. *Geminibasidium*, *Collophora*) while the ESVs that were decreased after forest floor removal were wood saprotrophs or plant pathogens (e.g., *Trechispora*, *Mortierella*, or *Agaricomycetes* that could not be identified to Genus). Unharvested plots had higher dominance of the ecto-mycorrhizal (ECM) fungi *Tricholoma*, *Cortinarius* and *Hygrophorus* compared to tree removal. Eukaryotic (18S) ESVs that decreased with forest floor removal were generally associated with aquatic or high-moisture environments (e.g., the algae and bacteriovorus organisms *Limnognathia*, *Orciraptor* and *Viridiraptor*; the aquatic invertebrate *Rotaria*). ESVs identified as mosses (i.e., *Pohlia*, *Pottia* and *Rosulabryum*) had higher compositional dominance after forest floor removal. 
 
 
 
@@ -789,7 +810,7 @@ for(ds_name in grep("_3", names(ds_list), value = T)){
          Orddf <- t(apply(Orddf, 2, function(x){as.numeric(x>0)})) ##  presence/absence
   }
   
-  temp.div <- data.frame(Shannon = diversity(Orddf, index = "shannon"), Inv.simpson = diversity(Orddf, index = "invsimpson"), richness = specnumber(Orddf)) %>%
+  temp.div <- data.frame(Shannon = diversity(Orddf, index = "shannon"), Inv.simpson = diversity(Orddf, index = "invsimpson"), `ESV richness` = specnumber(Orddf)) %>%
     rownames_to_column("sample") %>%
     pivot_longer(-sample, names_to = "metric", values_to = "value") %>%
     left_join(metadat, by = "sample") %>%
@@ -817,23 +838,26 @@ for(ds_name in grep("_3", names(ds_list), value = T)){
 ortho.res <- ortho.res %>% mutate(dataset = gsub("_[[:digit:]]", "", dataset))
 ```
 
-```{r Microtopography-diversity, fig.cap = "Orthogonal contrasts between microtopography features as described in Table \\@ref(tab:topo-ortho) (T.B = Trench vs Bladed, T.PF = Trench vs Piles and Flats, P.F = Piles vs Flats). Values lower than zero indicate the first term in the contrast is lower in diversity, values higher than zero indicate the first term in the contrast has higher diversity as an effect."}
-ortho.res <- ortho.res %>%
+```{r Microtopography-diversity, fig.cap = "Orthogonal contrasts between microtopography features as described in Table \\@ref(tab:topo-ortho) (T.B = Trench vs Bladed, T.PF = Trench vs Piles and Flats, P.F = Piles vs Flats). Significance is indicated with colour (light grey are not significant at p <0.05) and shape (triangles are significant at p < 0.05 and circles are not significant at p < 0.05). Values lower than zero indicate the first term in the contrast is lower in diversity, values higher than zero indicate the first term in the contrast has higher diversity as an effect.", fig.height=7}
+ortho.res <- ortho.res %>% 
+      rename(`p-value` = Pr...t..)%>%
       mutate(topo = factor(gsub("topo", "", topo), levels = c("T.B", "T.PF", "P.F")), 
+             topocol = factor(ifelse(`p-value` < 0.05, as.character(topo), "NS"), levels = c(levels(topo), "NS")), 
          dataset = gsub("_[[:digit:]]", "", dataset)) %>% 
-      filter(!is.na(topo)) %>% rename(`p-value` = Pr...t..)
+      filter(!is.na(topo)) 
 
-      ggplot(ortho.res, aes(topo, Estimate, col = `p-value`)) +
+      ggplot(ortho.res, aes(topo, Estimate, col = topocol)) +
       geom_point(aes(shape = `p-value` < 0.05), size = 4) + 
       geom_errorbar(aes(ymin = Estimate - Std..Error, ymax=Estimate + Std..Error)) +
-      scale_color_stepsn(breaks = c(0.01, 0.05, 0.1), colours = c("black", "gray22", "gray55","gray88"), values =  c(0, 0.01, 0.05,1)) +
+      scale_colour_manual(values = c(topo.ortho.cols, NS = "gray88"))+
+      #scale_color_stepsn(breaks = c(0.01, 0.05, 0.1), colours = c("black", "gray22", "gray55","gray88"), values =  c(0, 0.01, 0.05,1)) +
       facet_wrap(metric~dataset, scales = "free_y") +
       theme_minimal() +
       ylab("Difference in diversity") +
             xlab("Orthogonal contrast of microtopography features") +
    geom_hline(yintercept = 0, color = "black") +
    theme(axis.text.x = element_text(angle = 90)) + 
-            labs(shape = "p-value < 0.05")
+            labs(shape = "p-value < 0.05", color ="contrast")
 
 num_p_tests <- num_p_tests + length(unique(ortho.res$dataset)) 
 
@@ -841,7 +865,7 @@ rm(anov.res, ds.4aov, temp.div, ortho.res, div, ds_name, Orddf)
 ```
 
 
-Bladed and trench features were not generally significantly different from each other aside from lower bacterial richness, and higher arthropod diversity for all metrics associated with the trench features. However, there were lower eukaryotic and arthropod diversity and richness for all metrics, but increased bacterial richness and Shannon diversity in the trenches compared to flat and pile areas created by the site preparation (i.e., disc trenching). There were no significant differences for any fungal (ITS) diversity metrics between flat and pile features for any metabarcode groups (Fig \@ref(fig:Microtopography-diversity)). 
+Bladed and trench features were not generally significantly different from each other aside from lower bacterial ESV richness, and higher arthropod diversity for all metrics associated with the trench features. However, there were lower eukaryotic and arthropod diversity and ESV richness for all metrics, but increased bacterial ESV richness and Shannon diversity in the trenches compared to flat and pile areas created by the site preparation (i.e., disc trenching). There were no significant differences for any fungal (ITS) diversity metrics between flat and pile features for any metabarcode groups (Fig \@ref(fig:Microtopography-diversity)). 
 
 
 ```{r CODA-PCA-3, include=FALSE}
@@ -884,9 +908,9 @@ for(ds_name in names(coda.clrs.res[grep("_3", names(coda.clrs.res), value = T)])
        clr.pca.plots[[plotcount]] <-ggplot(plottingdat, aes(PC1, PC2, group=topo))+
    geom_point(data=plottingdat, aes(color=topo, shape = topo), size = 2) + 
    geom_polygon(data=hulls, aes(group=hullgrp, fill = topo, color=topo), alpha = 0.5) +
-   scale_color_manual(values= c(cust.cols[8] ,"palegreen4", "burlywood4", "tan"))+
-   scale_fill_manual(values= c(cust.cols[8], "palegreen4", "burlywood4", "tan"))+
-   scale_shape_manual(values= c(6, 2, 3, 1))+
+   scale_color_manual(values= topo.cols)+
+   scale_fill_manual(values= topo.cols)+
+   scale_shape_manual(values= topo.shapes)+
    xlab(xlab.val)+
    ylab(ylab.val)+
    theme_minimal()+
@@ -963,9 +987,9 @@ for(ds_name in names(coda.clrs.res[grep("_3", names(coda.clrs.res), value = T)])
    geom_polygon(data=hulls, aes(group=hullgrp, fill = topo, color=topo), alpha = 0.5) +
    geom_text(inherit.aes = FALSE, data = rda.vecs, aes(label=row.names(rda.vecs), x=RDA1, y=RDA2), color="black") +
    geom_segment(inherit.aes = FALSE, data = rda.vecs, aes(x=0, y=0, xend=RDA1, yend=RDA2), color="black",arrow = arrow()) +
-   scale_color_manual(values= c(cust.cols[8], "palegreen4", "burlywood4", "tan"))+
-   scale_fill_manual(values= c(cust.cols[8], "palegreen4", "burlywood4", "tan"))+
-   scale_shape_manual(values= c(6, 2, 3, 1))+
+   scale_color_manual(values= topo.cols)+
+   scale_fill_manual(values= topo.cols)+
+   scale_shape_manual(values= topo.shapes)+
    xlab(xlab.val)+
    ylab(ylab.val)+
    theme_minimal()+
@@ -1051,9 +1075,9 @@ ggplot(adon.plotting, aes(R2, Pr..F., color=contrast, shape = contrast)) +
    geom_point(size = 4) + 
    geom_text(aes(label = contrast, y=Pr..F.+.005), show.legend = FALSE) +
    geom_hline(yintercept = 0.05, color="black") + 
-   scale_color_manual(values= c(cust.cols[8] ,"tan", "burlywood4"))+
-   scale_fill_manual(values= cust.cols[c(cust.cols[8] ,"tan", "burlywood4")])+
-   scale_shape_manual(values= c(2, 1, 3, 4, 5, 6))+
+   scale_color_manual(values= topo.ortho.cols)+
+   scale_fill_manual(values= topo.ortho.cols)+
+   scale_shape_manual(values= c(2, 1, 3))+
    theme_minimal() +
    facet_wrap(~dataset, scales = "free") + 
    xlab(expression("Effect Size (R"^2*")")) + ylab("Pr (>F)") +
@@ -1067,7 +1091,7 @@ PCA using Aitchison distances showed community compositions that were mostly dis
 
 When comparing community compositions associated with features of the trenched areas to areas with remaining organic materials (piles and flats), the PERMANOVA results explained between 9 - 20 % of variance. Trench-bladed differences were also, generally, larger. The bacterial (16S) community was most affected, with ~ 20% of the community variance explained by mineral soil exposure in the trenches, and greater than 10% of community variance explained by the bladed features when compared to the trench features (Fig \@ref(fig:CODA-adonis-plot-3)). The smallest amount of explained variance was associated with the arthropod (F230) community. Much of the difference in variance in these communities was due to differences in average community composition, but some of the difference in arthropod (F230) and eukaryotic (18S) communities was attributed to lower betadispersion in trench and bladed features (Supplemental Materials 2.2.2).   
 
-### Differences in specific organisms 
+### Taxonomic responses
 
 ESVs were only significantly different in Trench-Bladed comparisons and exposure of mineral soil in trenches compared to pile and flat features. Most of the bacteria and fungi that were associated with exposure of mineral soil were increased in compositional abundance. In contrast, eukaryotic organisms generally had decreased compositional abundance in the exposed mineral soil in trenched and arthropods only had one ESV that was significantly associated with trench features (Supplemental Materials 2.2.4). The organisms that had changes in compositional abundance in trenches compared to flats and piles were largely consistent with those that were decreased due to forest floor removal (e.g, *Acidibacter*, *Anaeromyxobacter*, *Thermanaerothrix*, *Rhizoclasmatium*, *Collophora*, *Rhizoscyphus*, *Orciraptor*, *Viridiraptor*). There were some generalist soil bacteria that were of decreased compositional dominance in the trench microenvironments compared to bladed (i.e., *Spartobacteria*, *Gemmatimonas*, *Aliidongia*) as well as one mycorrhizal fungi *Cortinarius*.
 
@@ -1076,7 +1100,7 @@ ESVs were only significantly different in Trench-Bladed comparisons and exposure
 
 
 ### Diversity and Community Structure
-```{r alpha-diversity-2, fig.cap = "Diversity (Shannon, Inverse Simpsons, and ESV richness) for each metabarcode target (Bacterial 16S and Fungal ITS2) across three months of sampling for full tree and unharvested treatments. Unharvested is shown in green, and full tree is displayed in blue."}
+```{r alpha-diversity-2, fig.cap = "Diversity (Shannon, Inverse Simpsons, and ESV richness) for each metabarcode target (Bacterial 16S and Fungal ITS2) across three months of sampling for full tree and unharvested treatments. Unharvested is shown in green, and full tree is displayed in blue.", fig.height=7}
 
 anov.res <- list()
   Tukey.res <- data.frame()
@@ -1094,7 +1118,7 @@ for(ds_name in grep("_2", names(ds_list), value = T)){
          Orddf <- t(apply(Orddf, 2, function(x){as.numeric(x>0)})) ## presence-absence
   }
   
-  temp.div <- data.frame(Shannon = diversity(Orddf, index = "shannon"), Inv.simpson = diversity(Orddf, index = "invsimpson"), richness = specnumber(Orddf)) %>%
+  temp.div <- data.frame(Shannon = diversity(Orddf, index = "shannon"), Inv.simpson = diversity(Orddf, index = "invsimpson"), `ESV richness` = specnumber(Orddf)) %>%
     rownames_to_column("sample") %>%
     pivot_longer(-sample, names_to = "metric", values_to = "value") %>%
     left_join(metadat, by = "sample") %>%
@@ -1426,22 +1450,22 @@ Current practices in the boreal forest region of Canada primarily utilize the fu
 These results are consistent with previous studies conducted on these treatment plots, in that tree removal and forest floor removal had significant effects on community compositions. Smenderovac et al., [-@smenderovac2017] found that fire and unharvested treatments were dissimilar from full-tree and bladed plots, but that there was little additional difference across the gradient of harvest removal. Venier et al. [-@venier2017] found the same pattern in ground-dwelling arthropod communities, where there was little additional effect of stump removal compared to the operational clear cut harvesting methods, but there was a significant effect of blading. This was also found in soil mesofauna communities [@rousseau2019]. These earlier studies were sampled at 1-3 years after harvest where there had been little organic matter decomposition or incorporation of wood materials into soils. Using more sensitive techniques and following more vegetation recovery and tree growth 5 years post-harvest, we have found small community structure, and significant potential phosphatase activity decreases associated with below-ground biomass removal. However, this effect still remains small enough that we could not distinguish any significant changes to the soil taxa surveyed in this study. 
 
 
-Other studies have also reported a lack of response to biomass removal intensification to key groups such as ectomycorrhizae [@huusko2015]. The responses to forest floor removal (i.e., increases in enzymatic activity and wood saprotrophs, increases in acidophiles and extremophiles, decreased arthropod diversity) are consistent with existing knowledge of harvesting effects. Soil disturbance during harvesting results in the mixing of soils and increased aeration, which can, in turn, increase decomposition of existing organic matter [@jimenezesquilin2008], but can also decrease water holding capacity resulting in higher acidity and changes in the soil community structure. We saw these effects after tree removal, the community structure of unharvested plots was different from those with tree removal, and the $\beta$-xylosidase activity was lower in unharvested treatments. It may be that the in-tact organic layer of these soils have carbon sources that are a better energy source than the xylose polysaccharide hemicellulose (e.g., glucose and fructose from plant roots or small organic molecules from fresh litter), resulting in reduced xylose activity. Disturbances to carbon cycling processes are exacerbated in the extreme soil disturbance of blading [@thiffault2011]. The complete removal of woody biomass in bladed plots had the expected result of decreasing wood saprotroph abundance as well. There were not detectable increases of wood saprotrophy with the fine-woody debris retention in stem-only harvesting during the 5 years post-harvest. This suggests that the biodiversity of soils could be fairly resistant to biomass removal intensification, however the reduction in phosphatase activity in plots with below-ground biomass removal suggest that there could be nutrient limitations introduced by intensification beyond full-tree harvest. Conversely, the lack of differences between stem only and full tree harvesting suggest that there are few short-term benefits to switching from full-tree to stem only harvesting practices.
+Other studies have also reported a lack of response to biomass removal intensification to key groups such as ectomycorrhizae [@huusko2015]. The responses to forest floor removal (i.e., increases in enzymatic activity and wood saprotrophs, increases in acidophiles and extremophiles, decreased arthropod diversity) are consistent with existing knowledge of harvesting effects. Soil disturbance during harvesting results in the mixing of soils and increased aeration, which can, in turn, increase decomposition of existing organic matter [@jimenezesquilin2008], but can also decrease water holding capacity resulting in higher acidity and changes in the soil community structure. We saw these effects after tree removal, the community structure of unharvested plots was different from those with tree removal, and the $\beta$-xylosidase activity was lower in unharvested treatments. It may be that the in-tact organic layer of these soils have carbon sources that are a better energy source than the xylose polysaccharide hemicellulose (e.g., glucose and fructose from plant roots or small organic molecules from fresh litter), resulting in reduced xylose activity. Kohout et al. [@kohout2018] suggested that the reduction of root exudates from living trees could be influencing the soil fungal community changes they observed. This result corresponded with an increase in fungal diversity with tree removal, so it may be that there was a strong selection for particular organisms in the control sites. Other studies have observed that increases in saprotrophs and organisms resistant to heat stress are favoured by harvesting activities, and it is possible that the in-tact moss layer in the unharvested treatments may be contributing some selection of fungal communities through mutualistic relationships or through the release of anti-microbial compounds [@mushinski2018; @wolski2021]. Essentially, harvesting disturbance can create a greater variety of niche spaces in the short term. Disturbances to carbon cycling processes are exacerbated in the extreme soil disturbance of blading [@thiffault2011]. The complete removal of woody biomass in bladed plots had the expected result of decreasing wood saprotroph abundance as well. There were not detectable increases of wood saprotrophy with the fine-woody debris retention in stem-only harvesting during the 5 years post-harvest. This suggests that the biodiversity of soils could be fairly resistant to biomass removal intensification, however the reduction in phosphatase activity in plots with below-ground biomass removal suggest that there could be nutrient limitations introduced by intensification beyond full-tree harvest. Conversely, the lack of differences between stem only and full tree harvesting suggest that there are few short-term benefits to switching from full-tree to stem only harvesting practices.
 
 
-A $\beta$-xylosidase activity increase was also not detected in the stem-only harvest treatment suggesting that the conditions in unharvested plots are not stimulated or recovered quickly by the retention of additional biomass. Therefore, it is plausible the additional biomass removals do not have large effects on soil nutrients that exert some control on soil biodiversity. Morris et al. [-@morris2019] found little response in soil carbon, nitrogen or potassium in soil after 20 years, long after most of the initial finer harvest residues(i.e., live branches and foliage) would have decomposed. It could, however, also be possible that the location of sampling minimized observed effect; organisms that colonize wood from soils, and the biogeochemical cycles they are involved in, could be protected by the preserved biodiversity in the soils of the less disturbed flat micro-topographic features. The community response to tree removal along with the reduced enzymatic activity after tree removal, suggest that there could be key decomposition and mutualistic fungi missing from harvested plots, at least in the early regenerative stage of post-disturbance stand development. This pattern of biodiversity decline was also observed in arthropod communities [@rousseau2019; @venier2017]. Varenius et al. [-@varenius2017] found that ectomycorrhizal fungi were significantly altered by harvesting, though they appeared to recover over a 25 year period. They further suggest that retention of in-tact forest patches may expedite the recolonization process. While these declines could have implications for overall ecosystem-level productivity, tree growth and soil nutrient availability over the first 20 years, was not significantly higher in stem-only harvest compared to full-tree harvest [@fleming2014;@fleming2018;@hazlett2021;@morris2014;@morris2019]. 
+A $\beta$-xylosidase activity increase was also not detected in the stem-only harvest treatment suggesting that the conditions in unharvested plots are not stimulated or recovered quickly by the retention of additional biomass. Therefore, it is plausible the additional biomass removals do not have large effects on soil nutrients that exert some control on soil biodiversity. Morris et al. [-@morris2019] found little response in soil carbon, nitrogen or potassium in soil after 20 years, long after most of the initial finer harvest residues(i.e., live branches and foliage) would have decomposed. It could, however, also be possible that the location of sampling minimized observed effect; organisms that colonize wood from soils, and the biogeochemical cycles they are involved in, could be protected by the preserved biodiversity in the soils of the less disturbed flat micro-topographic features. The community response to tree removal along with the reduced enzymatic activity after tree removal, suggest that there could be key decomposition and mutualistic fungi missing from harvested plots, at least in the early regenerative stage of post-disturbance stand development. This pattern of biodiversity decline was also observed in arthropod communities [@rousseau2019; @venier2017]. Varenius et al. [-@varenius2017] found that ectomycorrhizal fungi were significantly altered by harvesting, though they appeared to recover over a 25 year period. Kohout et al. [@kohout2018] found similar disturbances to fungal communities due to clearcut harvesting of a *Picea abies* forest. They further suggest that retention of in-tact forest patches may expedite the recolonization process. While these declines could have implications for overall ecosystem-level productivity, tree growth and soil nutrient availability over the first 20 years, was not significantly higher in stem-only harvest compared to full-tree harvest [@fleming2014;@fleming2018;@hazlett2021;@morris2014;@morris2019]. 
 
 
 ## Were there large differences in community composition in the micro-topographic features introduced by harvesting and renewal (site preparation) efforts?
 
 
-Disc-trenching results in exposed mineral layer (trench), mixed mineral and organic layer (pile) and a largely "in-tact" areas of soils (flat). This soil disturbance is extensive (i.e., trenches and piles occurring every 2 m in linear strips to facilitate a 2m x 2m planted seedling spacing), where soil organisms responded by exhibiting different community structures across these different topographic features associated with the full-tree harvested plots. Other studies have demonstrated that this disturbance can be large (e.g., 20-50% of the harvested area), and potentially long-lasting [@chavescardoso2020;@jimenezesquilin2008]. The different moisture retention potentials associated with these micro-topographic features are large enough to influence planting decisions [@chavescardoso2020;@boateng2011; @nesdoly1998]. It is well known that different soil horizons support different community structures [@paul2014; @porter2019]. Organic horizons are nutrient rich and have better water holding capacity, while mineral soils are typically inhabited by organisms adapted to harsher conditions [@paul2014]. The different proportions of mineral and organic horizons in each micro-topographic feature may partially explain these differences. However, there are other physical characteristics related to these micro-topographic features that could be influencing community composition (i.e., aeration, water holding capacity, surface temperature) [@lof2012]. The limited diversity effects observed did, however, indicate that diversity in trenches had decreased diversity compared to flats and piles. The flats and piles had more *Mortierella* and *Cantherelles* which are associated with breakdown of complex carbon and well developed soils respectively [@ozimek2021; @danielson1984], whereas trenches had more organisms commonly associated with young soils (e.g., bryophytes, extremophile bacteria, "free-living" bacteria). Thornton and Matlack [-@thornton2002] had also found that nematode diversity was significantly effected by site preparation, and could take up to 50 years to recover.  
+Disc-trenching results in exposed mineral layer (trench), mixed mineral and organic layer (pile) and a largely "in-tact" areas of soils (flat). This soil disturbance is extensive (i.e., trenches and piles occurring every 2 m in linear strips to facilitate a 2m x 2m planted seedling spacing), where soil organisms responded by exhibiting different community structures across these different topographic features associated with the full-tree harvested plots. Other studies have demonstrated that this disturbance can be large (e.g., 20-50% of the harvested area), and potentially long-lasting [@chavescardoso2020;@jimenezesquilin2008]. The different moisture retention potentials associated with these micro-topographic features are large enough to influence planting decisions [@chavescardoso2020;@boateng2011; @nesdoly1998]. It is well known that different soil horizons support different community structures [@paul2014; @porter2019; @baldrian2012]. Organic horizons are nutrient rich and have better water holding capacity, while mineral soils are typically inhabited by organisms adapted to harsher conditions [@paul2014]. The different proportions of mineral and organic horizons in each micro-topographic feature may partially explain these differences. However, there are other physical characteristics related to these micro-topographic features that could be influencing community composition (i.e., aeration, water holding capacity, surface temperature) [@lof2012]. The limited diversity effects observed did, however, indicate that diversity in trenches had decreased diversity compared to flats and piles. The flats and piles had more *Mortierella* and *Cantherelles* which are associated with breakdown of complex carbon and well developed soils respectively [@ozimek2021; @danielson1984], whereas trenches had more organisms commonly associated with young soils (e.g., bryophytes, extremophile bacteria, "free-living" bacteria). Thornton and Matlack [-@thornton2002] had also found that nematode diversity was significantly effected by site preparation, and could take up to 50 years to recover.  
 
 
-Focusing on effects to harvested features not influences by other factors, like site preparation (i.e., flats) to better isolate the biomass removal effects is a reasonable approach to assess whether biomass residuals themselves provide reservoirs of diversity or provide nutrients for biota interacting with soils. However, it is possible that the effects of biomass residues could be influenced by other micro-topographic features associated with site preparation (i.e., trenches or piles). For example, trench features had different community assemblages when compared to the bladed plots, despite both being essentially exposed mineral soils. These differences suggest that there may be benefits to having 'islands' of in-tact soil within harvested areas, similar to where pockets of mature trees are left in harvested areas to serve as a seed source for regeneration. These biodiversity-retaining features may be critical sources of organisms important in geochemical cycling, as illustrated by Webster et al. [-@webster2021; -@webster2016]. While trenches are not in direct contact with wood residues or well-developed organic horizons, they may benefit from organic materials and nutrients leached or transported from flats and piles, which could be why certain bacterial species were a smaller community component in trench communities compared to bladed treatments. Trenches could also be more protected from environmental stresses than bladed plots by being recessed into the ground, the reduced wind and direct sun exposure would limit erosion and potentially provide some buffer for evapotranspiration. Levy-Booth et al, [-@levy-booth2016] found that the changes in moisture and physical disruptions can change bacterial and fungal soil community structure. These physical changes could be enhanced or altered by the retention of harvest residues (e.g., wind could be dispersed by piles of branches, and these residues could provide additional shading). 
+Focusing on effects to harvested features not influenced by other factors, like site preparation (i.e., flats) to better isolate the biomass removal effects is a reasonable approach to assess whether biomass residuals themselves provide reservoirs of diversity or provide nutrients for biota interacting with soils. However, it is possible that the effects of biomass residues could be influenced by other micro-topographic features associated with site preparation (i.e., trenches or piles). For example, trench features had different community assemblages when compared to the bladed plots, despite both being essentially exposed mineral soils. These differences suggest that there may be benefits to having 'islands' of in-tact soil within harvested areas, similar to where pockets of mature trees are left in harvested areas to serve as a seed source for regeneration. These biodiversity-retaining features may be critical sources of organisms important in geochemical cycling, as illustrated by Webster et al. [-@webster2021; -@webster2016]. While trenches are not in direct contact with wood residues or well-developed organic horizons, they may benefit from organic materials and nutrients leached or transported from flats and piles, which could be why certain bacterial species were a smaller community component in trench communities compared to bladed treatments. The moss and plant covers that are more retained on the pile and trench features could also be supporting community diversity. Kohout et al. [-@kohout2021] found that microhabitats with moss and plant features were strong controls on the decay of roots of *Picea abies* deadwood. Trenches could also be more protected from environmental stresses than bladed plots by being recessed into the ground, the reduced wind and direct sun exposure would limit erosion and potentially provide some buffer for evapotranspiration. Levy-Booth et al, [-@levy-booth2016] found that the changes in moisture and physical disruptions can change bacterial and fungal soil community structure. These physical changes could be enhanced or altered by the retention of harvest residues (e.g., wind could be dispersed by piles of branches, and these residues could provide additional shading). 
 
 
-To date, there has been little research on the interactions of micro-topographic features of soil preparation, and instead, most research has focused on the broader effects of these activities [@lof2012; @jimenezesquilin2008]. These smaller-scale effects created by site preparation could have longer term implications, and by only sampling on the features with the most potential direct biomass influence (flats), we may not be fully characterizing be the effects of different harvesting methods on to soil biota at the stand level. There could be ecological implications to this finding (i.e., changes to nutrient cycling or trophic dynamics).
+To date, there has been little research on the interactions of micro-topographic features of soil preparation, and instead, most research has focused on the broader effects of these activities [@lof2012; @jimenezesquilin2008]. These smaller-scale effects created by site preparation could have longer term implications, and by only sampling on the features with the most potential direct biomass influence (flats), we may not be fully characterizing be the effects of different harvesting methods on soil biota at the stand level. There could be ecological implications to this finding (i.e., changes to nutrient cycling or trophic dynamics).
 
 
 Jiménez Esquilín [-@jimenezesquilin2008] found scarification effects on microbial community biomass and composition that remained detectable for up to 20 years after the disturbance. However, these changes to microbial communities may not necessarily result in detrimental effects to tree growth. For example, Fleming et al, [-@fleming2018] did not find any detrimental effects of disc-trenching on jack pine growth in 20 year old stands, but instead, found either no effect or some survival and growth benefits when it was used. Fleming et al, [-@fleming2021] also found negligible effects of disc-trenching on soil nitrogen and phosphorus balances after 20 years. The growth and survival benefits of site preparation are well known to silviculturalists, but there may be alternatives to disrupting soil layers that might better replicate natural conditions. Weber et al,  [-@weber1995] found that sites treated with prescribed burn and disc trenching experienced similar survival and nutrient use benefits. There are, however, other reports in the literature of site preparation leading to decreases to amphibian populations, nematode diversity, fungal biomass and ectomycorrhizal communities [@hartley2002; @thornton2002; @kwasna2019]. Studies have also indicated there are potential additional advantages to this form of site preparation (e.g., increased total carbon stocks, enhanced vegetation recovery by providing a greater diversity of micro-environments [@mjofors2017; @haeussler2021]). Overall, the literature remains sparse on this topic, and its assessment can be complicated when it is difficult to find natural disturbance comparisons within the same temporal context [@haeussler2021], thereby making it difficult to gauge the ecological trade-offs of mechanical site preparation.
@@ -1450,12 +1474,12 @@ Jiménez Esquilín [-@jimenezesquilin2008] found scarification effects on microb
 ## What time of year are communities most responsive to harvesting stresses?
 
 
-In general, diversity metrics, and community composition differences supported that sampling in the late summer/fall is the best time to detect treatment differences. There were no strong indications that there was increased sensitivity to seasonal changes in full tree plots compared with uncut plots (i.e., significant interactions between harvest treatment and sampling time). For the most part, the community composition was stable across sampling months and the direction of difference between full tree and unharvested plots was consistent across diversity metrics. While investigation of partial RDAs showed slight increases in the variance between months for the full tree plots, the variance associated with seasonal change was very small. The lack of seasonal response could be due to the assay used. Metabarcoding uses environmental DNA, so we are likely detecting dormant cells (e.g., spores) and any relic DNA that may be persisting in the soil in addition to the actively reproducing and metabolising community members at the time of sampling [@carini2016; @glassman2015]. There are many studies that have demonstrated that functional microbial community characteristics, soil respiration or phospholipid profiles vary with season [@koranda2013; @zhao2021; @webster2016]. Our study, however showed that different patterns were not detected using a DNA-based analysis. Siles et al. [-@siles2017] also found that microbial responses to seasonal changes were limited to functional responses, but not present in amplicon sequencing. This finding has implications for the use of DNA studies in ecological assessments. In some ways, this approach does reduce logistical constraints and concerns around incompatibility of samples that were distributed across the growing season, but does highlight the limitations of applying DNA-based techniques to estimate functional activities. Overall, DNA-based analyses appear to be quite stable over temporal gradients within a growing season but are not reliable indicators of short-term seasonal fluctuations in conditions or functional activities.
+In general, diversity metrics, and community composition differences supported that sampling in the late summer/fall is the best time to detect treatment differences. There were no strong indications that there was increased sensitivity to seasonal changes in full tree plots compared with uncut plots (i.e., significant interactions between harvest treatment and sampling time). For the most part, the community composition was stable across sampling months and the direction of difference between full tree and unharvested plots was consistent across diversity metrics. While investigation of partial RDAs showed slight increases in the variance between months for the full tree plots, the variance associated with seasonal change was very small. The lack of seasonal response could be due to the assay used. Metabarcoding uses environmental DNA, so we are likely detecting dormant cells (e.g., spores) and any relic DNA that may be persisting in the soil in addition to the actively reproducing and metabolising community members at the time of sampling [@carini2016; @glassman2015]. There are many studies that have demonstrated that functional microbial community characteristics, soil respiration, phospholipid or even metatranscriptomic profiles vary with season [@koranda2013; @zhao2021; @webster2016; @llado2019]. Our study, however showed that different patterns were not detected using a targeted DNA-based analysis. Siles et al. [-@siles2017] and Lladó et al. [-@llado2019] also found that microbial responses to seasonal changes were limited to functional responses, but not present in amplicon sequencing. This finding has implications for the use of DNA studies in ecological assessments. In some ways, this approach does reduce logistical constraints and concerns around incompatibility of samples that were distributed across the growing season, but does highlight the limitations of applying DNA-based techniques to estimate functional activities. Overall, DNA-based analyses appear to be quite stable over temporal gradients within a growing season but are not reliable indicators of short-term seasonal fluctuations in conditions or functional activities.
 
 
 ## How do our interpretations of harvesting treatment response change with the added information about micro-topographic and seasonal response patterns? 
 
-In the interests of efficiency regarding time and funding, sampling decisions often have to be made that can limit our interpretation of site-wide effects. Our microtopography assessment raises questions of whether sampling only on flats represents and captures the effects of harvesting intensity and soil disturbance on soils, especially when comparing to unharvested forests that do not have these features. Here we argue that there would likely be minimal changes introduced by using stem only or stump removal treatments compared to the commonly applied full-tree harvesting, and that the observed community shifts are representative of the expected effects of these treatments. We found that our findings would be unlikely to change based on the time we sampled, but that we could be missing changes introduced by the treatments based on the topographic features selected in our sampling. It is possible that  responses to biomass removal intensification existed in micro-topographic features that we did not assess and that do not exist in control treatments. Future studies should look to assess whether the recovery of specific micro-topographic features are affected by the amount of biomass removal or retention, as effects could be through indirect, physical mechanisms that are not captured on flats. These micro-topographic insights also provide a new context to our results, that the observed shifts (or lack thereof), of physical disturbances are likely greater than those of intensified biomass removal.  
+In the interests of efficiency regarding time and funding, sampling decisions often have to be made that can limit our interpretation of site-wide effects. Our microtopography assessment raises questions of whether sampling only on flats represents and captures the effects of harvesting intensity and soil disturbance on soils, especially when comparing to unharvested forests that do not have these features. Here we argue that there would likely be minimal changes introduced by using stem only or stump removal treatments compared to the commonly applied full-tree harvesting, and that the observed community shifts are representative of the expected effects of these treatments. We found that our findings would be unlikely to change based on the time we sampled, but that we could be missing changes introduced by the treatments based on the topographic features selected in our sampling. It is possible that responses to biomass removal intensification existed in micro-topographic features that we did not assess and that do not exist in control treatments. Future studies should look to assess whether the recovery of specific micro-topographic features are affected by the amount of biomass removal or retention, as effects could be through indirect, physical mechanisms that are not captured on flats. These micro-topographic insights also provide a new context to our results, that the observed shifts (or lack thereof), of physical disturbances are likely greater than those of intensified biomass removal.  
 
 
 ## Conclusion

@@ -19212,21 +19212,6 @@
 		}
 	},
 	{
-		"id": "zotero-971",
-		"type": "webpage",
-		"title": "Configuring notifications - GitHub Docs",
-		"URL": "https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/setting-up-notifications/configuring-notifications",
-		"accessed": {
-			"date-parts": [
-				[
-					"2021",
-					6,
-					22
-				]
-			]
-		}
-	},
-	{
 		"id": "wilhelm2017",
 		"type": "article-journal",
 		"abstract": "The growing demand for renewable, carbon-neutral materials and energy is leading to intensified forest land-use. The long-term ecological challenges associated with maintaining soil fertility in managed forests are not yet known, in part due to the complexity of soil microbial communities and the heterogeneity of forest soils. This study determined the long-term effects of timber harvesting, accompanied by varied organic matter (OM) removal, on bacterial and fungal soil populations in 11- to 17-year-old reforested coniferous plantations at 18 sites across North America. Analysis of highly replicated 16 S rRNA gene and ITS region pyrotag libraries and shotgun metagenomes demonstrated consistent changes in microbial communities in harvested plots that included the expansion of desiccation- and heat-tolerant organisms and decline in diversity of ectomycorrhizal fungi. However, the majority of taxa, including the most abundant and cosmopolitan groups, were unaffected by harvesting. Shifts in microbial populations that corresponded to increased temperature and soil dryness were moderated by OM retention, which also selected for sub-populations of fungal decomposers. Biogeographical differences in the distribution of taxa as well as local edaphic and environmental conditions produced substantial variation in the effects of harvesting. This extensive molecular-based investigation of forest soil advances our understanding of forest disturbance and lays the foundation for monitoring long-term impacts of timber harvesting.",
@@ -20646,11 +20631,6 @@
 				]
 			]
 		}
-	},
-	{
-		"id": "http://zotero.org/users/local/vDpPFAGx/items/I46FQANC",
-		"type": "document",
-		"title": "10.1038_s41587-020-0548-6-citation.ris"
 	},
 	{
 		"id": "douglas2020",
@@ -25829,21 +25809,6 @@
 		}
 	},
 	{
-		"id": "zotero-1342",
-		"type": "webpage",
-		"title": "Long-term effects of site preparation on growth in Scots pine-Web of Science Core Collection",
-		"URL": "https://www.webofscience.com/wos/woscc/full-record/WOS:A1996WB42200003?SID=7BpxQVXex8U4MAeskft",
-		"accessed": {
-			"date-parts": [
-				[
-					"2022",
-					2,
-					7
-				]
-			]
-		}
-	},
-	{
 		"id": "lof2012a",
 		"type": "article-journal",
 		"container-title": "New Forests",
@@ -25889,24 +25854,6 @@
 				[
 					"2012",
 					9
-				]
-			]
-		}
-	},
-	{
-		"id": "zotero-1346",
-		"type": "webpage",
-		"language": "en",
-		"note": "DOI: 10.1016/j.foreco.2021.119518",
-		"title": "Assessing temporal response to biomass removal: A framework for investigating evolving constraints on boreal stand development | Elsevier Enhanced Reader",
-		"title-short": "Assessing temporal response to biomass removal",
-		"URL": "https://reader.elsevier.com/reader/sd/pii/S0378112721006083?token=67F0AD403BBF214E259B8FC9878EB17206F011971C2EA77C1D5955D3D079BA0CCA7C21D6ED269190C28D914D85226E3B&originRegion=us-east-1&originCreation=20220207175446",
-		"accessed": {
-			"date-parts": [
-				[
-					"2022",
-					2,
-					7
 				]
 			]
 		}
@@ -30501,6 +30448,4170 @@
 				[
 					"2014",
 					4
+				]
+			]
+		}
+	},
+	{
+		"id": "zotero-1560",
+		"type": "webpage",
+		"title": "Changes in landscape composition and stand structure from 19452002 on an industrial forest in New Brunswick, Canada",
+		"URL": "https://cdnsciencepub.com/doi/10.1139/x05-110",
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					8,
+					26
+				]
+			]
+		}
+	},
+	{
+		"id": "danell",
+		"type": "article-journal",
+		"abstract": "New data on the physiology of Cantharellus cibarius mycorrhiza formation has resulted in a new aseptic routine method for in vitro formation. The advances are short formation time, healthy plants and reliable colonization. A high glucose demand and a good gas exchange with additional carbon dioxide are important factors in the mycorrhiza formation. Mycorrhiza was observed after 8 weeks, but strong colonization occurred after 10-12 weeks, when mycorrhiza was established to the depth of 5 cm. A C. cibarius strain connected to Picea abies in nature successfully colonized Pinus sylvestris in vitro, but not Betula pendula. Mycorrhizal plants have been successfully transferred to unsterile environments in greenhouses. The mycorrhizae continued to colonize new roots and the unsterile peat soil for 10 months. However, C. cibarius mycorrhiza is highly sensitive to flooding. With PCR and RFLP, fruit bodies, isolated mycelia and artificially formed mycorrhizae have been compared to prove that C. cibarius was used. Climatic changes did not induce primordia formation, but factors behind fruit body formation are discussed.",
+		"language": "en",
+		"page": "9",
+		"source": "Zotero",
+		"title": "Formation and growth of the ectomycorrhiza of Cantharellus cibarius",
+		"author": [
+			{
+				"family": "Danell",
+				"given": "Eric"
+			}
+		]
+	},
+	{
+		"id": "etheridge2005",
+		"type": "article-journal",
+		"abstract": "Detailed 1944–1947 cruise data and maps were used to compare species composition, age-class distribution, and stand structure between 1945 and 2002, for a 190 000 ha industrial forest in New Brunswick, Canada. Softwood forest area in 1945 and 2002 was similar, at 40% and 42%, respectively, but mixed hardwood–softwood decreased from 37% to 18%, and hardwood increased from 10% to 25%. Forest management from 1945 to 2002 resulted in the forest (1) becoming younger, with 86% of the trees >70 years old in 2002 versus 44% in 1945, (2) becoming denser, with 100–300 more stems per hectare and 4–7 m2/ha more basal area in 2002, and (3) having less balsam fir (Abies balsamea (L.) Mill.) — 31%–66% in 1945 versus 4%–38% in 2002 of basal area for stands with >30% softwood. Management reduced balsam fir to lower mortality associated with spruce budworm (Choristoneura fumiferana (Clem.)) outbreaks. The area of old (≥70 years old, with ≥10 trees/ha ≥30 cm DBH) and large (≥70 years old, with ≥5 trees/ha ≥45 cm DBH) spruce–fir and mixedwood wildlife habitats decreased from 112 600 and 55 200 ha in 1945 to 8200 and 7200 in 2002, respectively, while hardwood habitat increased from 22 800 to 71 500 ha. Management increased timber production while maintaining similar softwood species composition, but altered age structure and areas of mixedwood and hardwood forest types.",
+		"language": "en",
+		"page": "13",
+		"source": "Zotero",
+		"title": "Changes in landscape composition and stand structure from 1945–2002 on an industrial forest in New Brunswick, Canada",
+		"volume": "35",
+		"author": [
+			{
+				"family": "Etheridge",
+				"given": "David A"
+			},
+			{
+				"family": "MacLean",
+				"given": "David A"
+			},
+			{
+				"family": "Wagner",
+				"given": "Robert G"
+			},
+			{
+				"family": "Wilson",
+				"given": "Jeremy S"
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2005"
+				]
+			]
+		}
+	},
+	{
+		"id": "etheridge2005a",
+		"type": "article-journal",
+		"abstract": "Detailed 1944–1947 cruise data and maps were used to compare species composition, age-class distribution, and stand structure between 1945 and 2002, for a 190 000 ha industrial forest in New Brunswick, Canada. Softwood forest area in 1945 and 2002 was similar, at 40% and 42%, respectively, but mixed hardwood–softwood decreased from 37% to 18%, and hardwood increased from 10% to 25%. Forest management from 1945 to 2002 resulted in the forest (1) becoming younger, with 86% of the trees >70 years old in 2002 versus 44% in 1945, (2) becoming denser, with 100–300 more stems per hectare and 4–7 m2/ha more basal area in 2002, and (3) having less balsam fir (Abies balsamea (L.) Mill.) — 31%–66% in 1945 versus 4%–38% in 2002 of basal area for stands with >30% softwood. Management reduced balsam fir to lower mortality associated with spruce budworm (Choristoneura fumiferana (Clem.)) outbreaks. The area of old (≥70 years old, with ≥10 trees/ha ≥30 cm DBH) and large (≥70 years old, with ≥5 trees/ha ≥45 cm DBH) spruce–fir and mixedwood wildlife habitats decreased from 112 600 and 55 200 ha in 1945 to 8200 and 7200 in 2002, respectively, while hardwood habitat increased from 22 800 to 71 500 ha. Management increased timber production while maintaining similar softwood species composition, but altered age structure and areas of mixedwood and hardwood forest types.",
+		"language": "en",
+		"page": "13",
+		"source": "Zotero",
+		"title": "Changes in landscape composition and stand structure from 1945–2002 on an industrial forest in New Brunswick, Canada",
+		"volume": "35",
+		"author": [
+			{
+				"family": "Etheridge",
+				"given": "David A"
+			},
+			{
+				"family": "MacLean",
+				"given": "David A"
+			},
+			{
+				"family": "Wagner",
+				"given": "Robert G"
+			},
+			{
+				"family": "Wilson",
+				"given": "Jeremy S"
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2005"
+				]
+			]
+		}
+	},
+	{
+		"id": "governmentofnewbrunswick2011",
+		"type": "webpage",
+		"abstract": "Watershed Protection",
+		"language": "en",
+		"note": "Last Modified: 2021-05-31T10:18:52.352-03:00",
+		"title": "Watershed Protection",
+		"URL": "https://www2.gnb.ca/content/gnb/en/departments/elg/environment/content/land_waste/content/reference_manual/watershed_protection.html",
+		"author": [
+			{
+				"family": "Government of New Brunswick",
+				"given": "Canada"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					8,
+					26
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2011",
+					3,
+					16
+				]
+			]
+		}
+	},
+	{
+		"id": "erdozain2021",
+		"type": "article-journal",
+		"abstract": "The effects of forest harvesting on headwaters are quite well understood, yet our understanding of whether impacts accumulate or dissipate downstream is limited. To address this, we investigated whether several biotic indicators changed from smaller to larger downstream sites (n = 6) within three basins that had intensive, extensive or minimal forest management in New Brunswick (Canada). Biofilm biomass and grazer abundance significantly increased from upstream to downstream, whereas organic matter decomposition and the autotrophic index of biofilms decreased. However, some spatial trends differed among basins and indicated either cumulative (macroinvertebrate abundance, predator density, sculpin GSI) or dissipative (autotrophic index, cotton decomposition) effects downstream, potentially explained by sediment and nutrient dynamics related to harvesting. No such among-basin differences were observed for leaf decomposition, biofilm biomass, macroinvertebrate richness or sculpin condition. Additionally, results suggest that some of the same biological impacts of forestry observed in small headwaters also occurred in larger systems. Although the intensive and extensive basins had lower macroinvertebrate diversity, there were no other signs of biological impairment, suggesting that, overall, current best management practices protect biological integrity downstream despite abiotic effects.",
+		"container-title": "Science of The Total Environment",
+		"DOI": "10.1016/j.scitotenv.2020.144043",
+		"ISSN": "0048-9697",
+		"journalAbbreviation": "Science of The Total Environment",
+		"language": "en",
+		"page": "144043",
+		"source": "ScienceDirect",
+		"title": "Forest management impacts on stream integrity at varying intensities and spatial scales: Do biological effects accumulate spatially?",
+		"title-short": "Forest management impacts on stream integrity at varying intensities and spatial scales",
+		"URL": "https://www.sciencedirect.com/science/article/pii/S0048969720375744",
+		"volume": "763",
+		"author": [
+			{
+				"family": "Erdozain",
+				"given": "Maitane"
+			},
+			{
+				"family": "Kidd",
+				"given": "Karen A."
+			},
+			{
+				"family": "Emilson",
+				"given": "Erik J. S."
+			},
+			{
+				"family": "Capell",
+				"given": "Scott S."
+			},
+			{
+				"family": "Luu",
+				"given": "Taylor"
+			},
+			{
+				"family": "Kreutzweiser",
+				"given": "David P."
+			},
+			{
+				"family": "Gray",
+				"given": "Michelle A."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					8,
+					26
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2021",
+					4,
+					1
+				]
+			]
+		}
+	},
+	{
+		"id": "erdozain2021a",
+		"type": "article-journal",
+		"abstract": "Though effects of forest harvesting on small streams are well documented, little is known about the cumulative effects in downstream systems. The hierarchical nature and longitudinal connectivity of river networks make them fundamentally cumulative, but lateral and vertical connectivity and instream processes can dissipate the downstream transport of water and materials. To elucidate such effects, we investigated how a suite of abiotic indicators changed from small streams to larger downstream sites (n = 6) within three basins ranging in forest management intensity (intensive, extensive, minimal) in New Brunswick (Canada) in the summer and fall of 2017 and 2018. Inorganic sediments, the inorganic/organic ratios and water temperatures significantly increased longitudinally, whereas nutrients and the fluorescence index of dissolved organic carbon (DOC; indication of terrestrial source) decreased. However, some longitudinal trends differed across basins and indicated downstream cumulative (inorganic sediments, the inorganic/organic ratios and to a lesser extent DOC concentration and humification) as well as dissipative (temperatures, nutrients, organic sediments) effects of forest management. Overall, we found that the effects previously reported for small streams with managed forests also occur at downstream sites and suggest investigating whether different management practices can be used within the extensive basin to reduce these cumulative effects.",
+		"container-title": "Science of The Total Environment",
+		"DOI": "10.1016/j.scitotenv.2020.141968",
+		"ISSN": "0048-9697",
+		"journalAbbreviation": "Science of The Total Environment",
+		"language": "en",
+		"page": "141968",
+		"source": "ScienceDirect",
+		"title": "Forest management impacts on stream integrity at varying intensities and spatial scales: Do abiotic effects accumulate spatially?",
+		"title-short": "Forest management impacts on stream integrity at varying intensities and spatial scales",
+		"URL": "https://www.sciencedirect.com/science/article/pii/S0048969720354978",
+		"volume": "753",
+		"author": [
+			{
+				"family": "Erdozain",
+				"given": "Maitane"
+			},
+			{
+				"family": "Kidd",
+				"given": "Karen A."
+			},
+			{
+				"family": "Emilson",
+				"given": "Erik J. S."
+			},
+			{
+				"family": "Capell",
+				"given": "Scott S."
+			},
+			{
+				"family": "Kreutzweiser",
+				"given": "David P."
+			},
+			{
+				"family": "Gray",
+				"given": "Michelle A."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					8,
+					26
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2021",
+					1,
+					20
+				]
+			]
+		}
+	},
+	{
+		"id": "klamer2004",
+		"type": "article-journal",
+		"abstract": "Eleven species of common fungi from compost were analysed for their content of ergosterol and phospholipid fatty acids (PLFAs) after growth on agar media. Mean content of ergosterol was 3.1 mg g−1dw of fungal mycelium (range 1–24 mg g−1dw). Total amount of PLFAs varied between 2.6 and 43.5 μmolg−1dw of fungi (mean 14.9μmolg−1dw). The most common PLFAs were 16:0, 18:2ω6,9 and 18:1ω9, comprising between 79 and 97mol% of the total amount of PLFAs. The PLFA 18:2ω6,9, suggested as a marker molecule for fungi, comprised between 36 and 61mol% of the total PLFAs in the Ascomycetes, between 45 and 57mol% in the Basidiomycetes and 12–22mol% in the Zygomycetes. There was a good correlation between the content of the two fungal marker molecules, ergosterol and the PLFA 18:2ω6,9, with a mean content of 1 mg ergosterol being equivalent to 2.1μmol of 18:2ω6,9. Based on results from the fungal isolates, conversion factors were calculated (5.4 mg ergosterolg−1 biomass C and 11.8μmol 18:2ω6,9 g−1 biomass C) and applied to compost samples in which both the ergosterol and the PLFA 18:2ω6,9 content had been measured. This resulted in similar estimates of fungal biomass C using the two marker molecules, but was three to five times higher than total microbial biomass C calculated using ATP content in the compost. This could partly be explained by the fact that both of the markers used for fungal biomass are cell membrane constituents. Thus, the ergosterol and the PLFA content were related to the hyphal diameter of the fungi, where fungi with thinner hyphae had higher ergosterol concentrations than fungi with thicker hyphae. This could also partly explain the large interspecific variation in content of the two marker molecules.",
+		"container-title": "Soil Biology and Biochemistry",
+		"DOI": "10.1016/j.soilbio.2003.08.019",
+		"ISSN": "0038-0717",
+		"issue": "1",
+		"journalAbbreviation": "Soil Biology and Biochemistry",
+		"language": "en",
+		"page": "57-65",
+		"source": "ScienceDirect",
+		"title": "Estimation of conversion factors for fungal biomass determination in compost using ergosterol and PLFA 18:2ω6,9",
+		"title-short": "Estimation of conversion factors for fungal biomass determination in compost using ergosterol and PLFA 18",
+		"URL": "https://www.sciencedirect.com/science/article/pii/S0038071703002931",
+		"volume": "36",
+		"author": [
+			{
+				"family": "Klamer",
+				"given": "Morten"
+			},
+			{
+				"family": "Bååth",
+				"given": "Erland"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					8,
+					30
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2004",
+					1,
+					1
+				]
+			]
+		}
+	},
+	{
+		"id": "frostegard1991",
+		"type": "article-journal",
+		"abstract": "The use of total lipid phosphate as a measure of biomass was evaluated in soils with different organic matter content. Lipids were extracted with a one-phase mixture of chloroform, methanol, and a buffer, and digested with either persulfate or perchloric acid to liberate lipid-bound phosphate. This procedure was evaluated by varying the extraction buffer, the extraction and digestion times, the amount of soil extracted, and the amount of lipid material digested. An extraction period of 2 h was sufficient to yield maximum lipid phosphate. Neither sonication, vigorous mixing, nor longer extraction periods increased the amount of lipid phosphate extracted. However, the amount of lipid phosphate recovered was dependent on the choice of buffer. When organic soil was used, citrate buffer in the extraction mixture gave higher amounts of lipid phosphate than acetate buffer, Tris, H2O or phosphate buffer. In a sandy loam with low organic matter content, citrate or phosphate buffers performed equally well. When 13 soils of different organic matter content were examined, the two digestion methods showed a good linear correlation (r2 = 0.991). Substrate-induced respiration (SIR) and ATP contents of the different soils correlated well with the total lipid phosphate. Based on these measurements, a conversion factor of 500 μmol lipid phosphate·g−1 biomass-C (perchloric acid digestion) was calculated.",
+		"container-title": "Journal of Microbiological Methods",
+		"DOI": "10.1016/0167-7012(91)90018-L",
+		"ISSN": "0167-7012",
+		"issue": "3",
+		"journalAbbreviation": "Journal of Microbiological Methods",
+		"language": "en",
+		"page": "151-163",
+		"source": "ScienceDirect",
+		"title": "Microbial biomass measured as total lipid phosphate in soils of different organic content",
+		"URL": "https://www.sciencedirect.com/science/article/pii/016770129190018L",
+		"volume": "14",
+		"author": [
+			{
+				"family": "Frostegård",
+				"given": "Å."
+			},
+			{
+				"family": "Tunlid",
+				"given": "A."
+			},
+			{
+				"family": "Bååth",
+				"given": "E."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					8,
+					30
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"1991",
+					12,
+					1
+				]
+			]
+		}
+	},
+	{
+		"id": "zotero-1579",
+		"type": "webpage",
+		"language": "en",
+		"note": "ISSN: 0038-0717\nDOI: 10.1016/0038-0717(93)90113-P",
+		"title": "PII: 0038-0717(93)90113-P | Elsevier Enhanced Reader",
+		"title-short": "PII",
+		"URL": "https://reader.elsevier.com/reader/sd/pii/003807179390113P?token=E0526AD04400AB90D3C1E67C493B30A6C6905350DAB0D9347C3F1F7EE277763D94552BF7738EE84E94C0B2FB34A21971&originRegion=us-east-1&originCreation=20220830170521",
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					8,
+					30
+				]
+			]
+		}
+	},
+	{
+		"id": "zotero-1582",
+		"type": "webpage",
+		"title": "Cross‐scale effects of spruce budworm outbreaks on boreal warblers in eastern Canada - Drever - 2018 - Ecology and Evolution - Wiley Online Library",
+		"URL": "https://onlinelibrary.wiley.com/doi/10.1002/ece3.4244",
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					8,
+					31
+				]
+			]
+		}
+	},
+	{
+		"id": "zotero-1584",
+		"type": "webpage",
+		"title": "Cross‐scale effects of spruce budworm outbreaks on boreal warblers in eastern Canada",
+		"URL": "https://onlinelibrary.wiley.com/doi/epdf/10.1002/ece3.4244",
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					8,
+					31
+				]
+			]
+		}
+	},
+	{
+		"id": "zotero-1585",
+		"type": "webpage",
+		"title": "Cross‐scale effects of spruce budworm outbreaks on boreal warblers in eastern Canada",
+		"URL": "https://onlinelibrary.wiley.com/doi/epdf/10.1002/ece3.4244",
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					8,
+					31
+				]
+			]
+		}
+	},
+	{
+		"id": "drever2018",
+		"type": "article-journal",
+		"container-title": "Ecology and Evolution",
+		"DOI": "10.1002/ece3.4244",
+		"ISSN": "2045-7758, 2045-7758",
+		"issue": "15",
+		"journalAbbreviation": "Ecol Evol",
+		"language": "en",
+		"page": "7334-7345",
+		"source": "DOI.org (Crossref)",
+		"title": "Cross‐scale effects of spruce budworm outbreaks on boreal warblers in eastern Canada",
+		"URL": "https://onlinelibrary.wiley.com/doi/10.1002/ece3.4244",
+		"volume": "8",
+		"author": [
+			{
+				"family": "Drever",
+				"given": "Mark C."
+			},
+			{
+				"family": "Smith",
+				"given": "Adam C."
+			},
+			{
+				"family": "Venier",
+				"given": "Lisa A."
+			},
+			{
+				"family": "Sleep",
+				"given": "Darren J.H."
+			},
+			{
+				"family": "MacLean",
+				"given": "David A."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					8,
+					31
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2018",
+					8
+				]
+			]
+		}
+	},
+	{
+		"id": "djemiel2022",
+		"type": "article-journal",
+		"abstract": "Deciphering microbiota functions is crucial to predict ecosystem sustainability in response to global change. High-throughput sequencing at the individual or community level has revolutionized our understanding of microbial ecology, leading to the big data era and improving our ability to link microbial diversity with microbial functions. Recent advances in bioinformatics have been key for developing functional prediction tools based on DNA metabarcoding data and using taxonomic gene information. This cheaper approach in every aspect serves as an alternative to shotgun sequencing. Although these tools are increasingly used by ecologists, an objective evaluation of their modularity, portability, and robustness is lacking. Here, we reviewed 100 scientific papers on functional inference and ecological trait assignment to rank the advantages, specificities, and drawbacks of these tools, using a scientific benchmarking. To date, inference tools have been mainly devoted to bacterial functions, and ecological trait assignment tools, to fungal functions. A major limitation is the lack of reference genomes—compared with the human microbiota—especially for complex ecosystems such as soils. Finally, we explore applied research prospects. These tools are promising and already provide relevant information on ecosystem functioning, but standardized indicators and corresponding repositories are still lacking that would enable them to be used for operational diagnosis.",
+		"container-title": "GigaScience",
+		"DOI": "10.1093/gigascience/giab090",
+		"ISSN": "2047-217X",
+		"journalAbbreviation": "GigaScience",
+		"page": "giab090",
+		"source": "Silverchair",
+		"title": "Inferring microbiota functions from taxonomic genes: a review",
+		"title-short": "Inferring microbiota functions from taxonomic genes",
+		"URL": "https://doi.org/10.1093/gigascience/giab090",
+		"volume": "11",
+		"author": [
+			{
+				"family": "Djemiel",
+				"given": "Christophe"
+			},
+			{
+				"family": "Maron",
+				"given": "Pierre-Alain"
+			},
+			{
+				"family": "Terrat",
+				"given": "Sébastien"
+			},
+			{
+				"family": "Dequiedt",
+				"given": "Samuel"
+			},
+			{
+				"family": "Cottin",
+				"given": "Aurélien"
+			},
+			{
+				"family": "Ranjard",
+				"given": "Lionel"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					9,
+					2
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2022",
+					1,
+					1
+				]
+			]
+		}
+	},
+	{
+		"id": "zotero-1620",
+		"type": "webpage",
+		"title": "Generalizing hierarchical and variation partitioning in multiple regression and canonical analyses using the rdacca.hp R package - Lai - 2022 - Methods in Ecology and Evolution - Wiley Online Library",
+		"URL": "https://besjournals.onlinelibrary.wiley.com/doi/ftr/10.1111/2041-210X.13800",
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					9,
+					7
+				]
+			]
+		}
+	},
+	{
+		"id": "lai2022",
+		"type": "article-journal",
+		"container-title": "Methods in Ecology and Evolution",
+		"DOI": "10.111/2041-210X.13800",
+		"ISSN": "2041-210X",
+		"journalAbbreviation": "Methods Ecol Evol",
+		"language": "en",
+		"page": "782-788",
+		"source": "besjournals.onlinelibrary.wiley.com",
+		"title": "Generalizing hierarchical and variation partitioning in multiple regression and canonical analyses using the rdacca.hp R package",
+		"URL": "https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.13800",
+		"volume": "13",
+		"author": [
+			{
+				"family": "Lai",
+				"given": "Jiangshan"
+			},
+			{
+				"family": "Zhou",
+				"given": "Yi"
+			},
+			{
+				"family": "Zhang",
+				"given": "Jinlong"
+			},
+			{
+				"family": "Peres-Neto",
+				"given": "Pedro"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					9,
+					7
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2022",
+					1,
+					12
+				]
+			]
+		}
+	},
+	{
+		"id": "strong1983",
+		"type": "article-journal",
+		"container-title": "Canadian Journal of Forest Research",
+		"DOI": "10.1139/x83-084",
+		"ISSN": "0045-5067",
+		"issue": "4",
+		"journalAbbreviation": "Can. J. For. Res.",
+		"note": "publisher: NRC Research Press",
+		"page": "577-588",
+		"source": "cdnsciencepub.com (Atypon)",
+		"title": "Rooting depths and successional development of selected boreal forest communities",
+		"URL": "https://cdnsciencepub.com/doi/abs/10.1139/x83-084",
+		"volume": "13",
+		"author": [
+			{
+				"family": "Strong",
+				"given": "W. L"
+			},
+			{
+				"family": "Roi",
+				"given": "G. H. La"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					9,
+					9
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"1983",
+					8
+				]
+			]
+		}
+	},
+	{
+		"id": "lai2022a",
+		"type": "article-journal",
+		"container-title": "Methods in Ecology and Evolution",
+		"DOI": "10.1111/2041-210X.13800",
+		"ISSN": "2041-210X, 2041-210X",
+		"issue": "4",
+		"journalAbbreviation": "Methods Ecol Evol",
+		"language": "en",
+		"page": "782-788",
+		"source": "DOI.org (Crossref)",
+		"title": "Generalizing hierarchical and variation partitioning in multiple regression and canonical analyses using the rdacca.hp R package",
+		"URL": "https://onlinelibrary.wiley.com/doi/10.1111/2041-210X.13800",
+		"volume": "13",
+		"author": [
+			{
+				"family": "Lai",
+				"given": "Jiangshan"
+			},
+			{
+				"family": "Zou",
+				"given": "Yi"
+			},
+			{
+				"family": "Zhang",
+				"given": "Jinlong"
+			},
+			{
+				"family": "Peres‐Neto",
+				"given": "Pedro R."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					9,
+					13
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2022",
+					4
+				]
+			]
+		}
+	},
+	{
+		"id": "fleming2021b",
+		"type": "article-journal",
+		"abstract": "Impacts of harvest intensity and soil disturbance on site productivity are likely to vary with stand development stage and interactive processes related to ecosystem function. On upland boreal sites, stand productivity may initially be constrained by microclimatic conditions. However, increasing nutrient demands and overstory light interception associated with canopy development may place progressively greater emphasis on nutrient availability, profile water storage capacity and asymmetric competition. We illustrate these effects using 20-yr post-harvest data from fourteen jack pine (Pinus banksiana Lamb.) and black spruce (Picea mariana (Mill.) BSP) Long-term Soil Productivity (LTSP) installations in northern Ontario. Initial growth and ten-year survival were as great or greater without forest floors (NFF), but by year 15 dominant height increments were usually greater with intact forest floors (FF). Growing season frost occurrence and high vapor pressure deficits occurred more frequently with FF than NFF treatments during the initial stand establishment phase. Similarly, mean growing season soil temperatures were 2-5˚C warmer with NFF during this phase, with stand Leaf Area Index (LAI) values < 0.5. During the following Accelerated Growth phase, treatment differences in microclimate dissipated as LAI increased. Foliar N concentrations and N:P ratios, and soil net N mineralization were usually greater from an early age with FF, and often declined as canopy closure approached. Likewise, modelled site-level constraints related to soil water availability increased with stand development, peaking at LAI values associated with the stem exclusion stage. Placing post-harvest response (i.e., impacts of harvest intensity) in the context of relationships among stand structural development, changes in microclimate, and resource supply and demand should provide greater insights into longer-term effects of establishment practices.",
+		"container-title": "Forest Ecology and Management",
+		"DOI": "10.1016/j.foreco.2021.119518",
+		"ISSN": "0378-1127",
+		"journalAbbreviation": "Forest Ecology and Management",
+		"language": "en",
+		"page": "119518",
+		"source": "ScienceDirect",
+		"title": "Assessing temporal response to biomass removal: A framework for investigating evolving constraints on boreal stand development",
+		"title-short": "Assessing temporal response to biomass removal",
+		"URL": "https://www.sciencedirect.com/science/article/pii/S0378112721006083",
+		"volume": "497",
+		"author": [
+			{
+				"family": "Fleming",
+				"given": "Robert L."
+			},
+			{
+				"family": "Morris",
+				"given": "Dave M."
+			},
+			{
+				"family": "Hazlett",
+				"given": "Paul W."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					9,
+					13
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2021",
+					10,
+					1
+				]
+			]
+		}
+	},
+	{
+		"id": "orlander1996",
+		"type": "article-journal",
+		"abstract": "Effects of soil scarification on long-term site productivity up to 70 years, and soil content of carbon (C), nitrogen (N), and macro nutrients, were studied in five site preparation experiments, established between 1922 and 1965 on Scots pine (Pinus sylvestris L.) heathland, on poor sandy sediments. The soil was inverted by spade, hoed, harrowed or ploughed. All scarification methods disturbed close to 100% of the soil surface, the most radical treatments to a depth of approximately 20 cm. Some of the experiments had an inadequate original design. However, by comparing the experiments some general characteristics were found. Site productivity measured as top height was higher on scarified plots than on control plots (P < 0.05), indicating that long-term site productivity was improved by scarification. Total C and N contents in soil were 6–41% and 16–30%, respectively, lower on scarified plots compared with control plots. On scarified plots, all mineral elements analysed showed equal or lower contents in the organic layer, including the field layer, ground layer, organic debris, and humus. Total contents of P, Mg and S in mineral soil samples from 60–100 cm depth were higher on scarified plots than in corresponding samples from control plots. On the two burned plots analysed, total C content in the soil was 2 and 31% lower than on controls, and total N content 10% higher and 63% lower. The results suggest that the risk for decreased long-term productivity on poor Scots pine sites caused by mechanical scarification methods used today are negligible.",
+		"container-title": "Forest Ecology and Management",
+		"DOI": "10.1016/S0378-1127(96)03797-8",
+		"ISSN": "0378-1127",
+		"issue": "1",
+		"journalAbbreviation": "Forest Ecology and Management",
+		"language": "en",
+		"page": "27-37",
+		"source": "ScienceDirect",
+		"title": "Long-term effects of site preparation on growth in Scots pine",
+		"URL": "https://www.sciencedirect.com/science/article/pii/S0378112796037978",
+		"volume": "86",
+		"author": [
+			{
+				"family": "Örlander",
+				"given": "Göran"
+			},
+			{
+				"family": "Egnell",
+				"given": "Gustaf"
+			},
+			{
+				"family": "Albrektson",
+				"given": "Arne"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					9,
+					13
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"1996",
+					10,
+					15
+				]
+			]
+		}
+	},
+	{
+		"id": "kielstra2021",
+		"type": "software",
+		"abstract": "Environmental scientists often want to understand how upland features like forest cover affect receiving waterbodies (e.g., water quality). Upland areas are characterized by deriving various landscape attributes (e.g., % forest cover in catchment). However, this approach often assumes that the influence of upland features on receiving waterbodies is independent of their proximity to the waterbodies. This may not adequately describe important spatial patterns within the upland area, for example, if there was higher forest cover near the waterbody and lower forest cover farther away. The <em>R</em> statistical software package <strong><em>hydroweight</em></strong> helps to account for these patterns. <strong><em>hydroweight</em></strong> calculates landscape attributes based on distances to waterbodies — areas nearby have more influence than those farther away (i.e., inverse distance-weighting). We implement various scenarios described by Peterson <em>et al.</em> (2011) that include different types of straight-line and flow-path distances to waterbodies. We add to the literature of current implementations (<em>IDW-Plus</em> in <em>ArcGIS</em> software and <em>rdwplus</em> in <em>R</em> statistical software through <em>GRASS GIS</em> spatial software). However, <strong><em>hydroweight</em></strong> provides a set of simple and flexible functions to accommodate a wider set of scenarios and statistics (e.g., numerical and categorical raster and polygon inputs) in <em>R</em> using <em>WhiteboxTools</em> spatial software. Please use hydroweight Github for most up-to-date version. Citations Lindsay, J.B. (2016). Whitebox GAT: A case study in geomorphometric analysis. Computers &amp; Geosciences, 95: 75-84. https://doi.org/10.1016/j.cageo.2016.07.003 Peterson, E. E., Sheldon, F., Darnell, R., Bunn, S. E., &amp; Harch, B. D. (2011). A comparison of spatially explicit landscape representation methods and their relationship to stream condition. Freshwater Biology, 56(3), 590–610. https://doi.org/10.1111/j.1365-2427.2010.02507.x Peterson, E. E. &amp; Pearse, A. R. (2017). IDW‐Plus: An ArcGIS Toolset for calculating spatially explicit watershed attributes for survey sites. Journal of the American Water Resources Association, 53(5): 1241–1249. https://doi.org/10.1111/1752-1688.12558 Pearse A., Heron G., &amp; Peterson E. (2019). rdwplus: An Implementation of IDW-PLUS. R package version 0.1.0. https://CRAN.R-project.org/package=rdwplus Wu, Q. (2020). whitebox: ‘WhiteboxTools’ R Frontend. R package version 1.4.0. https://github.com/giswqs/whiteboxR",
+		"license": "MIT License, Open Access",
+		"note": "language: en\nDOI: 10.5281/ZENODO.4728558",
+		"publisher": "Zenodo",
+		"source": "DOI.org (Datacite)",
+		"title": "hydroweight: Inverse distance-weighted rasters and landscape attributes",
+		"title-short": "hydroweight",
+		"URL": "https://zenodo.org/record/4728558",
+		"version": "v1.0.0",
+		"author": [
+			{
+				"family": "Kielstra",
+				"given": "Brian W"
+			},
+			{
+				"family": "Mackereth",
+				"given": "Robert W"
+			},
+			{
+				"family": "Melles",
+				"given": "Stephanie J"
+			},
+			{
+				"family": "Emilson",
+				"given": "Erik JS"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					9,
+					16
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2021",
+					4,
+					29
+				]
+			]
+		}
+	},
+	{
+		"id": "picchio2021",
+		"type": "article-journal",
+		"container-title": "Current Forestry Reports",
+		"DOI": "10.1007/s40725-021-00146-7",
+		"ISSN": "2198-6436",
+		"issue": "4",
+		"journalAbbreviation": "Curr Forestry Rep",
+		"language": "en",
+		"page": "214-229",
+		"source": "DOI.org (Crossref)",
+		"title": "Effects of Forest Harvesting on Water and Sediment Yields: a Review Toward Better Mitigation and Rehabilitation Strategies",
+		"title-short": "Effects of Forest Harvesting on Water and Sediment Yields",
+		"URL": "https://link.springer.com/10.1007/s40725-021-00146-7",
+		"volume": "7",
+		"author": [
+			{
+				"family": "Picchio",
+				"given": "Rodolfo"
+			},
+			{
+				"family": "Jourgholami",
+				"given": "Meghdad"
+			},
+			{
+				"family": "Zenner",
+				"given": "Eric K."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					9,
+					16
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2021",
+					12
+				]
+			]
+		}
+	},
+	{
+		"id": "marx2017",
+		"type": "article-journal",
+		"container-title": "Reviews of Geophysics",
+		"DOI": "10.1002/2016RG000547",
+		"ISSN": "87551209",
+		"issue": "2",
+		"journalAbbreviation": "Rev. Geophys.",
+		"language": "en",
+		"page": "560-585",
+		"source": "DOI.org (Crossref)",
+		"title": "A review of CO <sub>2</sub> and associated carbon dynamics in headwater streams: A global perspective: Carbon Dioxide in Headwater Streams",
+		"title-short": "A review of CO <sub>2</sub> and associated carbon dynamics in headwater streams",
+		"URL": "http://doi.wiley.com/10.1002/2016RG000547",
+		"volume": "55",
+		"author": [
+			{
+				"family": "Marx",
+				"given": "A."
+			},
+			{
+				"family": "Dusek",
+				"given": "J."
+			},
+			{
+				"family": "Jankovec",
+				"given": "J."
+			},
+			{
+				"family": "Sanda",
+				"given": "M."
+			},
+			{
+				"family": "Vogel",
+				"given": "T."
+			},
+			{
+				"family": "Geldern",
+				"given": "R.",
+				"non-dropping-particle": "van"
+			},
+			{
+				"family": "Hartmann",
+				"given": "J."
+			},
+			{
+				"family": "Barth",
+				"given": "J. A. C."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					9,
+					16
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2017",
+					6
+				]
+			]
+		}
+	},
+	{
+		"id": "downing2012",
+		"type": "article-journal",
+		"container-title": "Inland Waters",
+		"DOI": "10.5268/IW-2.4.502",
+		"ISSN": "20442041, 2044205X",
+		"issue": "4",
+		"journalAbbreviation": "IW",
+		"page": "229-236",
+		"source": "DOI.org (Crossref)",
+		"title": "Global abundance and size distribution of streams and rivers",
+		"URL": "http://www.tandfonline.com/doi/full/10.5268/IW-2.4.502",
+		"volume": "2",
+		"author": [
+			{
+				"family": "Downing",
+				"given": "John"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					9,
+					16
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2012",
+					10,
+					1
+				]
+			]
+		}
+	},
+	{
+		"id": "hill2014",
+		"type": "article-journal",
+		"container-title": "Ecosystem Services",
+		"DOI": "10.1016/j.ecoser.2013.12.004",
+		"ISSN": "22120416",
+		"journalAbbreviation": "Ecosystem Services",
+		"language": "en",
+		"page": "106-115",
+		"source": "DOI.org (Crossref)",
+		"title": "A synoptic survey of ecosystem services from headwater catchments in the United States",
+		"URL": "https://linkinghub.elsevier.com/retrieve/pii/S2212041613001010",
+		"volume": "7",
+		"author": [
+			{
+				"family": "Hill",
+				"given": "Brian H."
+			},
+			{
+				"family": "Kolka",
+				"given": "Randall K."
+			},
+			{
+				"family": "McCormick",
+				"given": "Frank H."
+			},
+			{
+				"family": "Starry",
+				"given": "Matthew A."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					9,
+					16
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2014",
+					3
+				]
+			]
+		}
+	},
+	{
+		"id": "du2016",
+		"type": "article-journal",
+		"container-title": "Journal of Hydrology",
+		"DOI": "10.1016/j.jhydrol.2016.01.039",
+		"ISSN": "00221694",
+		"journalAbbreviation": "Journal of Hydrology",
+		"language": "en",
+		"page": "648-658",
+		"source": "DOI.org (Crossref)",
+		"title": "Interflow dynamics on a low relief forested hillslope: Lots of fill, little spill",
+		"title-short": "Interflow dynamics on a low relief forested hillslope",
+		"URL": "https://linkinghub.elsevier.com/retrieve/pii/S0022169416000573",
+		"volume": "534",
+		"author": [
+			{
+				"family": "Du",
+				"given": "Enhao"
+			},
+			{
+				"family": "Rhett Jackson",
+				"given": "C."
+			},
+			{
+				"family": "Klaus",
+				"given": "Julian"
+			},
+			{
+				"family": "McDonnell",
+				"given": "Jeffrey J."
+			},
+			{
+				"family": "Griffiths",
+				"given": "Natalie A."
+			},
+			{
+				"family": "Williamson",
+				"given": "Margaret F."
+			},
+			{
+				"family": "Greco",
+				"given": "James L."
+			},
+			{
+				"family": "Bitew",
+				"given": "Menberu"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					9,
+					16
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2016",
+					3
+				]
+			]
+		}
+	},
+	{
+		"id": "harmon2004",
+		"type": "chapter",
+		"container-title": "Advances in Ecological Research",
+		"ISBN": "978-0-12-013934-7",
+		"language": "en",
+		"note": "DOI: 10.1016/S0065-2504(03)34002-4",
+		"page": "59-234",
+		"publisher": "Elsevier",
+		"source": "DOI.org (Crossref)",
+		"title": "Ecology of Coarse Woody Debris in Temperate Ecosystems",
+		"URL": "https://linkinghub.elsevier.com/retrieve/pii/S0065250403340024",
+		"volume": "34",
+		"author": [
+			{
+				"family": "Harmon",
+				"given": "M.E."
+			},
+			{
+				"family": "Franklin",
+				"given": "J.F."
+			},
+			{
+				"family": "Swanson",
+				"given": "F.J."
+			},
+			{
+				"family": "Sollins",
+				"given": "P."
+			},
+			{
+				"family": "Gregory",
+				"given": "S.V."
+			},
+			{
+				"family": "Lattin",
+				"given": "J.D."
+			},
+			{
+				"family": "Anderson",
+				"given": "N.H."
+			},
+			{
+				"family": "Cline",
+				"given": "S.P."
+			},
+			{
+				"family": "Aumen",
+				"given": "N.G."
+			},
+			{
+				"family": "Sedell",
+				"given": "J.R."
+			},
+			{
+				"family": "Lienkaemper",
+				"given": "G.W."
+			},
+			{
+				"family": "Cromack",
+				"given": "K."
+			},
+			{
+				"family": "Cummins",
+				"given": "K.W."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					9,
+					23
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2004"
+				]
+			]
+		}
+	},
+	{
+		"id": "shorohova2001",
+		"type": "article-journal",
+		"abstract": "The store and dynamics of coarse woody debris (CWD) in boreal virgin spruce forests were studied in a series of permanent sample plots. The studied stands were of different age structure types (all-aged, uneven-aged and even-aged), in different dynamic stages (with increasing growing stock, stable growing stock and decreasing growing stock) and of different forest types (Vaccinium myrtillus, Polytrichum-Myrtillus, and Sphagnum-Myrtillus). The total volume of visible CWD ranged from 31.8 to 362.2 m³ $\\text{ha}^{-1}$. CWD carbon stores ranged from 3.3 to 51.0 Mg C $\\text{ha}^{-1}$. The CWD stores and CWD percentage of the total wood volume depended mainly on the stand dynamic stage and the stand age structure. The total mortality over a 16-yr period ranged from 7.8 to 52.1 m³ $\\text{ha}^{-1}$. The average annual spruce mortality was 0.2-0.8 Mg C $\\text{ha}^{-1}$. The average spruce decay rate was 0.016 $\\text{yr}^{-1}$.",
+		"container-title": "Ecological Bulletins",
+		"ISSN": "0346-6868",
+		"issue": "49",
+		"note": "publisher: Oikos Editorial Office",
+		"page": "129-135",
+		"source": "JSTOR",
+		"title": "Coarse Woody Debris Dynamics and Stores in a Boreal Virgin Spruce Forest",
+		"URL": "https://www.jstor.org/stable/20113270",
+		"author": [
+			{
+				"family": "Shorohova",
+				"given": "Ekaterine V."
+			},
+			{
+				"family": "Shorohov",
+				"given": "Alexey A."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					9,
+					23
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2001"
+				]
+			]
+		}
+	},
+	{
+		"id": "krankina1999",
+		"type": "article-journal",
+		"abstract": "Concentrations of 14 chemical elements (Al, B, C, Ca, Cu, Fe, K, N, Mg, Mn, Na, P, S, Zn) were measured in wood and bark of 126 sample trees representing different stages of decomposition in three major tree species of northwestern Russia: Scots pine (Pinus sylvestris L.), Norway spruce (Picea abies (L.) Karst.), and birch (Betula pendula Roth.). Changes in nutrient stores in decay classes were calculated with adjustments for the loss of density and volume by dead trees. Although the concentration of many nutrients increased relative to the estimated initial level, the total amount of most nutrients contained in dead trees declined with decay. For example, nitrogen stores declined from decay class 1 to 4 by 45% for birch, 39% for spruce, and by 60% for pine. The rate and pattern of these losses varied by nutrient and by species and were primarily related to the patterns of bark loss. Pine lost bark early in the process of decomposition and released many essential nutrients (i.e., N, P, Ca) at the early stages, while birch retained most of its bark throughout the decomposition process and lost nutrients more gradually. The temporal dynamics of N, Ca, and K loss in pine were examined using a chronosequence approach, and the results were used in stand-level modeling. The analysis of modeling results suggests that, in northwestern Russia, post-disturbance release of nutrients from woody detritus can potentially supply a large proportion of the net N, Ca, and K accumulation in live forest biomass.",
+		"language": "en",
+		"page": "13",
+		"source": "Zotero",
+		"title": "Nutrient stores and dynamics of woody detritus in a boreal forest: modeling potential implications at the stand level",
+		"volume": "29",
+		"author": [
+			{
+				"family": "Krankina",
+				"given": "Olga N"
+			},
+			{
+				"family": "Harmon",
+				"given": "Mark E"
+			},
+			{
+				"family": "Griazkin",
+				"given": "Anatolii V"
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"1999"
+				]
+			]
+		}
+	},
+	{
+		"id": "harmon1986",
+		"type": "article-journal",
+		"language": "en",
+		"page": "87",
+		"source": "Zotero",
+		"title": "Ecology of Coarse Woody Debris in Temperate Ecosystems",
+		"author": [
+			{
+				"family": "Harmon",
+				"given": "M E"
+			},
+			{
+				"family": "Anderson",
+				"given": "N H"
+			},
+			{
+				"family": "Franklin",
+				"given": "J F"
+			},
+			{
+				"family": "Cline",
+				"given": "S P"
+			},
+			{
+				"family": "Swanson",
+				"given": "F J"
+			},
+			{
+				"family": "Aumen",
+				"given": "N G"
+			},
+			{
+				"family": "Sollins",
+				"given": "P"
+			},
+			{
+				"family": "Gregory",
+				"given": "S V"
+			},
+			{
+				"family": "Sedell",
+				"given": "R"
+			},
+			{
+				"family": "Lienkaemper",
+				"given": "G W"
+			},
+			{
+				"family": "Lattin",
+				"given": "J D"
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"1986"
+				]
+			]
+		}
+	},
+	{
+		"id": "merganiov2012",
+		"type": "chapter",
+		"container-title": "Forest Ecosystems - More than Just Trees",
+		"ISBN": "978-953-51-0202-1",
+		"language": "en",
+		"note": "DOI: 10.5772/31003",
+		"publisher": "InTech",
+		"source": "DOI.org (Crossref)",
+		"title": "Deadwood in Forest Ecosystems",
+		"URL": "http://www.intechopen.com/books/forest-ecosystems-more-than-just-trees/deadwood",
+		"editor": [
+			{
+				"family": "Blanco",
+				"given": "Juan A."
+			}
+		],
+		"author": [
+			{
+				"family": "Merganiov",
+				"given": "Katarna"
+			},
+			{
+				"family": "Mergani",
+				"given": "Jn"
+			},
+			{
+				"family": "Svoboda",
+				"given": "Miroslav"
+			},
+			{
+				"family": "Bae",
+				"given": "Radek"
+			},
+			{
+				"family": "ebe",
+				"given": "Vladimr"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					9,
+					23
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2012",
+					3,
+					7
+				]
+			]
+		}
+	},
+	{
+		"id": "bunnell2010",
+		"type": "article-journal",
+		"abstract": "Many species require or use down wood (fine and coarse woody debris) as habitat. Where forestry has been practiced for several rotations large proportions of these species are considered threatened. Key attributes determining the suitability of down wood as habitat are decay stage, tree species, and size, specifically diameter. Both quantity and distribution of suitable down wood influence species’ presence and abundance. We present a simple framework describing use of down wood based on broad natural history features, derive predictions from the framework, then test these by review and summary of literature. Our focus is terrestrial vertebrates, particularly in the Pacific Northwest. Species other than vertebrates are addressed to ensure that metrics derived for vertebrates also are appropriate for other organisms. Basic metrics are the same, but appropriate values span a larger range among nonvertebrates. Current evidence suggests that the “extinction debt” apparent for nonvertebrates is approaching for vertebrates. Predictions derived from underlying natural history hold when tested. From that basis we derive broad guidelines for forest planning and practice, and suggest how regional target values can be derived.",
+		"container-title": "Environmental Reviews",
+		"DOI": "10.1139/A10-019",
+		"ISSN": "1181-8700, 1208-6053",
+		"issue": "NA",
+		"journalAbbreviation": "Environ. Rev.",
+		"language": "en",
+		"page": "397-421",
+		"source": "DOI.org (Crossref)",
+		"title": "Down wood and biodiversity — implications to forest practices",
+		"URL": "http://www.nrcresearchpress.com/doi/10.1139/A10-019",
+		"volume": "18",
+		"author": [
+			{
+				"family": "Bunnell",
+				"given": "Fred L."
+			},
+			{
+				"family": "Houde",
+				"given": "Isabelle"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					9,
+					23
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2010",
+					12
+				]
+			]
+		}
+	},
+	{
+		"id": "harmon1991",
+		"type": "article-journal",
+		"container-title": "BioScience",
+		"DOI": "10.2307/1311697",
+		"ISSN": "00063568, 15253244",
+		"issue": "9",
+		"journalAbbreviation": "BioScience",
+		"page": "604-610",
+		"source": "DOI.org (Crossref)",
+		"title": "Coarse Woody Debris Dynamics in Two Old-Growth Ecosystems",
+		"URL": "https://academic.oup.com/bioscience/article-lookup/doi/10.2307/1311697",
+		"volume": "41",
+		"author": [
+			{
+				"family": "Harmon",
+				"given": "Mark E."
+			},
+			{
+				"family": "Hua",
+				"given": "Chen"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					9,
+					23
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"1991",
+					10
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/vDpPFAGx/items/YKFJAN7M",
+		"type": "document",
+		"title": "nb_regulation_91-191_general.pdf"
+	},
+	{
+		"id": "canadiancentreforoccupationalhealthandsafetyccohs",
+		"type": "webpage",
+		"container-title": "Work Safe New Brunswick",
+		"language": "English",
+		"title": "ohsguide.worksafenb.ca",
+		"title-short": "Logging and Silviculture",
+		"URL": "https://ohsguide.worksafenb.ca/topic/logging.html#legislation",
+		"author": [
+			{
+				"family": "Canadian Centre for Occupational Health and Safety (CCOHS)",
+				"given": ""
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					9,
+					26
+				]
+			]
+		}
+	},
+	{
+		"id": "visser2015",
+		"type": "article-journal",
+		"abstract": "Timber harvesting on steep terrain has always been, and will remain, a challenge in terms of economic viability, safety and environmental performance. For almost a century motor-manual felling coupled with cable yarding has been the most appropriate harvesting system, but new technologies and innovations have led to machines and systems being developed that are modernising the way we operate on steep terrain. Specifically, they provide the opportunity for the mechanisation of operations with proven improvements in both safety and cost-effectiveness. The additional development of cable-assist machines is potentially making a real step-change by expanding the operating range onto very steep slopes. This paper reviews these developments, the main engineering considerations of how cable-assist works, as well as the advances being made in terms of how such equipment is integrated into harvesting systems. The review also includes analyses of the operating guidelines that are either in place or being developed to help implement the systems.",
+		"container-title": "Croat. j. for. eng.",
+		"language": "en",
+		"page": "11",
+		"source": "Zotero",
+		"title": "Expanding Ground-based Harvesting onto Steep Terrain: A Review",
+		"author": [
+			{
+				"family": "Visser",
+				"given": "Rien"
+			},
+			{
+				"family": "Stampfer",
+				"given": "Karl"
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2015"
+				]
+			]
+		}
+	},
+	{
+		"id": "governmentofnewbrunswick2014",
+		"type": "document",
+		"title": "Forest Management Manual for New Brunswick Crown Lands Results-Based Forestry Option",
+		"title-short": "Forest Management Manual for New Brunswick Crown Lands",
+		"URL": "https://www2.gnb.ca/content/dam/gnb/Departments/nr-rn/pdf/en/ForestsCrownLands/ScheduleE_FMM_En.pdf",
+		"author": [
+			{
+				"family": "Government of New Brunswick",
+				"given": "Canada"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					9,
+					27
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2014",
+					7,
+					31
+				]
+			]
+		}
+	},
+	{
+		"id": "holloway2008",
+		"type": "article-journal",
+		"abstract": "A condensed history of forestry and forest management in New Brunswick’s Crown Forest during the 20th century is presented. It begins with a description of the advanced state of forest management in New Brunswick today. The description provides a sharp contrast to the subsequent detailing of forestry operations, and lack of forest management, that characterized the early decades of the 20th century. A gradual improvement followed, as professional forestry education and technology combined to elevate forestry practice. Next examined is forestry practice and its change across several distinct periods: the inter-wars period (1914–1938), WWII and aftermath (1939–1957), two decades of profound change (1958–1980), and the modern era (1981–2005). It is concluded that a few key events and individuals explain the gradual evolution of forestry in New Brunswick from controlled exploitation to sustainable management. Also suggested is that the Faculty of Forestry and Environmental Management at the University of New Brunswick must continue to attract the brightest and best to its forestry programmes, if New Brunswick is to maintain its leadership position in management of public forests.",
+		"container-title": "THE FORESTRY CHRONICLE",
+		"issue": "4",
+		"language": "en",
+		"page": "11",
+		"source": "Zotero",
+		"title": "Management of New Brunswick's Crown forest during the twentieth century",
+		"volume": "84",
+		"author": [
+			{
+				"family": "Holloway",
+				"given": "Nancy"
+			},
+			{
+				"family": "Jordan",
+				"given": "Glen A"
+			},
+			{
+				"family": "Smith",
+				"given": "Burtt M"
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2008"
+				]
+			]
+		}
+	},
+	{
+		"id": "naturalresources2012",
+		"type": "report",
+		"genre": "Private Forest Task Report",
+		"number": "CNB 8542_E-C",
+		"publisher": "Province of New Brunswick",
+		"source": "978-1-55471-954-9",
+		"title": "New Brunswick's Private Woodlot Forests, Future Timber Supply Potential and Forest Dynamics",
+		"URL": "https://www2.gnb.ca/content/dam/gnb/Departments/nr-rn/pdf/en/ForestsCrownLands/FutureTimberSupplyPotentialAndForestDynamicsAppendixC-2012.pdf",
+		"author": [
+			{
+				"family": "Natural Resources",
+				"given": "Canada Government of New Brunswick"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					9,
+					27
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2012",
+					2
+				]
+			]
+		}
+	},
+	{
+		"id": "webster2021a",
+		"type": "article-journal",
+		"abstract": "The Turkey Lakes Watershed (TLW) study is a federal, interdepartmental study established in 1979 to investigate the effects of acid rain on terrestrial and aquatic ecosystems. The 10.5 km2 watershed, located in the Eastern Temperate Mixed Forest on the Canadian Shield, has been the site of multidisciplinary studies on biogeochemical and ecological processes conducted across plot to catchment scales. The whole-ecosystem investigative approach was adopted from the outset and has allowed research to evolve from its original (and continuing) acidification focus to include investigations on the effects of climate change, forest harvesting and other forest ecosystem perturbations. The extensive scientific and support infrastructure allows for collection of a comprehensive data record essential for understanding long-term environmental trends. Data include atmospheric deposition, meteorology, stream hydrology and chemistry, soil, pore and ground water properties, understory and overstory vegetation, lake and outflow physical and chemical properties, and aquatic macroinvertebrate and fish community composition and abundance. These data have contributed to over 400 published research papers and graduate theses. The watershed has also figured prominently in many continent-wide comparisons advancing fundamental watershed theory. The knowledge gained at TLW has influenced pollutant emission and natural resource management policies provincially, nationally and internationally.",
+		"container-title": "Hydrological Processes",
+		"DOI": "10.1002/hyp.14109",
+		"ISSN": "1099-1085",
+		"issue": "4",
+		"language": "en",
+		"note": "_eprint: https://onlinelibrary.wiley.com/doi/pdf/10.1002/hyp.14109",
+		"page": "e14109",
+		"source": "Wiley Online Library",
+		"title": "Turkey Lakes Watershed, Ontario, Canada: 40 years of interdisciplinary whole-ecosystem research",
+		"title-short": "Turkey Lakes Watershed, Ontario, Canada",
+		"URL": "https://onlinelibrary.wiley.com/doi/abs/10.1002/hyp.14109",
+		"volume": "35",
+		"author": [
+			{
+				"family": "Webster",
+				"given": "Kara L."
+			},
+			{
+				"family": "Leach",
+				"given": "Jason A."
+			},
+			{
+				"family": "Hazlett",
+				"given": "Paul W."
+			},
+			{
+				"family": "Fleming",
+				"given": "Robert L."
+			},
+			{
+				"family": "Emilson",
+				"given": "Erik J. S."
+			},
+			{
+				"family": "Houle",
+				"given": "Daniel"
+			},
+			{
+				"family": "Chan",
+				"given": "Kara H. Y."
+			},
+			{
+				"family": "Norouzian",
+				"given": "Fariborz"
+			},
+			{
+				"family": "Cole",
+				"given": "Amanda S."
+			},
+			{
+				"family": "O'Brien",
+				"given": "Jason M."
+			},
+			{
+				"family": "Smokorowski",
+				"given": "Karen E."
+			},
+			{
+				"family": "Nelson",
+				"given": "Stephanie A."
+			},
+			{
+				"family": "Yanni",
+				"given": "Shelagh D."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					9,
+					27
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2021"
+				]
+			]
+		}
+	},
+	{
+		"id": "bennett2004",
+		"type": "article-journal",
+		"abstract": "1 Timber harvesting exemplifies many aspects of experimental manipulation in applied ecology. Evaluation of the research approaches used to assess ecological effects of harvesting thus has relevance to a diverse range of ecological questions that address large-scale and human impacts on the environment. 2 We measured the frequency of approaches, and also design and statistical issues, in assessments of harvesting effects on three response variables (tree regeneration, vertebrates and water) in two major native forests of south-east Australia. Our evaluation was based on 124 documents that contain unique, field-based research and that represent the complete written record (published and unpublished) of relevant research prior to mid-2002. 3 The dominant approach was contrasts between manipulated stands, nearly always involving mature and old-growth stands as the reference or control. In studies of tree regeneration, focus on wood-production objectives was apparent in the relatively frequent use of stocking standards, and in the use of between- and within-stand contrasts without a control condition. Comparatively greater use of models in vertebrate and water studies suggested more frequent integration of generic principles and, in water studies, reflected strong collective knowledge based on the repeated use of BACI-type designs (i.e. before–after, control–impact) or long-term data sets. 4 Statistical issues such as poor reporting of experimental designs and of sample statistics were common. Explicit hypotheses were rare, and there was no evidence of definition of critical effect sizes, use of power analysis or use of non-classical statistical approaches (e.g. Bayesian inference). 5 Lack of treatment replication was widespread in between-stand contrasts and less frequent in within-stand contrasts. Inappropriate interpretation of results from non-replicated experimental designs remains an ongoing issue. 6 Synthesis and applications. The amount of information obtainable from stand-level manipulations of forest would substantially increase through greater attention to data quality and experimental protocols. Studies require broader experimental contexts, including their potential place in meta-replication frameworks. Increasingly, constraints of large-scale manipulations necessitate the integration of data and the acknowledgement of uncertainty in formalized systems (e.g. Bayesian methods and adaptive management frameworks). Our evaluation suggests the alternative is a perpetuation of short-term, isolated studies that repeat errors and have limited potential to refine knowledge on the ecological effects of timber harvesting and other similarly scaled disturbances.",
+		"container-title": "Journal of Applied Ecology",
+		"DOI": "10.1111/j.0021-8901.2004.00924.x",
+		"ISSN": "1365-2664",
+		"issue": "4",
+		"language": "en",
+		"note": "_eprint: https://onlinelibrary.wiley.com/doi/pdf/10.1111/j.0021-8901.2004.00924.x",
+		"page": "585-598",
+		"source": "Wiley Online Library",
+		"title": "Assessment of ecological effects due to forest harvesting: approaches and statistical issues",
+		"title-short": "Assessment of ecological effects due to forest harvesting",
+		"URL": "https://onlinelibrary.wiley.com/doi/abs/10.1111/j.0021-8901.2004.00924.x",
+		"volume": "41",
+		"author": [
+			{
+				"family": "Bennett",
+				"given": "L. T."
+			},
+			{
+				"family": "Adams",
+				"given": "M. A."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					9,
+					27
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2004"
+				]
+			]
+		}
+	},
+	{
+		"id": "hazlett2008",
+		"type": "article-journal",
+		"abstract": "Buffer zones are an important component of forest-management strategies and are thought to reduce the impact of nutrients released after harvesting on water quality. Conceptually, steep slopes have shorter water residence times than shallow slopes, have a reduced capacity to moderate water quality, and therefore, require wider buffers. Carbon and N concentrations in riparian zone shallow soil water at 30 cm depth and lake water were measured on shallow and steep slopes at the Esker Lakes Research Area in northeastern Ontario to determine if nutrient concentrations were correlated to catchment terrain attributes. Field measured slope, slope class obtained from a triangular irregular network model, and upslope contributing area and topographic index calculated from a digital elevation model were calculated for each sampling location. Modeled terrain properties, including those currently used during forest-management planning, were not significantly correlated with soil water N and C concentrations, whereas only dissolved organic carbon levels were significantly greater on field measured steep slopes. Forest species composition and soil N levels were positively correlated with soil water N concentrations. These results from the undisturbed boreal ecosystem highlight the potential limitation of using only catchment slope as a tool for prescribing riparian buffers during harvesting when considering terrestrial nutrient export.",
+		"container-title": "Canadian Journal of Forest Research",
+		"DOI": "10.1139/X07-146",
+		"ISSN": "0045-5067, 1208-6037",
+		"issue": "1",
+		"journalAbbreviation": "Can. J. For. Res.",
+		"language": "en",
+		"page": "16-30",
+		"source": "DOI.org (Crossref)",
+		"title": "The importance of catchment slope to soil water N and C concentrations in riparian zones: implications for riparian buffer width",
+		"title-short": "The importance of catchment slope to soil water N and C concentrations in riparian zones",
+		"URL": "http://www.nrcresearchpress.com/doi/10.1139/X07-146",
+		"volume": "38",
+		"author": [
+			{
+				"family": "Hazlett",
+				"given": "P."
+			},
+			{
+				"family": "Broad",
+				"given": "K."
+			},
+			{
+				"family": "Gordon",
+				"given": "A."
+			},
+			{
+				"family": "Sibley",
+				"given": "P."
+			},
+			{
+				"family": "Buttle",
+				"given": "J."
+			},
+			{
+				"family": "Larmer",
+				"given": "D."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					9,
+					27
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2008",
+					1
+				]
+			]
+		}
+	},
+	{
+		"id": "webster2021b",
+		"type": "article-journal",
+		"abstract": "Long-term ecosystem studies are valuable for understanding integrated ecosystem response to global changes in atmospheric deposition and climate. We examined trends for a 35-year period (1982/83–2017/18) in concentrations of a range of solutes in precipitation and stream water from nine headwater catchments spanning elevation and surficial geology gradients at the Turkey Lakes watershed (TLW) in northeastern Ontario, Canada. Average annual water year (WY, October to September) concentrations in precipitation significantly declined over the period for sulphate (SO42À), nitrate (NO3À) and chloride (ClÀ), while calcium (Ca2+) and potassium (K+) concentrations increased, resulting in a significant pH increase from 4.2 to 5.7. Trends in stream chemistry through time are generally consistent with expectations associated with acidification recovery. Concentration of many stream water solutes (SO42À, ClÀ, calcium [Ca2+], magnesium [Mg2+] and NH4+ generally decreased, while others (silica [SiO2] and dissolved organic carbon [DOC]) generally increased. Increases were also observed for alkalinity (six of nine catchments), acid neutralizing capacity ([ANC]; six of nine catchments) and pH (eight of nine catchments), while conductivity declined (six of nine catchments). Variability in trends among catchments are associated with differences in surficial geology and wetland cover. While absolute solute concentrations were generally lower at bedrock dominated high-elevation catchments compared to till dominated lower elevation catchments, the rate of change of concentration was often greater for high elevation catchments. This study confirms continued, but non-linear stream chemistry recovery from acidification, particularly at the less buffered high and moderate elevation sites. The heterogeneity of responses among catchments highlights our incomplete understanding of the relative importance of different mechanisms influencing stream chemistry and the consequences for downstream ecosystems.",
+		"container-title": "Hydrological Processes",
+		"DOI": "10.1002/hyp.14346",
+		"ISSN": "0885-6087, 1099-1085",
+		"issue": "9",
+		"journalAbbreviation": "Hydrological Processes",
+		"language": "en",
+		"source": "DOI.org (Crossref)",
+		"title": "Acidification recovery in a changing climate: Observations from thirty‐five years of stream chemistry monitoring in forested headwater catchments at the Turkey Lakes watershed, Ontario",
+		"title-short": "Acidification recovery in a changing climate",
+		"URL": "https://onlinelibrary.wiley.com/doi/10.1002/hyp.14346",
+		"volume": "35",
+		"author": [
+			{
+				"family": "Webster",
+				"given": "Kara L."
+			},
+			{
+				"family": "Leach",
+				"given": "Jason A."
+			},
+			{
+				"family": "Houle",
+				"given": "Daniel"
+			},
+			{
+				"family": "Hazlett",
+				"given": "Paul W."
+			},
+			{
+				"family": "Emilson",
+				"given": "Erik J. S."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					9,
+					27
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2021",
+					9
+				]
+			]
+		}
+	},
+	{
+		"id": "webster2022",
+		"type": "article-journal",
+		"abstract": "Previous studies of harvest impacts on stream chemistry from deciduous forests with seasonal snow cover have shown variable responses and recovery times. We hypothesized that this variability in response and recovery was due to the interactive effects of forest harvesting with regional and global environmental changes. We investigated harvest impacts on stream solute (K+, Na+, Ca2+, Mg2+, Cl–, SO42–, DOC, Si, NO3–, NH4+, total P) concentrations, pH and conductivity under clearcut, selection, and shelterwood harvesting using a before-after control-impact experimental approach. The experiment was conducted at the Turkey Lakes Watershed, a shade-tolerant sugar maple forest within the Boreal Shield Ecozone, over a 36 year period (15 year pre-harvest and 21 year post-harvest) that has experienced climate change and acidification recovery. Harvest impacts on stream chemistry were greatest in the clearcut, moderate in the selection cut, and least in the shelterwood cut. The largest impacts on stream solutes typically lasted one to six years following harvest, although some solutes were impacted during the entire 21 year post-harvest period. Different patterns in the response of stream solute concentrations included: initial deviations (increase or decrease) followed by a return to pre-harvest levels within two to four years (Na+, Ca2+, Mg2+, conductivity); initial increase followed by a decrease but still not recovered (K+); initial increase followed by a decrease to below pre-harvest levels (NO3–, Na+, Cl-); sustained elevated concentrations (dissolved organic carbon [DOC], Si); and a noisy response (TP, SO42-, pH). The different patterns were consistent with expected changes in nutrient demand, sources, and transport (including changes in hillslope-stream hydrologic connectivity due to harvesting). Comparing harvest impacts to long-term climate change and acidification recovery showed that harvesting had antagonistic (mitigative) effects to environmental changes for some solutes (e.g., cations), while for others (e.g., DOC) harvesting had agonistic (synergistic) effects to environmental changes. These results emphasize the need for long-term monitoring to accurately interpret the consequences of forest harvesting practices on the resilience of forests experiencing environmental change.",
+		"container-title": "Forest Ecology and Management",
+		"DOI": "10.1016/j.foreco.2022.120345",
+		"ISSN": "0378-1127",
+		"journalAbbreviation": "Forest Ecology and Management",
+		"language": "en",
+		"page": "120345",
+		"source": "ScienceDirect",
+		"title": "Long-term stream chemistry response to harvesting in a northern hardwood forest watershed experiencing environmental change",
+		"URL": "https://www.sciencedirect.com/science/article/pii/S0378112722003395",
+		"volume": "519",
+		"author": [
+			{
+				"family": "Webster",
+				"given": "K. L."
+			},
+			{
+				"family": "Leach",
+				"given": "J. A."
+			},
+			{
+				"family": "Hazlett",
+				"given": "P. W."
+			},
+			{
+				"family": "Buttle",
+				"given": "J. M."
+			},
+			{
+				"family": "Emilson",
+				"given": "E. J. S."
+			},
+			{
+				"family": "Creed",
+				"given": "I. F."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					9,
+					27
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2022",
+					9,
+					1
+				]
+			]
+		}
+	},
+	{
+		"id": "erdozain2018",
+		"type": "article-journal",
+		"abstract": "Forests are vital to maintaining headwater stream integrity in forested biomes, which ensures the delivery of aquatic ecosystem services downstream. Forest harvesting, however, can alter land–water linkages and compromise stream integrity. Historically, the main effects of forestry on streams have been documented by studies that used relatively few (mainly abiotic) indicators and which focused on single harvesting events. However, forest management is expected to intensify in the future to meet increasing global wood demand and it is likely that our present understanding does not adequately capture the cumulative effects that streams will be subjected to under intensive forest management. To address this, we assessed the effects of varying forest management intensities on the integrity of 15 forest headwater streams in northwestern New Brunswick, Canada. We used a comprehensive approach to link multiple biotic and abiotic indicators of stream ecosystem integrity to reach- and catchment-level characteristics including forest management (e.g., cumulative harvesting over time, road density, forest condition). Most indicators detected the gradient in forest management intensity with abiotic indicators responding most strongly. Streams in catchments with highest management intensity (especially road density) tended to have higher fine inorganic sediment deposition and entrainment, water cations and carbon, dissolved organic matter humification, and water temperature. These abiotic differences were associated with higher biofilm biomass and shredder densities, but lower leaf decomposition. Evidence from our multi-indicator approach elucidated a potential effects pathway of higher inorganic sediment content in biofilms of organic matter potentially limiting or altering its use by microbial and benthic macroinvertebrate (BMI) communities and resulting in reduced leaf decomposition rates. Overall, this study shows that current best management practices in an intensively managed watershed (and legacy effects from past management such as older road systems) do not fully protect against an increased delivery of terrestrial materials to streams with resulting habitat and biotic changes, but that they are mostly effective at preventing the impairment of BMI communities.",
+		"container-title": "Ecosphere",
+		"DOI": "10.1002/ecs2.2278",
+		"ISSN": "2150-8925",
+		"issue": "5",
+		"language": "en",
+		"note": "_eprint: https://onlinelibrary.wiley.com/doi/pdf/10.1002/ecs2.2278",
+		"page": "e02278",
+		"source": "Wiley Online Library",
+		"title": "Linking stream ecosystem integrity to catchment and reach conditions in an intensively managed forest landscape",
+		"URL": "https://onlinelibrary.wiley.com/doi/abs/10.1002/ecs2.2278",
+		"volume": "9",
+		"author": [
+			{
+				"family": "Erdozain",
+				"given": "Maitane"
+			},
+			{
+				"family": "Kidd",
+				"given": "Karen"
+			},
+			{
+				"family": "Kreutzweiser",
+				"given": "David"
+			},
+			{
+				"family": "Sibley",
+				"given": "Paul"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					9,
+					27
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2018"
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/vDpPFAGx/items/Z2HNK4H6",
+		"type": "document",
+		"title": "BenthoTorch_eng.pdf"
+	},
+	{
+		"id": "rudz",
+		"type": "article-journal",
+		"abstract": "Downed woody debris (DWD) is a carbon-rich form of forest litter and plays a unique role in carbon and nutrient cycling. I present a novel modeling approach describing DWD decomposition and nutrient storage in a managed northern hardwood forest. The predicted half-life of DWD carbon was 7 years, less than previously observed in similar northern hardwood forests. A stage-based nutrient model indicated that harvest slash DWD was a net nitrogen and phosphorus sink for eight years following harvest and accumulated calcium during decay. Field observations of respiration and leaching supported model results with a respired C half-life of 8 years, while leached carbon export constituted 1.37% of the respired flux. DWD leachate carbon and nitrogen concentrations were 11× and 2× greater than from litter, respectively, and DWD leachate contributed disproportionately to soil C stocks. This work represents an expedient means of forecasting DWD abundance and partitioning carbon flux from DWD.",
+		"language": "en",
+		"page": "64",
+		"source": "Zotero",
+		"title": "Carbon and Nutrient Dynamics of Downed Woody Debris in a Northern Hardwood Forest",
+		"author": [
+			{
+				"family": "Rudz",
+				"given": "Philip"
+			}
+		]
+	},
+	{
+		"id": "http://zotero.org/users/local/vDpPFAGx/items/AI2KH3CV",
+		"type": "document",
+		"title": "MultivariateRandomForest.pdf"
+	},
+	{
+		"id": "http://zotero.org/users/local/vDpPFAGx/items/63G5F3PW",
+		"type": "document",
+		"title": "yhat.pdf"
+	},
+	{
+		"id": "http://zotero.org/users/local/vDpPFAGx/items/23DII66I",
+		"type": "document",
+		"title": "FluorescenceIndicesandTheirInterpretation.pdf"
+	},
+	{
+		"id": "maclean2022",
+		"type": "article-journal",
+		"container-title": "Environmental Reviews",
+		"DOI": "10.1139/er-2021-0042",
+		"ISSN": "1181-8700",
+		"issue": "1",
+		"journalAbbreviation": "Environ. Rev.",
+		"note": "publisher: NRC Research Press",
+		"page": "128-158",
+		"source": "cdnsciencepub.com (Atypon)",
+		"title": "Natural disturbance regimes for implementation of ecological forestry: a review and case study from Nova Scotia, Canada",
+		"title-short": "Natural disturbance regimes for implementation of ecological forestry",
+		"URL": "https://cdnsciencepub.com/doi/10.1139/er-2021-0042",
+		"volume": "30",
+		"author": [
+			{
+				"family": "MacLean",
+				"given": "David A."
+			},
+			{
+				"family": "Taylor",
+				"given": "Anthony R."
+			},
+			{
+				"family": "Neily",
+				"given": "Peter D."
+			},
+			{
+				"family": "Steenberg",
+				"given": "James W.N."
+			},
+			{
+				"family": "Basquill",
+				"given": "Sean P."
+			},
+			{
+				"family": "Quigley",
+				"given": "Eugene"
+			},
+			{
+				"family": "Boone",
+				"given": "Celia K."
+			},
+			{
+				"family": "Oikle",
+				"given": "Morgan"
+			},
+			{
+				"family": "Bush",
+				"given": "Peter"
+			},
+			{
+				"family": "Stewart",
+				"given": "Bruce"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					4
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2022",
+					3
+				]
+			]
+		}
+	},
+	{
+		"id": "bergeron2001",
+		"type": "article-journal",
+		"container-title": "Canadian Journal of Forest Research",
+		"DOI": "10.1139/x00-178",
+		"ISSN": "0045-5067",
+		"issue": "3",
+		"journalAbbreviation": "Can. J. For. Res.",
+		"note": "publisher: NRC Research Press",
+		"page": "384-391",
+		"source": "cdnsciencepub.com (Atypon)",
+		"title": "Natural fire frequency for the eastern Canadian boreal forest: consequences for sustainable forestry",
+		"title-short": "Natural fire frequency for the eastern Canadian boreal forest",
+		"URL": "https://cdnsciencepub.com/doi/abs/10.1139/x00-178",
+		"volume": "31",
+		"author": [
+			{
+				"family": "Bergeron",
+				"given": "Yves"
+			},
+			{
+				"family": "Gauthier",
+				"given": "Sylvie"
+			},
+			{
+				"family": "Kafka",
+				"given": "Victor"
+			},
+			{
+				"family": "Lefort",
+				"given": "Patrick"
+			},
+			{
+				"family": "Lesieur",
+				"given": "Daniel"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					4
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2001",
+					3
+				]
+			]
+		}
+	},
+	{
+		"id": "mcrae2001a",
+		"type": "article-journal",
+		"container-title": "Environmental Reviews",
+		"DOI": "10.1139/a01-010",
+		"ISSN": "1181-8700",
+		"issue": "4",
+		"journalAbbreviation": "Environ. Rev.",
+		"note": "publisher: NRC Research Press",
+		"page": "223-260",
+		"source": "cdnsciencepub.com (Atypon)",
+		"title": "Comparisons between wildfire and forest harvesting and their implications in forest management",
+		"URL": "https://cdnsciencepub.com/doi/10.1139/a01-010",
+		"volume": "9",
+		"author": [
+			{
+				"family": "McRae",
+				"given": "D J"
+			},
+			{
+				"family": "Duchesne",
+				"given": "L C"
+			},
+			{
+				"family": "Freedman",
+				"given": "B"
+			},
+			{
+				"family": "Lynham",
+				"given": "T J"
+			},
+			{
+				"family": "Woodley",
+				"given": "S"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					4
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2001",
+					12
+				]
+			]
+		}
+	},
+	{
+		"id": "kreutzweiser2008a",
+		"type": "article-journal",
+		"container-title": "Environmental Reviews",
+		"DOI": "10.1139/A08-006",
+		"ISSN": "1181-8700",
+		"issue": "NA",
+		"journalAbbreviation": "Environ. Rev.",
+		"note": "publisher: NRC Research Press",
+		"page": "157-179",
+		"source": "cdnsciencepub.com (Atypon)",
+		"title": "Logging impacts on the biogeochemistry of boreal forest soils and nutrient export to aquatic systems: A review",
+		"title-short": "Logging impacts on the biogeochemistry of boreal forest soils and nutrient export to aquatic systems",
+		"URL": "https://cdnsciencepub.com/doi/10.1139/A08-006",
+		"volume": "16",
+		"author": [
+			{
+				"family": "Kreutzweiser",
+				"given": "David P."
+			},
+			{
+				"family": "Hazlett",
+				"given": "Paul W."
+			},
+			{
+				"family": "Gunn",
+				"given": "John M."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					4
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2008",
+					12
+				]
+			]
+		}
+	},
+	{
+		"id": "webster2015",
+		"type": "article-journal",
+		"container-title": "Environmental Reviews",
+		"DOI": "10.1139/er-2014-0063",
+		"ISSN": "1181-8700",
+		"issue": "1",
+		"journalAbbreviation": "Environ. Rev.",
+		"note": "publisher: NRC Research Press",
+		"page": "78-131",
+		"source": "cdnsciencepub.com (Atypon)",
+		"title": "Impacts and prognosis of natural resource development on water and wetlands in Canada’s boreal zone",
+		"URL": "https://cdnsciencepub.com/doi/full/10.1139/er-2014-0063",
+		"volume": "23",
+		"author": [
+			{
+				"family": "Webster",
+				"given": "Kara L."
+			},
+			{
+				"family": "Beall",
+				"given": "Frederick D."
+			},
+			{
+				"family": "Creed",
+				"given": "Irena F."
+			},
+			{
+				"family": "Kreutzweiser",
+				"given": "David P."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					4
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2015",
+					3
+				]
+			]
+		}
+	},
+	{
+		"id": "erdozain2022",
+		"type": "article-journal",
+		"abstract": "The river continuum concept (RCC) predicts a downstream shift in the reliance of aquatic consumers from terrestrial to aquatic carbon sources, but this concept has rarely been assessed with longitudinal studies. Similarly, there are no studies addressing how forestry related disturbances to the structure of headwater food webs manifest (accumulate/dissipate) downstream and/or whether forest management alters natural longitudinal trends predicted by the RCC. Using stable isotopes of carbon, nitrogen and hydrogen, we investigated how: 1) autochthony in macroinvertebrates and fish change from small streams to larger downstream sites within a basin with minimal forest management (New Brunswick, Canada); 2) longitudinal trends in autochthony and food web length compare among three basins with different forest management intensity [intensive (harvest and replanting), extensive (harvest only), minimal] to detect potential cumulative/dissipative effects; and 3) forest management intensity and other catchment variables are influencing food web dynamics. We showed that, as predicted, the reliance of some macroinvertebrate taxa (especially collector feeders) on algae increased from small streams to downstream waters in the minimally managed basin, but that autochthony in the smallest shaded stream was higher than expected based on the RCC (as high as 90% for some taxa). However, this longitudinal increase in autochthony was not observed within the extensively managed basin and was weaker within the intensively managed one, suggesting that forest management can alter food web dynamics along the river continuum. The dampening of downstream autochthony indicates that the increased allochthony observed in small streams in response to forest harvesting cumulates downstream through the river continuum.",
+		"container-title": "Ecosystems",
+		"DOI": "10.1007/s10021-021-00717-6",
+		"ISSN": "1435-0629",
+		"issue": "6",
+		"journalAbbreviation": "Ecosystems",
+		"language": "en",
+		"page": "1311-1327",
+		"source": "Springer Link",
+		"title": "Elevated Allochthony in Stream Food Webs as a Result of Longitudinal Cumulative Effects of Forest Management",
+		"URL": "https://doi.org/10.1007/s10021-021-00717-6",
+		"volume": "25",
+		"author": [
+			{
+				"family": "Erdozain",
+				"given": "Maitane"
+			},
+			{
+				"family": "Kidd",
+				"given": "Karen A."
+			},
+			{
+				"family": "Emilson",
+				"given": "Erik J. S."
+			},
+			{
+				"family": "Capell",
+				"given": "Scott S."
+			},
+			{
+				"family": "Kreutzweiser",
+				"given": "David P."
+			},
+			{
+				"family": "Gray",
+				"given": "Michelle A."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					5
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2022",
+					9,
+					1
+				]
+			]
+		}
+	},
+	{
+		"id": "jones2000",
+		"type": "article-journal",
+		"abstract": "We outline a view of how road networks interact with stream networks at the landscape scale and, based on examples from recent and current research, illustrate how these interactions might affect biological and ecological processes in stream and riparian systems. At the landscape scale, certain definable geometric interactions involving peak flows (floods) and debris flows (rapid movements of soil, sediment, and large wood down steep stream channels) are influenced by the arrangement of the road network relative to the stream network. Although disturbance patches are created by peak-flow and debris-flow disturbances in mountain landscapes without roads, roads can alter the landscape distributions of the starting and stopping points of debris flows, and they can alter the balance between the intensity of flood peaks and the stream network's resistance to change. We examined this conceptual model of interactions between road networks and stream networks based on observations from a number of studies in the H. J. Andrews Experimental Forest, Oregon (U.S.A.). Road networks appear to affect floods and debris flows and thus modify disturbance patch dynamics in stream and riparian networks in mountain landscapes. We speculate that these changes may influence the rates and patterns of survival and recovery of disturbed patches in stream networks, affecting ecosystem resilience, and we outline an approach for detecting such effects based on a patch dynamics perspective. A field sampling scheme for detecting the magnitude of various road effects on stream and riparian ecology could involve (1) landscape stratification of inherent stream network susceptibility to floods or debris flows, (2) overlay of road and stream networks and creation of areas with various densities of road-stream crossings, emphasizing midslope road-stream crossings, and (3) designations of expected high- and low-impact stream segments based on numbers of upstream road-stream crossings where sampling of selected biological variables would be conducted.",
+		"container-title": "Conservation Biology",
+		"ISSN": "0888-8892",
+		"issue": "1",
+		"note": "publisher: [Wiley, Society for Conservation Biology]",
+		"page": "76-85",
+		"source": "JSTOR",
+		"title": "Effects of Roads on Hydrology, Geomorphology, and Disturbance Patches in Stream Networks",
+		"URL": "https://www.jstor.org/stable/2641906",
+		"volume": "14",
+		"author": [
+			{
+				"family": "Jones",
+				"given": "Julia A."
+			},
+			{
+				"family": "Swanson",
+				"given": "Frederick J."
+			},
+			{
+				"family": "Wemple",
+				"given": "Beverley C."
+			},
+			{
+				"family": "Snyder",
+				"given": "Kai U."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					5
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2000"
+				]
+			]
+		}
+	},
+	{
+		"id": "gal2020",
+		"type": "article-journal",
+		"abstract": "Although it is well known that the increasing size of the human population has a negative effect on freshwater biodiversity, the subject of whether or how the intersection of roads and streams (hereafter road crossings) influence the diversity of stream macro-invertebrates is under-researched. To fill this gap in our knowledge, we collected stream macro-invertebrates from road crossings (bridges and culverts) and compared their diversity with upstream and downstream sections. We found that road crossings had negative effects on the richness and abundance of native macro-invertebrates, as well as on the number of protected taxa. Our results showed also that alien individuals were more abundant at road crossings. These findings support the assumption that road crossings contribute to the spread of alien species. The assessment of environmental variables indicated that road crossings caused habitat modifications, and based on these it can be assumed that habitat modifications and associated phenomena (e.g. pollutants and storm events) were the major drivers of the observed patterns in biodiversity. Our results fill a knowledge gap and contribute to the deeper understanding of the effect of road crossings on freshwater biodiversity.",
+		"container-title": "Biodiversity and Conservation",
+		"DOI": "10.1007/s10531-019-01907-4",
+		"ISSN": "1572-9710",
+		"issue": "3",
+		"journalAbbreviation": "Biodivers Conserv",
+		"language": "en",
+		"page": "729-745",
+		"source": "Springer Link",
+		"title": "The effects of road crossings on stream macro-invertebrate diversity",
+		"URL": "https://doi.org/10.1007/s10531-019-01907-4",
+		"volume": "29",
+		"author": [
+			{
+				"family": "Gál",
+				"given": "Blanka"
+			},
+			{
+				"family": "Weiperth",
+				"given": "András"
+			},
+			{
+				"family": "Farkas",
+				"given": "János"
+			},
+			{
+				"family": "Schmera",
+				"given": "Dénes"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					5
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2020",
+					3,
+					1
+				]
+			]
+		}
+	},
+	{
+		"id": "bodmer2016",
+		"type": "article-journal",
+		"abstract": "Streams represent active components of the carbon cycle as emitters of carbon dioxide (CO2) and methane to the atmosphere at a global scale. However, the mechanisms and governing factors of these emissions are still largely unknown, especially concerning the effect of land use. We compared dissolved and gaseous carbon dynamics in streams bordered by contrasting types of land use, specifically agriculture and forest. Carbon dioxide and methane partial pressures (pCO2 and pCH4, respectively) in the water body and carbon emissions via both gases were studied for 24h during four field expeditions. pCH4 did not differ between the two system types. pCO2 was constantly oversaturated in all streams and significantly higher in agricultural streams (annual mean 4282ppm) compared to forest streams (annual mean 2189ppm) during all seasons. However, emissions of CO2 were not significantly different between the stream types due to significantly higher gas transfer velocity in forest compared to agricultural streams. pCO2 was significantly positively correlated to the concentrations of dissolved organic carbon, dissolved nitrogen and soluble reactive phosphorus in the water. Furthermore, pCO2 was correlated to optical parameters of dissolved organic matter (DOM) quality, e.g., it increased with indicators of molecular size and an allochthonous fluorescent component identified by Parallel Factor Analysis (PARAFAC). This study demonstrates that different forms of land use may trigger a cascade of effects on the carbon production and emission of streams linked to changes in DOM quality.",
+		"container-title": "Science of The Total Environment",
+		"DOI": "10.1016/j.scitotenv.2016.02.095",
+		"ISSN": "0048-9697",
+		"journalAbbreviation": "Science of The Total Environment",
+		"language": "en",
+		"page": "574-586",
+		"source": "ScienceDirect",
+		"title": "Carbon dynamics and their link to dissolved organic matter quality across contrasting stream ecosystems",
+		"URL": "https://www.sciencedirect.com/science/article/pii/S0048969716303047",
+		"volume": "553",
+		"author": [
+			{
+				"family": "Bodmer",
+				"given": "Pascal"
+			},
+			{
+				"family": "Heinz",
+				"given": "Marlen"
+			},
+			{
+				"family": "Pusch",
+				"given": "Martin"
+			},
+			{
+				"family": "Singer",
+				"given": "Gabriel"
+			},
+			{
+				"family": "Premke",
+				"given": "Katrin"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					11
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2016",
+					5,
+					15
+				]
+			]
+		}
+	},
+	{
+		"id": "bengtsson2018",
+		"type": "article-journal",
+		"abstract": "<em>Gale</em> Academic OneFile includes Interactive effects on organic matter processing from s by Mia M. Bengtsson, Katrin Attermeyer, an. Click to explore.",
+		"container-title": "Hydrobiologia",
+		"DOI": "10.1007/s10750-018-3672-2",
+		"ISSN": "00188158",
+		"issue": "1",
+		"language": "English",
+		"note": "publisher: Springer",
+		"page": "1-18",
+		"source": "go.gale.com",
+		"title": "Interactive effects on organic matter processing from soils to the ocean: are priming effects relevant in aquatic ecosystems?",
+		"title-short": "Interactive effects on organic matter processing from soils to the ocean",
+		"URL": "https://go.gale.com/ps/i.do?p=AONE&sw=w&issn=00188158&v=2.1&it=r&id=GALE%7CA548601948&sid=googleScholar&linkaccess=abs",
+		"volume": "822",
+		"author": [
+			{
+				"family": "Bengtsson",
+				"given": "Mia M."
+			},
+			{
+				"family": "Attermeyer",
+				"given": "Katrin"
+			},
+			{
+				"family": "Catalan",
+				"given": "Nuria"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					11
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2018",
+					10,
+					1
+				]
+			]
+		}
+	},
+	{
+		"id": "zotero-1723",
+		"type": "webpage",
+		"title": "Multiple Trophic Levels of a Forest Stream Linked to Terrestrial Litter Inputs | Science",
+		"URL": "https://www.science.org/doi/10.1126/science.277.5322.102",
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					11
+				]
+			]
+		}
+	},
+	{
+		"id": "fabian2018",
+		"type": "article-journal",
+		"abstract": "In aquatic ecosystems, light availability can significantly influence microbial turnover of terrestrial organic matter through associated metabolic interactions between phototrophic and heterotrophic communities. However, particularly in streams, microbial functions vary significantly with the structure of the streambed, that is the distribution and spatial arrangement of sediment grains in the streambed. It is therefore essential to elucidate how environmental factors synergistically define the microbial turnover of terrestrial organic matter in order to better understand the ecological role of photo-heterotrophic interactions in stream ecosystem processes. In outdoor experimental streams, we examined how the structure of streambeds modifies the influence of light availability on microbial turnover of leaf carbon (C). Furthermore, we investigated whether the studied relationships of microbial leaf C turnover to environmental conditions are affected by flow intermittency commonly occurring in streams. We applied leaves enriched with a 13C-stable isotope tracer and combined quantitative and isotope analyses. We thereby elucidated whether treatment induced changes in C turnover were associated with altered use of leaf C within the microbial food web. Moreover, isotope analyses were combined with measurements of microbial community composition to determine whether changes in community function were associated with a change in community composition. In this study, we present evidence, that environmental factors interactively determine how phototrophs and heterotrophs contribute to leaf C turnover. Light availability promoted the utilization of leaf C within the microbial food web, which was likely associated with a promoted availability of highly bioavailable metabolites of phototrophic origin. However, our results additionally confirm that the structure of the streambed modifies light-related changes in microbial C turnover. From our observations, we conclude that the streambed structure influences the strength of photo-heterotrophic interactions by defining the spatial availability of algal metabolites in the streambed and the composition of microbial communities. Collectively, our multifactorial approach provides valuable insights into environmental controls on the functioning of stream ecosystems.",
+		"container-title": "Frontiers in Microbiology",
+		"DOI": "10.3389/fmicb.2018.01044",
+		"ISSN": "1664-302X",
+		"journalAbbreviation": "Front Microbiol",
+		"note": "PMID: 29915564\nPMCID: PMC5994477",
+		"page": "1044",
+		"source": "PubMed Central",
+		"title": "Environmental Control on Microbial Turnover of Leaf Carbon in Streams – Ecological Function of Phototrophic-Heterotrophic Interactions",
+		"URL": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5994477/",
+		"volume": "9",
+		"author": [
+			{
+				"family": "Fabian",
+				"given": "Jenny"
+			},
+			{
+				"family": "Zlatanović",
+				"given": "Sanja"
+			},
+			{
+				"family": "Mutz",
+				"given": "Michael"
+			},
+			{
+				"family": "Grossart",
+				"given": "Hans-Peter"
+			},
+			{
+				"family": "Geldern",
+				"given": "Robert",
+				"non-dropping-particle": "van"
+			},
+			{
+				"family": "Ulrich",
+				"given": "Andreas"
+			},
+			{
+				"family": "Gleixner",
+				"given": "Gerd"
+			},
+			{
+				"family": "Premke",
+				"given": "Katrin"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					11
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2018",
+					6,
+					4
+				]
+			]
+		}
+	},
+	{
+		"id": "zlatanovic2018",
+		"type": "article-journal",
+		"abstract": "Perennial, temperate, low-order streams are predicted to become intermittent as a result of irregular droughts caused by global warming and increased water demand. We hypothesize that stream metabolism changes caused by irregular droughts are linked to the shading and bed sediment structure of temperate streams. We set up 16 outdoor experimental streams with low or high shade conditions and streambeds either with alternating sorted patches of gravel and sand or homogeneous gravel-sand mix sediment structures. We assessed community respiration (CR), net ecosystem production (NEP) and periphyton biomass and structure (diatoms, green algae, cyanobacteria) in the course of 6weeks colonization, 6weeks desiccation, and 2.5weeks after rewetting. The heterotroph to autotroph (H:A) and fungi to bacteria (F:B) ratios in the microbial biofilm community were assessed at the end of the colonization and rewetting phases. Streams with different bed sediment structure were functionally similar; their metabolism under desiccation was controlled solely by light availability. During flow recession, all streams showed net heterotrophy. As desiccation progressed, NEP and CR decreased to zero. Desiccation altered the periphyton composition from predominantly diatoms to green algae and cyanobacteria, particularly in streams with low shade and mixed sediments. Rapid post-drought resilience of NEP was accompanied by high cyanobacteria and green algae growth in low shade, but poor total periphyton growth in high shade streams. Variable periphyton recovery was followed by increased H:A in relation to shading, and decreased F:B in relation to sediments structure. These shifts resulted in poor CR recovery compared to the colonization phase, suggesting a link between CR resilience and microbial composition changes. The links between drought effects, post-drought recovery, shading level, and streambed structure reveal the importance of low-order stream management under a changing climate and land use to mitigate the future impact of unpredictable infrequent droughts on stream metabolism in temperate ecosystems.",
+		"container-title": "Science of The Total Environment",
+		"DOI": "10.1016/j.scitotenv.2017.10.105",
+		"ISSN": "0048-9697",
+		"journalAbbreviation": "Science of The Total Environment",
+		"language": "en",
+		"page": "1233-1242",
+		"source": "ScienceDirect",
+		"title": "Shading and sediment structure effects on stream metabolism resistance and resilience to infrequent droughts",
+		"URL": "https://www.sciencedirect.com/science/article/pii/S0048969717328085",
+		"volume": "621",
+		"author": [
+			{
+				"family": "Zlatanović",
+				"given": "Sanja"
+			},
+			{
+				"family": "Fabian",
+				"given": "Jenny"
+			},
+			{
+				"family": "Premke",
+				"given": "Katrin"
+			},
+			{
+				"family": "Mutz",
+				"given": "Michael"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					11
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2018",
+					4,
+					15
+				]
+			]
+		}
+	},
+	{
+		"id": "gessner2002",
+		"type": "article-journal",
+		"abstract": "Assessment of the condition of ecosystems is a critical prerequisite for alleviating effects of the multiple anthropogenic stresses imposed on them. For stream ecosystems, a multitude of approaches has been proposed for this purpose. However, they all rest on the assessment of structural attributes, even though it is generally recognized that adequate characterization of ecosystems requires information on both structure (pattern) and function (process). Therefore, we propose a complementary approach to stream assessment based on evaluating ecosystem-level processes. Leaf litter breakdown is a prime candidate to consider in this context. This is because of the pivotal role that allochthonous litter plays in streams, the demonstrated effects of anthropogenic perturbations on litter breakdown, and the relative ease of implementation. Leaf breakdown is governed by a variety of internal and external factors that complicate the partitioning of effects due to anthropogenic stress and natural variability (background noise), thus potentially limiting the sensitivity and robustness of litter breakdown assays. However, internal regulation factors can be controlled by standardizing assessment procedures, while variability due to external factors can be accounted for by stream classification and/or a comparative approach (e.g., downstream–upstream comparisons). Composite parameters such as ratios of breakdown rates in fine-mesh and coarse-mesh bags may further increase the power of litter breakdown assays. Analyses may also be extended to include both leaf-associated decomposer assemblages (i.e., structural measures) and processes (i.e., additional functional measures). Significant efforts are required for developing standard assessment schemes as refined as extant procedures based on structural stream attributes (e.g., structure of macroinvertebrate assemblages). These efforts are nevertheless worthwhile in view of the new dimension that is added to current assessment procedures when functional elements are incorporated.",
+		"container-title": "Ecological Applications",
+		"DOI": "10.1890/1051-0761(2002)012[0498:ACFULB]2.0.CO;2",
+		"ISSN": "1939-5582",
+		"issue": "2",
+		"language": "en",
+		"note": "_eprint: https://onlinelibrary.wiley.com/doi/pdf/10.1890/1051-0761%282002%29012%5B0498%3AACFULB%5D2.0.CO%3B2",
+		"page": "498-510",
+		"source": "Wiley Online Library",
+		"title": "A Case for Using Litter Breakdown to Assess Functional Stream Integrity",
+		"URL": "https://onlinelibrary.wiley.com/doi/abs/10.1890/1051-0761%282002%29012%5B0498%3AACFULB%5D2.0.CO%3B2",
+		"volume": "12",
+		"author": [
+			{
+				"family": "Gessner",
+				"given": "Mark O."
+			},
+			{
+				"family": "Chauvet",
+				"given": "Eric"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					11
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2002"
+				]
+			]
+		}
+	},
+	{
+		"id": "barlocher2020",
+		"type": "book",
+		"event-place": "Cham",
+		"ISBN": "978-3-030-30514-7",
+		"language": "en",
+		"note": "DOI: 10.1007/978-3-030-30515-4",
+		"publisher": "Springer International Publishing",
+		"publisher-place": "Cham",
+		"source": "DOI.org (Crossref)",
+		"title": "Methods to Study Litter Decomposition: A Practical Guide",
+		"title-short": "Methods to Study Litter Decomposition",
+		"URL": "https://link.springer.com/10.1007/978-3-030-30515-4",
+		"editor": [
+			{
+				"family": "Bärlocher",
+				"given": "Felix"
+			},
+			{
+				"family": "Gessner",
+				"given": "Mark O."
+			},
+			{
+				"family": "Graça",
+				"given": "Manuel A.S."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					11
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2020"
+				]
+			]
+		}
+	},
+	{
+		"id": "zotero-1736",
+		"type": "webpage",
+		"title": "Diversity meets decomposition - ScienceDirect",
+		"URL": "https://www.sciencedirect.com/science/article/pii/S016953471000039X?casa_token=vH0X9xXhweYAAAAA:XAeX7pmBkde5CndML8KgHc37NGvDg9wONP_tCQgJh1LfrvJLk8HOHUbCax01R197s1x0WN2q9PGM",
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					12
+				]
+			]
+		}
+	},
+	{
+		"id": "gessner2010",
+		"type": "article-journal",
+		"container-title": "Trends in Ecology & Evolution",
+		"DOI": "10.1016/j.tree.2010.01.010",
+		"ISSN": "01695347",
+		"issue": "6",
+		"journalAbbreviation": "Trends in Ecology & Evolution",
+		"language": "en",
+		"page": "372-380",
+		"source": "DOI.org (Crossref)",
+		"title": "Diversity meets decomposition",
+		"URL": "https://linkinghub.elsevier.com/retrieve/pii/S016953471000039X",
+		"volume": "25",
+		"author": [
+			{
+				"family": "Gessner",
+				"given": "Mark O."
+			},
+			{
+				"family": "Swan",
+				"given": "Christopher M."
+			},
+			{
+				"family": "Dang",
+				"given": "Christian K."
+			},
+			{
+				"family": "McKie",
+				"given": "Brendan G."
+			},
+			{
+				"family": "Bardgett",
+				"given": "Richard D."
+			},
+			{
+				"family": "Wall",
+				"given": "Diana H."
+			},
+			{
+				"family": "Hättenschwiler",
+				"given": "Stephan"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					12
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2010",
+					6
+				]
+			]
+		}
+	},
+	{
+		"id": "battin2016",
+		"type": "article-journal",
+		"abstract": "Biofilms dominate microbial life in stream ecosystems. These matrix-enclosed and surface-attached microbial communities are ubiquitous, prolific and highly active at the interfaces of the streambed. The biofilm mode of life is advantageous in streams with a fast flow of water and continuous export of nutrients and organic matter.Biofilms in streams can be considered a 'microbial skin', regulating the processing and export of nutrients and organic matter from catchments and influencing the dispersal of microorganisms and their biodiversity dynamics at the scale of entire stream networks.Interactions between the growth of biofilms, streamwater flow and substratum chemistry produce emergent environmental complexity in the streambed.Proteobacteria and Bacteroidetes often dominate the communities of stream biofilms. Flavobacteriia and Sphingobacteriia seem to be especially important members of these communities. Archaea are found within niche microenvironments established by the metabolic activity of other microorganisms.High biodiversity in stream biofilms is supported by continuous input of microorganisms from upstream catchments, environmental sorting induced by habitat heterogeneity (ranging from the scale of the biofilm to large stream networks) and episodic disturbance from streamwater flow.New interdisciplinary approaches are needed to link structure and function of biofilms to their environment and, ultimately, to ecosystem processes and biogeochemical fluxes in streams. This is crucial to understand and predict implications of global ecosystem change and climate change on the microbial ecology and functioning of stream ecosystems.",
+		"container-title": "Nature Reviews Microbiology",
+		"DOI": "10.1038/nrmicro.2016.15",
+		"ISSN": "1740-1534",
+		"issue": "4",
+		"journalAbbreviation": "Nat Rev Microbiol",
+		"language": "en",
+		"license": "2016 Nature Publishing Group, a division of Macmillan Publishers Limited. All Rights Reserved.",
+		"note": "number: 4\npublisher: Nature Publishing Group",
+		"page": "251-263",
+		"source": "www.nature.com",
+		"title": "The ecology and biogeochemistry of stream biofilms",
+		"URL": "https://www.nature.com/articles/nrmicro.2016.15",
+		"volume": "14",
+		"author": [
+			{
+				"family": "Battin",
+				"given": "Tom J."
+			},
+			{
+				"family": "Besemer",
+				"given": "Katharina"
+			},
+			{
+				"family": "Bengtsson",
+				"given": "Mia M."
+			},
+			{
+				"family": "Romani",
+				"given": "Anna M."
+			},
+			{
+				"family": "Packmann",
+				"given": "Aaron I."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					12
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2016",
+					4
+				]
+			]
+		}
+	},
+	{
+		"id": "wallace1997",
+		"type": "article-journal",
+		"container-title": "Science",
+		"DOI": "10.1126/science.277.5322.102",
+		"issue": "5322",
+		"note": "publisher: American Association for the Advancement of Science",
+		"page": "102-104",
+		"source": "science.org (Atypon)",
+		"title": "Multiple Trophic Levels of a Forest Stream Linked to Terrestrial Litter Inputs",
+		"URL": "https://www.science.org/doi/full/10.1126/science.277.5322.102",
+		"volume": "277",
+		"author": [
+			{
+				"family": "Wallace",
+				"given": "J. B."
+			},
+			{
+				"family": "Eggert",
+				"given": "S. L."
+			},
+			{
+				"family": "Meyer",
+				"given": "J. L."
+			},
+			{
+				"family": "Webster",
+				"given": "J. R."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					12
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"1997",
+					7,
+					4
+				]
+			]
+		}
+	},
+	{
+		"id": "parada2016a",
+		"type": "article-journal",
+		"abstract": "Microbial community analysis via high-throughput sequencing of amplified 16S rRNA genes is an essential microbiology tool. We found the popular primer pair 515F (515F-C) and 806R greatly underestimated (e.g. SAR11) or overestimated (e.g. Gammaproteobacteria) common marine taxa. We evaluated marine samples and mock communities (containing 11 or 27 marine 16S clones), showing alternative primers 515F-Y (5′-GTGYCAGCMGCCGCGGTAA) and 926R (5′-CCGYCAATTYMTTTRAGTTT) yield more accurate estimates of mock community abundances, produce longer amplicons that can differentiate taxa unresolvable with 515F-C/806R, and amplify eukaryotic 18S rRNA. Mock communities amplified with 515F-Y/926R yielded closer observed community composition versus expected (r2 = 0.95) compared with 515F-Y/806R (r2 ∼ 0.5). Unexpectedly, biases with 515F-Y/806R against SAR11 in field samples (∼4–10-fold) were stronger than in mock communities (∼2-fold). Correcting a mismatch to Thaumarchaea in the 515F-C increased their apparent abundance in field samples, but not as much as using 926R rather than 806R. With plankton samples rich in eukaryotic DNA (> 1 μm size fraction), 18S sequences averaged ∼17% of all sequences. A single mismatch can strongly bias amplification, but even perfectly matched primers can exhibit preferential amplification. We show that beyond in silico predictions, testing with mock communities and field samples is important in primer selection.",
+		"container-title": "Environmental Microbiology",
+		"DOI": "10.1111/1462-2920.13023",
+		"ISSN": "1462-2920",
+		"issue": "5",
+		"language": "en",
+		"note": "_eprint: https://onlinelibrary.wiley.com/doi/pdf/10.1111/1462-2920.13023",
+		"page": "1403-1414",
+		"source": "Wiley Online Library",
+		"title": "Every base matters: assessing small subunit rRNA primers for marine microbiomes with mock communities, time series and global field samples",
+		"title-short": "Every base matters",
+		"URL": "https://onlinelibrary.wiley.com/doi/abs/10.1111/1462-2920.13023",
+		"volume": "18",
+		"author": [
+			{
+				"family": "Parada",
+				"given": "Alma E."
+			},
+			{
+				"family": "Needham",
+				"given": "David M."
+			},
+			{
+				"family": "Fuhrman",
+				"given": "Jed A."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					14
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2016"
+				]
+			]
+		}
+	},
+	{
+		"id": "polme2020",
+		"type": "article-journal",
+		"container-title": "Fungal Diversity",
+		"issue": "1",
+		"note": "publisher: Springer",
+		"page": "1–16",
+		"source": "Google Scholar",
+		"title": "FungalTraits: a user-friendly traits database of fungi and fungus-like stramenopiles",
+		"title-short": "FungalTraits",
+		"volume": "105",
+		"author": [
+			{
+				"family": "Põlme",
+				"given": "Sergei"
+			},
+			{
+				"family": "Abarenkov",
+				"given": "Kessy"
+			},
+			{
+				"family": "Henrik Nilsson",
+				"given": "R."
+			},
+			{
+				"family": "Lindahl",
+				"given": "Björn D."
+			},
+			{
+				"family": "Clemmensen",
+				"given": "Karina Engelbrecht"
+			},
+			{
+				"family": "Kauserud",
+				"given": "Havard"
+			},
+			{
+				"family": "Nguyen",
+				"given": "Nhu"
+			},
+			{
+				"family": "Kjøller",
+				"given": "Rasmus"
+			},
+			{
+				"family": "Bates",
+				"given": "Scott T."
+			},
+			{
+				"family": "Baldrian",
+				"given": "Petr"
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2020"
+				]
+			]
+		}
+	},
+	{
+		"id": "soukup2021",
+		"type": "article-journal",
+		"container-title": "Applied and Environmental Microbiology",
+		"issue": "2",
+		"note": "publisher: Am Soc Microbiol",
+		"page": "e02042–20",
+		"source": "Google Scholar",
+		"title": "Termites are associated with external species-specific bacterial communities",
+		"volume": "87",
+		"author": [
+			{
+				"family": "Soukup",
+				"given": "Patrik"
+			},
+			{
+				"family": "Větrovskỳ",
+				"given": "Tomáš"
+			},
+			{
+				"family": "Stiblik",
+				"given": "Petr"
+			},
+			{
+				"family": "Votỳpková",
+				"given": "Kateřina"
+			},
+			{
+				"family": "Chakraborty",
+				"given": "Amrita"
+			},
+			{
+				"family": "Sillam-Dussès",
+				"given": "David"
+			},
+			{
+				"family": "Kolařík",
+				"given": "Miroslav"
+			},
+			{
+				"family": "Odriozola",
+				"given": "Iñaki"
+			},
+			{
+				"family": "Lo",
+				"given": "Nathan"
+			},
+			{
+				"family": "Baldrian",
+				"given": "Petr"
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2021"
+				]
+			]
+		}
+	},
+	{
+		"id": "soukup2021a",
+		"type": "article-journal",
+		"container-title": "Applied and Environmental Microbiology",
+		"DOI": "10.1128/AEM.02042-20",
+		"issue": "2",
+		"note": "publisher: American Society for Microbiology",
+		"page": "e02042-20",
+		"source": "journals.asm.org (Atypon)",
+		"title": "Termites Are Associated with External Species-Specific Bacterial Communities",
+		"URL": "https://journals.asm.org/doi/full/10.1128/AEM.02042-20",
+		"volume": "87",
+		"author": [
+			{
+				"family": "Soukup",
+				"given": "Patrik"
+			},
+			{
+				"family": "Větrovský",
+				"given": "Tomáš"
+			},
+			{
+				"family": "Stiblik",
+				"given": "Petr"
+			},
+			{
+				"family": "Votýpková",
+				"given": "Kateřina"
+			},
+			{
+				"family": "Chakraborty",
+				"given": "Amrita"
+			},
+			{
+				"family": "Sillam-Dussès",
+				"given": "David"
+			},
+			{
+				"family": "Kolařík",
+				"given": "Miroslav"
+			},
+			{
+				"family": "Odriozola",
+				"given": "Iñaki"
+			},
+			{
+				"family": "Lo",
+				"given": "Nathan"
+			},
+			{
+				"family": "Baldrian",
+				"given": "Petr"
+			},
+			{
+				"family": "Šobotník",
+				"given": "Jan"
+			},
+			{
+				"family": "Bourguignon",
+				"given": "Thomas"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					17
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2021",
+					1,
+					4
+				]
+			]
+		}
+	},
+	{
+		"id": "fernandes2022",
+		"type": "article-journal",
+		"abstract": "Fungi support a wide range of ecosystem processes such as decomposition of organic matter and plant-soil relationships. Yet, our understanding of the factors driving the metaproteome of fungal communities is still scarce. Here, we conducted a field survey including data on fungal biomass (by phospholipid fatty acids, PLFA), community composition (by metabarcoding of the 18S rRNA gene from extracted DNA) and functional profile (by metaproteomics) to investigate soil fungi and their relation to edaphic and environmental variables across three ecosystems (forests, grasslands, and shrublands) distributed across the globe. We found that protein richness of soil fungi was significantly higher in forests than in shrublands. Among a wide suite of edaphic and environmental variables, we found that soil carbon content and plant cover shaped evenness and diversity of fungal soil proteins while protein richness correlated to mean annual temperature and pH. Functions shifted from metabolism in forests to information processing and storage in shrublands. The differences between the biomes highlight the utility of metaproteomics to investigate functional microbiomes in soil.\nSignificance\nUnderstanding the structure and the function of fungal communities and the driving factors is crucial to determine the contribution to ecosystem services of fungi and what effect future climate has. While there is considerable knowledge on the ecosystem processes provided by fungi such as decomposition of organic matter and plant-soil relationships, our understanding of the driving factors of the fungal metaproteome is scarce. Here we present the first estimates of fungal topsoil protein diversity in a wide range of soils across global biomes. We report taxonomic differences for genes delivered by amplicon sequencing of the 18S rRNA gene and differences of the functional microbiome based on metaproteomics. Both methods gave a complementary view on the fungal topsoil communities, unveiling both taxonomic and functional changes with changing environments. Such a comprehensive multi-omic analysis of fungal topsoil communities has never been performed before, to our knowledge.",
+		"container-title": "Journal of Proteomics",
+		"DOI": "10.1016/j.jprot.2021.104428",
+		"ISSN": "1874-3919",
+		"journalAbbreviation": "Journal of Proteomics",
+		"language": "en",
+		"page": "104428",
+		"source": "ScienceDirect",
+		"title": "Functional soil mycobiome across ecosystems",
+		"URL": "https://www.sciencedirect.com/science/article/pii/S1874391921003274",
+		"volume": "252",
+		"author": [
+			{
+				"family": "Fernandes",
+				"given": "Maysa Lima Parente"
+			},
+			{
+				"family": "Bastida",
+				"given": "Felipe"
+			},
+			{
+				"family": "Jehmlich",
+				"given": "Nico"
+			},
+			{
+				"family": "Martinović",
+				"given": "Tijana"
+			},
+			{
+				"family": "Větrovský",
+				"given": "Tomáš"
+			},
+			{
+				"family": "Baldrian",
+				"given": "Petr"
+			},
+			{
+				"family": "Delgado-Baquerizo",
+				"given": "Manuel"
+			},
+			{
+				"family": "Starke",
+				"given": "Robert"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					17
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2022",
+					2,
+					10
+				]
+			]
+		}
+	},
+	{
+		"id": "fiore-donno2022",
+		"type": "article-journal",
+		"container-title": "Soil Biology and Biochemistry",
+		"DOI": "10.1016/j.soilbio.2022.108628",
+		"ISSN": "00380717",
+		"journalAbbreviation": "Soil Biology and Biochemistry",
+		"language": "en",
+		"page": "108628",
+		"source": "DOI.org (Crossref)",
+		"title": "Soil compartments (bulk soil, litter, root and rhizosphere) as main drivers of soil protistan communities distribution in forests with different nitrogen deposition",
+		"URL": "https://linkinghub.elsevier.com/retrieve/pii/S0038071722000852",
+		"volume": "168",
+		"author": [
+			{
+				"family": "Fiore-Donno",
+				"given": "Anna Maria"
+			},
+			{
+				"family": "Human",
+				"given": "Zander R."
+			},
+			{
+				"family": "Štursová",
+				"given": "Martina"
+			},
+			{
+				"family": "Mundra",
+				"given": "Sunil"
+			},
+			{
+				"family": "Morgado",
+				"given": "Luis"
+			},
+			{
+				"family": "Kauserud",
+				"given": "Håvard"
+			},
+			{
+				"family": "Baldrian",
+				"given": "Petr"
+			},
+			{
+				"family": "Bonkowski",
+				"given": "Michael"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					17
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2022",
+					5
+				]
+			]
+		}
+	},
+	{
+		"id": "toivanen2012",
+		"type": "article-journal",
+		"abstract": "The removal of logging residues and stumps from clear-cuts has become a common forestry practice. Forest fuel harvesting decreases the initially low volume of dead wood in managed forests, but the biodiversity effects are poorly known. We studied the effects of forest fuel harvesting on decomposer fungi on clear-cut Norway spruce stands in central Finland. The number of occurrences and taxa of polypores, saprotrophic agarics and pleurotoid agarics were determined on 10 forest fuel harvested and 10 control clear-cuts 4–5 years after logging. In total, we recorded 148 fungal taxa. The total number of taxa, the number of polypore occurrences, and the number of polypore species within small area were lower at forest fuel harvested sites. The effect on the number of saprotrophic agaric taxa became obvious with increasing area. Most of the common polypore species had fewer occurrences on forest fuel harvested sites while the commonest agaric species increased due to forest fuel harvesting. Concerning different dead wood types, there were fewer fungal species and occurrences on stumps and fewer occurrences on logs on forest fuel harvested sites. Most of the effects of forest fuel harvesting were explained by the reduction in resource availability. We conclude that forest fuel harvesting, especially stump removal, has negative effects on decomposer fungi and that there is a risk that populations of certain species still thriving in managed forests will decline in the future.",
+		"collection-title": "Biorefinery",
+		"container-title": "Biomass and Bioenergy",
+		"DOI": "10.1016/j.biombioe.2011.11.016",
+		"ISSN": "0961-9534",
+		"journalAbbreviation": "Biomass and Bioenergy",
+		"language": "en",
+		"page": "84-93",
+		"source": "ScienceDirect",
+		"title": "The effect of forest fuel harvesting on the fungal diversity of clear-cuts",
+		"URL": "https://www.sciencedirect.com/science/article/pii/S0961953411006040",
+		"volume": "39",
+		"author": [
+			{
+				"family": "Toivanen",
+				"given": "Tero"
+			},
+			{
+				"family": "Markkanen",
+				"given": "Anni"
+			},
+			{
+				"family": "Kotiaho",
+				"given": "Janne S."
+			},
+			{
+				"family": "Halme",
+				"given": "Panu"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					20
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2012",
+					4,
+					1
+				]
+			]
+		}
+	},
+	{
+		"id": "mushinski2018",
+		"type": "article-journal",
+		"abstract": "Intensive organic matter removal (OMR) associated with timber harvest has the potential to impart long-term alterations to soil biota and associated properties and processes; however, there is a lack of data to say if this trend persists at depth. This study investigated how OMR influences long-term stability of soil fungi to a depth of 1 m using a replicated experimental pine forest in the Gulf Coastal Plain, USA. Treatments included unharvested control stands as well as low- and high-OMR stands. Intensive OMR led to significant differences in community structure and the abundance of functional guilds in surficial soil. Saprophytic taxa increased while ectomycorrhizal (ECM) taxa decreased with intensive-OMR, which correlated strongly with increased surface temperature and reduced soil nitrogen. Ericoid mycorrhizae (ERM) also increased in intensive-OMR stands, which may indicate that following disturbance, ERM could outcompete ECM for colonization of subsequent seedlings. Overall, no differences were observed below 30 cm, except for alpha diversity, which was a function of high inter-replicate variability. Our results illustrate a distinct long-term structural and functional response of soil fungi to intensive-OMR in the upper portions of the soil profile, which could lead to altered stand productivity and ecosystem services.",
+		"container-title": "Soil Biology and Biochemistry",
+		"DOI": "10.1016/j.soilbio.2018.09.019",
+		"ISSN": "0038-0717",
+		"journalAbbreviation": "Soil Biology and Biochemistry",
+		"language": "en",
+		"page": "127-136",
+		"source": "ScienceDirect",
+		"title": "Organic matter removal associated with forest harvest leads to decade scale alterations in soil fungal communities and functional guilds",
+		"URL": "https://www.sciencedirect.com/science/article/pii/S0038071718303146",
+		"volume": "127",
+		"author": [
+			{
+				"family": "Mushinski",
+				"given": "Ryan M."
+			},
+			{
+				"family": "Gentry",
+				"given": "Terry J."
+			},
+			{
+				"family": "Boutton",
+				"given": "Thomas W."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					20
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2018",
+					12,
+					1
+				]
+			]
+		}
+	},
+	{
+		"id": "wolski2021",
+		"type": "article-journal",
+		"abstract": "Mosses are mainly the object of ecological and taxonomic research. This group of plants are still underestimated by scientists in other aspects of research. Recent research has shown that these plants contain remarkable and unique substances with high biological activity. Five species of mosses from a large urban ecosystem were identified for present study. In order to determine their biological potential, multifaceted studies were carried out, including: total phenolics content, antioxidant activity, antimicrobial and antifungal study, cytotoxicity evaluation, and scratch assay to assess pro-regenerative effect in the context of their possible use as the ingredients of biologically active cosmetics. Additionally, determination of individual phenolic compounds in selected extracts of the tested mosses was made. Research showed that Ceratodon purpureus and Dryptodon pulvinatus extracts had the greatest potential as antioxidants and antimicrobial activity. The cytotoxicity assessment indicated that the extracts from Dryptodon pulvinatus and Rhytidiadelphus squarossus exerted the strongest negative effect on mouse fibroblast line L929 viability at higher concentrations. While, the extract from Tortulla muralis best stimulated human foreskin fibroblast line HFF-1 proliferation and wound healing. The research on individual phenolic compounds content in the extracts tested indicated over 20 peaks on UPLC chromatograms. The conducted study has shown that mosses, especially so far unexplored species of open ecosystems, and e.g. epilytic habitats, may be a valuable source of biologically active substances and thus may constitute important medical and cosmetic possibilities.",
+		"container-title": "PLoS ONE",
+		"DOI": "10.1371/journal.pone.0257479",
+		"ISSN": "1932-6203",
+		"issue": "9",
+		"journalAbbreviation": "PLoS One",
+		"note": "PMID: 34543304\nPMCID: PMC8452054",
+		"page": "e0257479",
+		"source": "PubMed Central",
+		"title": "Cytotoxicity, antimicrobial and antioxidant activities of mosses obtained from open habitats",
+		"URL": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8452054/",
+		"volume": "16",
+		"author": [
+			{
+				"family": "Wolski",
+				"given": "Grzegorz J."
+			},
+			{
+				"family": "Sadowska",
+				"given": "Beata"
+			},
+			{
+				"family": "Fol",
+				"given": "Marek"
+			},
+			{
+				"family": "Podsędek",
+				"given": "Anna"
+			},
+			{
+				"family": "Kajszczak",
+				"given": "Dominika"
+			},
+			{
+				"family": "Kobylińska",
+				"given": "Agnieszka"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					20
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2021",
+					9,
+					20
+				]
+			]
+		}
+	},
+	{
+		"id": "thomas2021",
+		"type": "article-journal",
+		"abstract": "Thermoflexus hugenholtzii JAD2T, the only cultured representative of the Chloroflexota order Thermoflexales, is abundant in Great Boiling Spring (GBS), NV, United States, and close relatives inhabit geothermal systems globally. However, no defined medium exists for T. hugenholtzii JAD2T and no single carbon source is known to support its growth, leaving key knowledge gaps in its metabolism and nutritional needs. Here, we report comparative genomic analysis of the draft genome of T. hugenholtzii JAD2T and eight closely related metagenome-assembled genomes (MAGs) from geothermal sites in China, Japan, and the United States, representing “Candidatus Thermoflexus japonica,” “Candidatus Thermoflexus tengchongensis,” and “Candidatus Thermoflexus sinensis.” Genomics was integrated with targeted exometabolomics and 13C metabolic probing of T. hugenholtzii. The Thermoflexus genomes each code for complete central carbon metabolic pathways and an unusually high abundance and diversity of peptidases, particularly Metallo- and Serine peptidase families, along with ABC transporters for peptides and some amino acids. The T. hugenholtzii JAD2T exometabolome provided evidence of extracellular proteolytic activity based on the accumulation of free amino acids. However, several neutral and polar amino acids appear not to be utilized, based on their accumulation in the medium and the lack of annotated transporters. Adenine and adenosine were scavenged, and thymine and nicotinic acid were released, suggesting interdependency with other organisms in situ. Metabolic probing of T. hugenholtzii JAD2T using 13C-labeled compounds provided evidence of oxidation of glucose, pyruvate, cysteine, and citrate, and functioning glycolytic, tricarboxylic acid (TCA), and oxidative pentose-phosphate pathways (PPPs). However, differential use of position-specific 13C-labeled compounds showed that glycolysis and the TCA cycle were uncoupled. Thus, despite the high abundance of Thermoflexus in sediments of some geothermal systems, they appear to be highly focused on chemoorganotrophy, particularly protein degradation, and may interact extensively with other microorganisms in situ.",
+		"container-title": "Frontiers in Microbiology",
+		"ISSN": "1664-302X",
+		"source": "Frontiers",
+		"title": "Genomics, Exometabolomics, and Metabolic Probing Reveal Conserved Proteolytic Metabolism of Thermoflexus hugenholtzii and Three Candidate Species From China and Japan",
+		"URL": "https://www.frontiersin.org/articles/10.3389/fmicb.2021.632731",
+		"volume": "12",
+		"author": [
+			{
+				"family": "Thomas",
+				"given": "Scott C."
+			},
+			{
+				"family": "Payne",
+				"given": "Devon"
+			},
+			{
+				"family": "Tamadonfar",
+				"given": "Kevin O."
+			},
+			{
+				"family": "Seymour",
+				"given": "Cale O."
+			},
+			{
+				"family": "Jiao",
+				"given": "Jian-Yu"
+			},
+			{
+				"family": "Murugapiran",
+				"given": "Senthil K."
+			},
+			{
+				"family": "Lai",
+				"given": "Dengxun"
+			},
+			{
+				"family": "Lau",
+				"given": "Rebecca"
+			},
+			{
+				"family": "Bowen",
+				"given": "Benjamin P."
+			},
+			{
+				"family": "Silva",
+				"given": "Leslie P."
+			},
+			{
+				"family": "Louie",
+				"given": "Katherine B."
+			},
+			{
+				"family": "Huntemann",
+				"given": "Marcel"
+			},
+			{
+				"family": "Clum",
+				"given": "Alicia"
+			},
+			{
+				"family": "Spunde",
+				"given": "Alex"
+			},
+			{
+				"family": "Pillay",
+				"given": "Manoj"
+			},
+			{
+				"family": "Palaniappan",
+				"given": "Krishnaveni"
+			},
+			{
+				"family": "Varghese",
+				"given": "Neha"
+			},
+			{
+				"family": "Mikhailova",
+				"given": "Natalia"
+			},
+			{
+				"family": "Chen",
+				"given": "I-Min"
+			},
+			{
+				"family": "Stamatis",
+				"given": "Dimitrios"
+			},
+			{
+				"family": "Reddy",
+				"given": "T. B. K."
+			},
+			{
+				"family": "O’Malley",
+				"given": "Ronan"
+			},
+			{
+				"family": "Daum",
+				"given": "Chris"
+			},
+			{
+				"family": "Shapiro",
+				"given": "Nicole"
+			},
+			{
+				"family": "Ivanova",
+				"given": "Natalia"
+			},
+			{
+				"family": "Kyrpides",
+				"given": "Nikos C."
+			},
+			{
+				"family": "Woyke",
+				"given": "Tanja"
+			},
+			{
+				"family": "Eloe-Fadrosh",
+				"given": "Emiley"
+			},
+			{
+				"family": "Hamilton",
+				"given": "Trinity L."
+			},
+			{
+				"family": "Dijkstra",
+				"given": "Paul"
+			},
+			{
+				"family": "Dodsworth",
+				"given": "Jeremy A."
+			},
+			{
+				"family": "Northen",
+				"given": "Trent R."
+			},
+			{
+				"family": "Li",
+				"given": "Wen-Jun"
+			},
+			{
+				"family": "Hedlund",
+				"given": "Brian P."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					26
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2021"
+				]
+			]
+		}
+	},
+	{
+		"id": "zotero-1767",
+		"type": "webpage",
+		"title": "Full article: Differences in life history characteristics among three sympatric evolutionary species of the Rotaria rotatoria complex",
+		"URL": "https://www.tandfonline.com/doi/full/10.1080/02705060.2016.1141379",
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					26
+				]
+			]
+		}
+	},
+	{
+		"id": "xiang2016",
+		"type": "article-journal",
+		"container-title": "Journal of Freshwater Ecology",
+		"DOI": "10.1080/02705060.2016.1141379",
+		"ISSN": "0270-5060, 2156-6941",
+		"issue": "3",
+		"journalAbbreviation": "Journal of Freshwater Ecology",
+		"language": "en",
+		"page": "351-360",
+		"source": "DOI.org (Crossref)",
+		"title": "Differences in life history characteristics among three sympatric evolutionary species of the <i>Rotaria rotatoria</i> complex",
+		"URL": "https://www.tandfonline.com/doi/full/10.1080/02705060.2016.1141379",
+		"volume": "31",
+		"author": [
+			{
+				"family": "Xiang",
+				"given": "Xianling"
+			},
+			{
+				"family": "Jiang",
+				"given": "Ruiming"
+			},
+			{
+				"family": "Tao",
+				"given": "Yuanyuan"
+			},
+			{
+				"family": "Chen",
+				"given": "Yingying"
+			},
+			{
+				"family": "Xi",
+				"given": "Yilong"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					26
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2016",
+					7,
+					2
+				]
+			]
+		}
+	},
+	{
+		"id": "chen2017",
+		"type": "article-journal",
+		"container-title": "International Journal of Systematic and Evolutionary Microbiology",
+		"DOI": "10.1099/ijsem.0.001588",
+		"ISSN": "1466-5026, 1466-5034",
+		"issue": "2",
+		"language": "en",
+		"page": "212-217",
+		"source": "DOI.org (Crossref)",
+		"title": "Aliidongia dinghuensis gen. nov., sp. nov., a poly-β-hydroxybutyrate-producing bacterium isolated from Pinus massoniana forest soil",
+		"URL": "https://www.microbiologyresearch.org/content/journal/ijsem/10.1099/ijsem.0.001588",
+		"volume": "67",
+		"author": [
+			{
+				"family": "Chen",
+				"given": "Mei-Hong"
+			},
+			{
+				"family": "Zhou",
+				"given": "Xiang-Yue"
+			},
+			{
+				"family": "Ou",
+				"given": "Fang-Hong"
+			},
+			{
+				"family": "Xia",
+				"given": "Fan"
+			},
+			{
+				"family": "Lv",
+				"given": "Ying-Ying"
+			},
+			{
+				"family": "Qiu",
+				"given": "Li-Hong"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					26
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2017",
+					2,
+					1
+				]
+			]
+		}
+	},
+	{
+		"id": "zotero-1771",
+		"type": "webpage",
+		"title": "Spartobacteria class. nov. - Janssen - Major Reference Works - Wiley Online Library",
+		"URL": "https://onlinelibrary.wiley.com/doi/abs/10.1002/9781118960608.cbm00053",
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					26
+				]
+			]
+		}
+	},
+	{
+		"id": "janssen2015",
+		"type": "chapter",
+		"container-title": "Bergey's Manual of Systematics of Archaea and Bacteria",
+		"edition": "1",
+		"ISBN": "978-1-118-96060-8",
+		"language": "en",
+		"note": "DOI: 10.1002/9781118960608.cbm00053",
+		"page": "1-4",
+		"publisher": "Wiley",
+		"source": "DOI.org (Crossref)",
+		"title": "<i>Spartobacteria class. nov.</i>",
+		"URL": "https://onlinelibrary.wiley.com/doi/10.1002/9781118960608.cbm00053",
+		"editor": [
+			{
+				"family": "Whitman",
+				"given": "William B"
+			},
+			{
+				"family": "Rainey",
+				"given": "Fred"
+			},
+			{
+				"family": "Kämpfer",
+				"given": "Peter"
+			},
+			{
+				"family": "Trujillo",
+				"given": "Martha"
+			},
+			{
+				"family": "Chun",
+				"given": "Jonsik"
+			},
+			{
+				"family": "DeVos",
+				"given": "Paul"
+			},
+			{
+				"family": "Hedlund",
+				"given": "Brian"
+			},
+			{
+				"family": "Dedysh",
+				"given": "Svetlana"
+			}
+		],
+		"author": [
+			{
+				"family": "Janssen",
+				"given": "Peter H."
+			},
+			{
+				"family": "Costa",
+				"given": "Kyle C."
+			},
+			{
+				"family": "Hedlund",
+				"given": "Brian P."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					26
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2015",
+					9,
+					14
+				]
+			]
+		}
+	},
+	{
+		"id": "llado2019",
+		"type": "article-journal",
+		"abstract": "Bacteria belong to the key players in the carbon cycling in forest soils and thus affect the global C balance. Our understanding of bacterial contribution to ecosystem processes relies on the analysis of whole communities. Here we combined strain isolation, genome sequencing and metatranscriptomics to analyse the activity of individual bacterial species in the topsoil of a temperate coniferous forest. Our results show that transcription profiles in litter and soil differ, indicating that bacterial activity is shaped by their habitat. Importantly, transcript pools also significant differ between summer when primary producers are active and winter. We show that Acidobacteria and Bacteroidetes with high metabolic capacity for polysaccharide decomposition in their genomes actively transcribe corresponding genes in situ. The rate of the transcription of ribosomal proteins, a proxy of growth, seasonally differs between these “decomposer” taxa and other “opportunistic” bacteria. While the former grow at similar rates in summer and winter, the latter grow much faster in summer when labile C, delivered by plant roots, is available. This paper demonstrates differences in activity of bacterial guilds as well as the importance of environmental drivers for the activity of individual bacteria.",
+		"container-title": "Soil Biology and Biochemistry",
+		"DOI": "10.1016/j.soilbio.2019.05.010",
+		"ISSN": "0038-0717",
+		"journalAbbreviation": "Soil Biology and Biochemistry",
+		"language": "en",
+		"page": "275-282",
+		"source": "ScienceDirect",
+		"title": "Tracking of the activity of individual bacteria in temperate forest soils shows guild-specific responses to seasonality",
+		"URL": "https://www.sciencedirect.com/science/article/pii/S0038071719301440",
+		"volume": "135",
+		"author": [
+			{
+				"family": "Lladó",
+				"given": "Salvador"
+			},
+			{
+				"family": "Větrovský",
+				"given": "Tomáš"
+			},
+			{
+				"family": "Baldrian",
+				"given": "Petr"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					27
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2019",
+					8,
+					1
+				]
+			]
+		}
+	},
+	{
+		"id": "kohout2021",
+		"type": "article-journal",
+		"abstract": "Belowground litter derived from tree roots has been shown as a principal source of soil organic matter in coniferous forests. Fate of tree root necromass depends on fungal communities developing on the decaying roots. Local environmental conditions which affect composition of tree root mycobiome may also influence fungal communities developing on decaying tree roots. Here, we assessed fungal communities associated with decaying roots of Picea abies decomposing in three microhabitats: soil with no vegetation, soil with ericoid shrubs cover, and P. abies deadwood, for a 2-year period. Forest microhabitat showed stronger effect on structuring fungal communities associated with decaying roots compared to living roots. Some ericoid mycorrhizal fungi showed higher relative abundance on decaying roots in soils under ericoid shrub cover, while saprotrophic fungi had higher relative abundance in roots decomposing inside deadwood. Regardless of the studied microhabitat, we observed decline of ectomycorrhizal fungi and increase of endophytic fungi during root decomposition. Interestingly, we found substantially more fungal taxa with unknown ecology in late stages of root decomposition, indicating that highly decomposed roots may represent so far overlooked niche for soil fungi. Our study shows the importance of microhabitats on the fate of the decomposing spruce roots.",
+		"container-title": "Frontiers in Microbiology",
+		"ISSN": "1664-302X",
+		"source": "Frontiers",
+		"title": "Forest Microhabitat Affects Succession of Fungal Communities on Decomposing Fine Tree Roots",
+		"URL": "https://www.frontiersin.org/articles/10.3389/fmicb.2021.541583",
+		"volume": "12",
+		"author": [
+			{
+				"family": "Kohout",
+				"given": "Petr"
+			},
+			{
+				"family": "Sudová",
+				"given": "Radka"
+			},
+			{
+				"family": "Brabcová",
+				"given": "Vendula"
+			},
+			{
+				"family": "Vosolsobě",
+				"given": "Stanislav"
+			},
+			{
+				"family": "Baldrian",
+				"given": "Petr"
+			},
+			{
+				"family": "Albrechtová",
+				"given": "Jana"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					27
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2021"
+				]
+			]
+		}
+	},
+	{
+		"id": "baldrian2012",
+		"type": "article-journal",
+		"abstract": "Soils of coniferous forest ecosystems are important for the global carbon cycle, and the identification of active microbial decomposers is essential for understanding organic matter transformation in these ecosystems. By the independent analysis of DNA and RNA, whole communities of bacteria and fungi and its active members were compared in topsoil of a Picea abies forest during a period of organic matter decomposition. Fungi quantitatively dominate the microbial community in the litter horizon, while the organic horizon shows comparable amount of fungal and bacterial biomasses. Active microbial populations obtained by RNA analysis exhibit similar diversity as DNA-derived populations, but significantly differ in the composition of microbial taxa. Several highly active taxa, especially fungal ones, show low abundance or even absence in the DNA pool. Bacteria and especially fungi are often distinctly associated with a particular soil horizon. Fungal communities are less even than bacterial ones and show higher relative abundances of dominant species. While dominant bacterial species are distributed across the studied ecosystem, distribution of dominant fungi is often spatially restricted as they are only recovered at some locations. The sequences of cbhI gene encoding for cellobiohydrolase (exocellulase), an essential enzyme for cellulose decomposition, were compared in soil metagenome and metatranscriptome and assigned to their producers. Litter horizon exhibits higher diversity and higher proportion of expressed sequences than organic horizon. Cellulose decomposition is mediated by highly diverse fungal populations largely distinct between soil horizons. The results indicate that low-abundance species make an important contribution to decomposition processes in soils.",
+		"container-title": "The ISME Journal",
+		"DOI": "10.1038/ismej.2011.95",
+		"ISSN": "1751-7370",
+		"issue": "2",
+		"journalAbbreviation": "ISME J",
+		"language": "en",
+		"license": "2012 International Society for Microbial Ecology",
+		"note": "number: 2\npublisher: Nature Publishing Group",
+		"page": "248-258",
+		"source": "www.nature.com",
+		"title": "Active and total microbial communities in forest soil are largely different and highly stratified during decomposition",
+		"URL": "https://www.nature.com/articles/ismej201195",
+		"volume": "6",
+		"author": [
+			{
+				"family": "Baldrian",
+				"given": "Petr"
+			},
+			{
+				"family": "Kolařík",
+				"given": "Miroslav"
+			},
+			{
+				"family": "Štursová",
+				"given": "Martina"
+			},
+			{
+				"family": "Kopecký",
+				"given": "Jan"
+			},
+			{
+				"family": "Valášková",
+				"given": "Vendula"
+			},
+			{
+				"family": "Větrovský",
+				"given": "Tomáš"
+			},
+			{
+				"family": "Žifčáková",
+				"given": "Lucia"
+			},
+			{
+				"family": "Šnajdr",
+				"given": "Jaroslav"
+			},
+			{
+				"family": "Rídl",
+				"given": "Jakub"
+			},
+			{
+				"family": "Vlček",
+				"given": "Čestmír"
+			},
+			{
+				"family": "Voříšková",
+				"given": "Jana"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					27
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2012",
+					2
+				]
+			]
+		}
+	},
+	{
+		"id": "kohout2018",
+		"type": "article-journal",
+		"abstract": "Forest management practices often severely affect forest ecosystem functioning. Tree removal by clearcutting is one such practice, producing severe impacts due to the total reduction of primary productivity. Here, we assessed changes to fungal community structure and decomposition activity in the soil, roots and rhizosphere of a Picea abies stand for a 2-year period following clearcutting compared to data from before tree harvest. We found that the termination of photosynthate flow through tree roots into soil is associated with profound changes in soil, both in decomposition processes and fungal community composition. The rhizosphere, representing an active compartment of high enzyme activity and high fungal biomass in the living stand, ceases to exist and starts to resemble bulk soil. Decomposing roots appear to separate from bulk soil and develop into hotspots of decomposition and important fungal biomass pools. We found no support for the involvement of ectomycorrhizal fungi in the decomposition of roots, but we found some evidence that root endophytic fungi may have an important role in the early stages of this process. In soil, activity of extracellular enzymes also decreased in the long term following the end of rhizodeposition by tree roots.",
+		"container-title": "The ISME Journal",
+		"DOI": "10.1038/s41396-017-0027-3",
+		"ISSN": "1751-7370",
+		"issue": "3",
+		"journalAbbreviation": "ISME J",
+		"language": "en",
+		"license": "2017 International Society for Microbial Ecology",
+		"note": "number: 3\npublisher: Nature Publishing Group",
+		"page": "692-703",
+		"source": "www.nature.com",
+		"title": "Clearcutting alters decomposition processes and initiates complex restructuring of fungal communities in soil and tree roots",
+		"URL": "https://www.nature.com/articles/s41396-017-0027-3",
+		"volume": "12",
+		"author": [
+			{
+				"family": "Kohout",
+				"given": "Petr"
+			},
+			{
+				"family": "Charvátová",
+				"given": "Markéta"
+			},
+			{
+				"family": "Štursová",
+				"given": "Martina"
+			},
+			{
+				"family": "Mašínová",
+				"given": "Tereza"
+			},
+			{
+				"family": "Tomšovský",
+				"given": "Michal"
+			},
+			{
+				"family": "Baldrian",
+				"given": "Petr"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					27
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2018",
+					3
+				]
+			]
+		}
+	},
+	{
+		"id": "porter2022",
+		"type": "article-journal",
+		"abstract": "Multi-marker metabarcoding is increasingly being used to generate biodiversity information across different domains of life from microbes to fungi to animals such as for molecular ecology and biomonitoring applications in different sectors from academic research to regulatory agencies and industry. Current popular bioinformatic pipelines support microbial and fungal marker analysis, while ad hoc methods are often used to process animal metabarcode markers from the same study. MetaWorks provides a harmonized processing environment, pipeline, and taxonomic assignment approach for demultiplexed Illumina reads for all biota using a wide range of metabarcoding markers such as 16S, ITS, and COI. A Conda environment is provided to quickly gather most of the programs and dependencies for the pipeline. Several workflows are provided such as: taxonomically assigning exact sequence variants, provides an option to generate operational taxonomic units, and facilitates single-read processing. Pipelines are automated using Snakemake to minimize user intervention and facilitate scalability. All pipelines use the RDP classifier to provide taxonomic assignments with confidence measures. We extend the functionality of the RDP classifier for taxonomically assigning 16S (bacteria), ITS (fungi), and 28S (fungi), to also support COI (eukaryotes), rbcL (eukaryotes, land plants, diatoms), 12S (fish, vertebrates), 18S (eukaryotes, diatoms) and ITS (fungi, plants). MetaWorks properly handles ITS by trimming flanking conserved rRNA gene regions as well as protein coding genes by providing two options for removing obvious pseudogenes. MetaWorks can be downloaded from\n              https://github.com/terrimporter/MetaWorks\n              and quickstart instructions, pipeline details, and a tutorial for new users can be found at\n              https://terrimporter.github.io/MetaWorksSite\n              .",
+		"container-title": "PLOS ONE",
+		"DOI": "10.1371/journal.pone.0274260",
+		"ISSN": "1932-6203",
+		"issue": "9",
+		"journalAbbreviation": "PLoS ONE",
+		"language": "en",
+		"page": "e0274260",
+		"source": "DOI.org (Crossref)",
+		"title": "MetaWorks: A flexible, scalable bioinformatic pipeline for high-throughput multi-marker biodiversity assessments",
+		"title-short": "MetaWorks",
+		"URL": "https://dx.plos.org/10.1371/journal.pone.0274260",
+		"volume": "17",
+		"author": [
+			{
+				"family": "Porter",
+				"given": "Teresita M."
+			},
+			{
+				"family": "Hajibabaei",
+				"given": "Mehrdad"
+			}
+		],
+		"editor": [
+			{
+				"family": "Doi",
+				"given": "Hideyuki"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					28
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2022",
+					9,
+					29
 				]
 			]
 		}
