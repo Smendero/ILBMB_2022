@@ -21,14 +21,14 @@ output:
 ---
 
 
-# Abstract {.unnumbered}
+# Abstract
 
 The market for forest products has diversified to include biomass energy products sourced from materials that were typically left on-site after harvest. In this study we examined whether intensified biomass removal following harvest will effect site soil biological diversity and metabolic functioning, and how decisions surrounding sampling, in sites prepared with disc-trenching soil scarification, influence the effect assessment of harvesting activities. We compared the influence of harvesting, below-ground biomass removal, stem only versus full tree harvesting, micro-topographic features and seasonal effects on soil biota. We assessed soil biotic changes using potential enzyme activity assays and metabarcoding using targeted primers for four groups (arthropods, bacteria, fungi and broad eukaryotes). We found that harvesting and forest floor removal had strong influences on soil biotic communities, with changes that generally favoured more general soil saprotrophy and reductions in plant-associated organisms. Disc-trenching created differences between micro-topographic features where organic soil was redistributed and trenches, where it was removed. We found no significant difference to how seasonal variation effected communities in harvested sites, compared to unharvested sites. These results show that there is significant site heterogeneity due to disc scarification, and that the sampling micro-topographic features should be considered during study design. Additional studies are needed to assess the effects of higher biomass removal on these features as these sites age. <!---Organic soil components contain many of the plant associated organisms in soil, so the redistribution of existing organic soils have large, potentially long-lasting effects on the soil community. ## Commented this line out at the suggestion of TP--->
 
 
 Key words: soil, Bacteria, Fungi, Arthropods, Harvesting, Biomass, microtopography, DNA metabarcoding, enzyme activity
 
-![Figure 0.1: Simplified summary of results of the effects of harvesting, microtopographical differences, and seasonal variation on soil potential functions and community diversity and structure.](graphical\\ abstract.jpeg)
+![Figure 0.1: Simplified summary of results of the effects of harvesting, microtopographical differences, and seasonal variation on soil potential functions and community diversity and structure.](graphical\\\ abstract.jpeg)
 
 
 
