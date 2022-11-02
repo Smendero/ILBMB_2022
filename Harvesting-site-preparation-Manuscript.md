@@ -28,7 +28,7 @@ The market for forest products has diversified to include biomass energy product
 
 Key words: soil, Bacteria, Fungi, Arthropods, Harvesting, Biomass, microtopography, DNA metabarcoding, enzyme activity
 
-![Figure 0.1: Simplified summary of results of the effects of harvesting, microtopographical differences, and seasonal variation on soil potential functions and community diversity and structure.](graphical\\\ abstract.jpeg)
+![Figure 0.1: Simplified summary of results of the effects of harvesting, microtopographical differences, and seasonal variation on soil potential functions and community diversity and structure.]("graphical abstract.jpeg")
 
 
 
