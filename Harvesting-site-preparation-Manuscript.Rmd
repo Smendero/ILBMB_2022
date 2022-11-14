@@ -605,7 +605,7 @@ for(ds_name in names(coda.clrs.res[grep("_1", names(coda.clrs.res), value = T)])
       
        clr.pca.plots[[plotcount]] <-ggplot(plottingdat, aes(PC1, PC2, group=harvest))+
    geom_point(data=plottingdat, aes(color=harvest, shape = harvest), alpha=0.5, size = 2) + 
-   geom_polygon(data=hulls, aes(group=hullgrp, fill = harvest, alpha = harvest, color=harvest)) +
+   geom_polygon(data=hulls, aes(group=hullgrp, alpha = harvest, color=harvest)) +
    scale_color_manual(values= harv.cols)+
    scale_fill_manual(harv.cols)+
    scale_shape_manual(harv.shapes)+
@@ -687,7 +687,7 @@ adon.plotting <- clr.adon.res[!clr.adon.res$Parameter %in% c("Residuals", "Total
       mutate(contrast = factor(as.character(contrast), levels = c("overall", "TR", "BRt", "BGBR", "FFR"))) %>% group_by(dataset) %>% mutate(max.pr = max(Pr..F.)*.1)
 adon.plotting$dataset <- gsub("_.$", "", adon.plotting$dataset)
 
-ggplot(adon.plotting, aes(R2, Pr..F., color=contrast, fill = contrast, shape = contrast)) +
+ggplot(adon.plotting, aes(R2, Pr..F., color=contrast, shape = contrast)) +
    geom_hline(yintercept = 0.075, color="black") +
       geom_point(size = 3) + 
       geom_point(aes(x=R2-0.01), col = "#00000000") +
@@ -765,14 +765,14 @@ maxs  <- plot.betadisper %>%
                                           ifelse(contrast == "BGBR", distance*1.2, distance*1.1))))
 
 ## plot as boxplots with significance
-     ggplot(plot.betadisper %>% mutate(dataset = gsub("_[[:digit:]]", "", dataset)), aes(harvest, distance, fill = harvest))+
-     geom_boxplot(alpha = 0.5)+
+     ggplot(plot.betadisper %>% mutate(dataset = gsub("_[[:digit:]]", "", dataset)), aes(harvest, distance, color = harvest))+
+     geom_boxplot()+
        geom_text(data= temp.sig, inherit.aes = F, aes(5.75, distance*0.9, label = sig.level, color = text.col))+
-           geom_segment(data = temp.sig, inherit.aes = F, aes(y = distance*0.9, yend = distance*0.9, x = firstseg.start, xend = firstseg.end, color = text.col)) +
-           geom_segment(data = temp.sig, inherit.aes = F, aes(y = distance*0.9, yend = distance*0.9, x = secondseg.start, xend = secondseg.end, color = text.col)) +
+           geom_segment(data = temp.sig, inherit.aes = F, aes(y = distance*0.9, yend = distance*0.9, x = firstseg.start, xend = firstseg.end, color = text.col, size = text.col)) +
+           geom_segment(data = temp.sig, inherit.aes = F, aes(y = distance*0.9, yend = distance*0.9, x = secondseg.start, xend = secondseg.end, color = text.col, size = text.col)) +
        theme_minimal()+
-       scale_fill_manual(values= harv.cols) +
-       scale_color_manual(name = "significance", values= c("black", "red")) +
+       scale_color_manual(values= c(harv.cols, "significant at p-value < 0.05" = "red", "non-significant" = "black")) +
+       scale_size_manual(name = "significance", values= c(1,1), guide = guide_legend(override.aes = list(colour = c("red", "black")))) +
        facet_wrap(~dataset, scales = "free_y") + coord_cartesian(xlim = c(0, 5.8)) + 
            theme(legend.position = 'none', axis.text.x = element_text(angle = 90))
      
@@ -907,7 +907,7 @@ for(ds_name in names(coda.clrs.res[grep("_3", names(coda.clrs.res), value = T)])
       
        clr.pca.plots[[plotcount]] <-ggplot(plottingdat, aes(PC1, PC2, group=topo))+
    geom_point(data=plottingdat, aes(color=topo, shape = topo), size = 2) + 
-   geom_polygon(data=hulls, aes(group=hullgrp, fill = topo, color=topo), alpha = 0.5) +
+   geom_polygon(data=hulls, aes(group=hullgrp, color=topo), fill= NA) +
    scale_color_manual(values= topo.cols)+
    scale_fill_manual(values= topo.cols)+
    scale_shape_manual(values= topo.shapes)+
@@ -984,7 +984,7 @@ for(ds_name in names(coda.clrs.res[grep("_3", names(coda.clrs.res), value = T)])
       
        clr.rda.plots[[plotcount]] <-ggplot(plottingdat, aes(RDA1, RDA2, group=topo))+
    geom_point(data=plottingdat, aes(color=topo, shape = topo), size = 2) + 
-   geom_polygon(data=hulls, aes(group=hullgrp, fill = topo, color=topo), alpha = 0.5) +
+   geom_polygon(data=hulls, aes(group=hullgrp, color=topo), fill = "#FFFFFF") +
    geom_text(inherit.aes = FALSE, data = rda.vecs, aes(label=row.names(rda.vecs), x=RDA1, y=RDA2), color="black") +
    geom_segment(inherit.aes = FALSE, data = rda.vecs, aes(x=0, y=0, xend=RDA1, yend=RDA2), color="black",arrow = arrow()) +
    scale_color_manual(values= topo.cols)+
@@ -1157,7 +1157,7 @@ Tukey.res <- Tukey.res %>%
 #   theme(axis.text.x = element_text(angle = 90))
 
 ggplot(div.res%>%
-  mutate(dataset = str_remove(dataset, "_2")), aes(month, value, col = harvest, fill = harvest)) +
+  mutate(dataset = str_remove(dataset, "_2")), aes(month, value, col = harvest)) +
       geom_boxplot(alpha = 0.5) + 
       scale_color_manual(values = cust.cols[c(2,1)]) +
       scale_fill_manual(values = cust.cols[c(2,1)]) +
@@ -1416,8 +1416,8 @@ maxs  <- plot.betadisper %>%
      
 ## plot as boxplots with significance
      ggplot(plot.betadisper%>%
-  mutate(dataset = str_remove(dataset, "_2")), aes(month, distance, fill = harvest))+
-     geom_boxplot(alpha = 0.5)+
+  mutate(dataset = str_remove(dataset, "_2")), aes(month, distance, color = harvest))+
+     geom_boxplot()+
      geom_text(data= temp.sig, inherit.aes = F, aes(3.5, height, label = sig.level, group= harvest1, color = harvest))+
            geom_segment(data = temp.sig, inherit.aes = F, aes(y = height, yend = height, x = seg1.start, xend = seg1.end, color = harvest)) +
            geom_segment(data = temp.sig, inherit.aes = F, aes(y = height, yend = height, x = seg2.start, xend = seg2.end, color = harvest)) +
