@@ -10,7 +10,7 @@ author:
 - Merhdad Hajibabei, Centre for Biodiversity Genomics and Department of Integrative Biology, University of Guelph mhajibab@uoguelph.ca
 - Dave Morris, Centre for Northern Forest Ecosystem Research, Ontario Ministry of Natural Resources and Forestry, Thunder Bay CA P7E 2V6, Dave.M.Morris@ontario.ca
 - Lisa Venier, Great Lakes Forestry Centre, Natural Resources Canada, lisa.venier@nrcan-rncan.gc.ca
-date: "2022-11-14"
+date: "2024-02-22"
 bibliography: bibliography.json
 csl: forest-ecology-and-management.csl
 output: 
@@ -28,7 +28,7 @@ The market for forest products has diversified to include biomass energy product
 
 Key words: soil, Bacteria, Fungi, Arthropods, Harvesting, Biomass, microtopography, DNA metabarcoding, enzyme activity
 
-![Figure 0.1: Simplified summary of results of the effects of harvesting, microtopographical differences, and seasonal variation on soil potential functions and community diversity and structure.](graphical abstract.jpeg)
+![<span id="fig:graphical-abstract"></span>Figure 0.1: Simplified summary of results of the effects of harvesting, microtopographical differences, and seasonal variation on soil potential functions and community diversity and structure.](graphical abstract.jpeg)
 
 
 
@@ -70,7 +70,7 @@ Our study objective is to assess the impact of harvest (tree removal), alternati
 
 This study was conducted at the Island Lake Biomass Trial sites near Chapleau, Ontario, which have been extensively described [@kwiaton2014a; @venier2017]. In brief, the study site was established in 2011 in a 40 year old second growth jack pine stand. Main treatment plots (70 m by 70 m, with a 10 m surrounding buffer to minimize edge effects) were harvested in the winters of 2010/2011 and included four increasing levels of biomass removal 1) stem-only (leaving the live branches and tops of harvested trees at the stump), 2) full-tree (removing the above ground tree biomass, including the removal of poor or undersized trees), 3) full-tree biomass with stump removal and, 4) blading (removal of all biomass including stumps, downed woody debris and forest floor). All treatments had five replicate plots, with a portion of the stand left in-tact, where uncut control plots were established (Fig <a href="#fig:site-map">2.1</a> B). All treatment plots (excluding bladed plots) were site prepared using a power disc trencher. The main treatment plots were split and planted with either jack pine or black spruce container stock in May 2012. The main plots were then split again, with one half receiving glyphosate treatment. Only the portion of the plot without herbicide were used in this study. 
 
-![Figure 2.1: Visual depiction of experimental features A) Map of the Island Lake Biomass Harvest Research and Demonstration Area, modified from Kwiaton et al, (2014) Figure 2.4. For the biomass removal plots, the numbers indicate the block number and the letters indicate the harvest treatment: T = Stem Only, F = Full-tree, S = Stump removal, B = Bladed, C = Uncut Control. The location of the sites in Ontario is provided in a map in the upper left corner. B) Depiction of trench, pile and flat microtopography features.](site-map-microtopography.png)
+![<span id="fig:site-map"></span>Figure 2.1: Visual depiction of experimental features A) Map of the Island Lake Biomass Harvest Research and Demonstration Area, modified from Kwiaton et al, (2014) Figure 2.4. For the biomass removal plots, the numbers indicate the block number and the letters indicate the harvest treatment: T = Stem Only, F = Full-tree, S = Stump removal, B = Bladed, C = Uncut Control. The location of the sites in Ontario is provided in a map in the upper left corner. B) Depiction of trench, pile and flat microtopography features.](site-map-microtopography.png)
 
 
 ## Soil sampling
@@ -109,7 +109,7 @@ We used defined orthogonal contrasts to evaluate the responses to particular har
 
 
 
-Table: Table 2.1: Orthogonal contrasts used to test effects of harvest intensity.
+Table: <span id="tab:harvest-ortho"></span>Table 2.1: Orthogonal contrasts used to test effects of harvest intensity.
 
 |Code |Contrast                                          |Tests                                                                |
 |:----|:-------------------------------------------------|:--------------------------------------------------------------------|
@@ -119,7 +119,7 @@ Table: Table 2.1: Orthogonal contrasts used to test effects of harvest intensity
 |BRt  |Stem-Only vs Full tree                            |Effect of fine and coarse woody debris retention vs only coarse wood |
 
 
-Table: Table 2.2: Orthogonal contrasts used to test differences between micro-topographic features.
+Table: <span id="tab:topo-ortho"></span>Table 2.2: Orthogonal contrasts used to test differences between micro-topographic features.
 
 |Code |Contrast                  |Tests                                                                 |
 |:----|:-------------------------|:---------------------------------------------------------------------|
@@ -142,13 +142,13 @@ We applied a combination of visual examination of community structural differenc
 ## Harvest Intensity
 
 ### Enzyme Activity
-![Figure 3.1: Difference in enzyme activity based on orthogonal contrasts defined in Table <a href="#tab:harvest-ortho">2.1</a> (TR = clearcut tree removal, FFR = forest floor removal, BGBR = below-ground biomass removal, BRt = biomass retention). Significance is indicated with colour (light grey are not significant at p <0.05) and shape (triangles are significant at p < 0.05 and circles are not significant at p < 0.05).  Values higher than zero indicate there was an increase in activity from the treatment, values lower than zero indicate there was a decrease in activity from the treatment.](Harvesting-site-preparation-Manuscript_files/figure-docx/intensity-enzymes-1.png)
+![<span id="fig:intensity-enzymes"></span>Figure 3.1: Difference in enzyme activity based on orthogonal contrasts defined in Table <a href="#tab:harvest-ortho">2.1</a> (TR = clearcut tree removal, FFR = forest floor removal, BGBR = below-ground biomass removal, BRt = biomass retention). Significance is indicated with colour (light grey are not significant at p <0.05) and shape (triangles are significant at p < 0.05 and circles are not significant at p < 0.05).  Values higher than zero indicate there was an increase in activity from the treatment, values lower than zero indicate there was a decrease in activity from the treatment.](Harvesting-site-preparation-Manuscript_files/figure-docx/intensity-enzymes-1.png)
 
 NAG activity was significantly decreased by forest floor removal and below-ground biomass removal. PHOS activity was significantly decreased by tree removal, forest floor removal and below ground biomass removal. XY activity was significantly decreased by forest floor removal, but significantly increased by tree removal alone. No enzyme activity had a significant response to biomass retention in stem-only plots (Fig <a href="#fig:intensity-enzymes">3.1</a>).   
 
 
 ### Diversity and Community Structure
-![Figure 3.2: Difference in diversity (ESV richness, inverse Simpsons or Shannon) based on orthogonal contrasts defined in Table <a href="#tab:harvest-ortho">2.1</a> (TR = clearcut tree removal, FFR = forest floor removal, BGBR = below-ground biomass removal, BRt = biomass retention).  Significance is indicated with colour (light grey are not significant at p <0.05) and shape (triangles are significant at p < 0.05 and circles are not significant at p < 0.05). Values higher than zero indicate there was an increase in diversity from the treatment, values lower than zero indicate there was a decrease in diversity from the treatment.](Harvesting-site-preparation-Manuscript_files/figure-docx/alpha-diversity-1.png)
+![<span id="fig:alpha-diversity"></span>Figure 3.2: Difference in diversity (ESV richness, inverse Simpsons or Shannon) based on orthogonal contrasts defined in Table <a href="#tab:harvest-ortho">2.1</a> (TR = clearcut tree removal, FFR = forest floor removal, BGBR = below-ground biomass removal, BRt = biomass retention).  Significance is indicated with colour (light grey are not significant at p <0.05) and shape (triangles are significant at p < 0.05 and circles are not significant at p < 0.05). Values higher than zero indicate there was an increase in diversity from the treatment, values lower than zero indicate there was a decrease in diversity from the treatment.](Harvesting-site-preparation-Manuscript_files/figure-docx/alpha-diversity-1.png)
 
 
 There were only a few taxon and metric-specific responses to harvesting disturbances. Tree removal did significantly (p < 0.05) decrease arthropod (F230) diversity metrics compared to unharvested treatments and resulted in an increase in fungal (ITS) ESV richness and inverse Simpsons diversity. Forest floor removal significantly decreased eukaryotic (18S) and arthropod (F230) diversity metrics, Fungal (ITS) ESV richness and inverse Simpson's diversity but increased bacterial (16S) ESV richness. There were no significant responses of any diversity metrics to below-ground biomass removal (stumping treatment) or retention of woody debris (stem only treatment) (Fig <a href="#fig:alpha-diversity">3.2</a>).
@@ -161,10 +161,10 @@ There were only a few taxon and metric-specific responses to harvesting disturba
 
 
 
-![Figure 3.3: Results of community structure PERMANOVA tests performed with the orthogonal contrasts described in Table <a href="#tab:harvest-ortho">2.1</a> (TR = clearcut tree removal, FFR = forest floor removal, BGBR = below-ground biomass removal, BRt = biomass retention). The variance explained by each comparison (R^2^) is shown on the x axis, and the probability of the effect is shown on the y axis (Pr (>F)). A black line is used to display p = 0.05.](Harvesting-site-preparation-Manuscript_files/figure-docx/CODA-adonis-plot-1-1.png)
+![<span id="fig:CODA-adonis-plot-1"></span>Figure 3.3: Results of community structure PERMANOVA tests performed with the orthogonal contrasts described in Table <a href="#tab:harvest-ortho">2.1</a> (TR = clearcut tree removal, FFR = forest floor removal, BGBR = below-ground biomass removal, BRt = biomass retention). The variance explained by each comparison (R^2^) is shown on the x axis, and the probability of the effect is shown on the y axis (Pr (>F)). A black line is used to display p = 0.05.](Harvesting-site-preparation-Manuscript_files/figure-docx/CODA-adonis-plot-1-1.png)
 
 
-![Figure 3.4: Results of betadispersion tests comparing community structures of the different harvesting treatments. The betadispersion of each treatment is shown on the y axis, and the treatment is shown along the x axis. Significant contrast tests as outlined in Table <a href="#tab:harvest-ortho">2.1</a> (TR = clearcut tree removal, FFR = forest floor removal, BGBR = below-ground biomass removal, BRt = biomass retention) are indicated along the top of the figure with lines and symbols designating test significance (* = p < 0.05, ** = p < 0.01, *** = p < 0.001).](Harvesting-site-preparation-Manuscript_files/figure-docx/CODA-bd-plot-1-1.png)
+![<span id="fig:CODA-bd-plot-1"></span>Figure 3.4: Results of betadispersion tests comparing community structures of the different harvesting treatments. The betadispersion of each treatment is shown on the y axis, and the treatment is shown along the x axis. Significant contrast tests as outlined in Table <a href="#tab:harvest-ortho">2.1</a> (TR = clearcut tree removal, FFR = forest floor removal, BGBR = below-ground biomass removal, BRt = biomass retention) are indicated along the top of the figure with lines and symbols designating test significance (* = p < 0.05, ** = p < 0.01, *** = p < 0.001).](Harvesting-site-preparation-Manuscript_files/figure-docx/CODA-bd-plot-1-1.png)
 
 
 
@@ -182,7 +182,7 @@ The ESVs that had significant compositional differences were responding to tree 
 ### Diversity and Community Structure
 
 
-![Figure 3.5: Orthogonal contrasts between microtopography features as described in Table <a href="#tab:topo-ortho">2.2</a> (T.B = Trench vs Bladed, T.PF = Trench vs Piles and Flats, P.F = Piles vs Flats). Significance is indicated with colour (light grey are not significant at p <0.05) and shape (triangles are significant at p < 0.05 and circles are not significant at p < 0.05). Values lower than zero indicate the first term in the contrast is lower in diversity, values higher than zero indicate the first term in the contrast has higher diversity as an effect.](Harvesting-site-preparation-Manuscript_files/figure-docx/Microtopography-diversity-1.png)
+![<span id="fig:Microtopography-diversity"></span>Figure 3.5: Orthogonal contrasts between microtopography features as described in Table <a href="#tab:topo-ortho">2.2</a> (T.B = Trench vs Bladed, T.PF = Trench vs Piles and Flats, P.F = Piles vs Flats). Significance is indicated with colour (light grey are not significant at p <0.05) and shape (triangles are significant at p < 0.05 and circles are not significant at p < 0.05). Values lower than zero indicate the first term in the contrast is lower in diversity, values higher than zero indicate the first term in the contrast has higher diversity as an effect.](Harvesting-site-preparation-Manuscript_files/figure-docx/Microtopography-diversity-1.png)
 
 
 Bladed and trench features were not generally significantly different from each other aside from lower bacterial ESV richness, and higher arthropod diversity for all metrics associated with the trench features. However, there were lower eukaryotic and arthropod diversity and ESV richness for all metrics, but increased bacterial ESV richness and Shannon diversity in the trenches compared to flat and pile areas created by the site preparation (i.e., disc trenching). There were no significant differences for any fungal (ITS) diversity metrics between flat and pile features for any metabarcode groups (Fig <a href="#fig:Microtopography-diversity">3.5</a>). 
@@ -191,7 +191,7 @@ Bladed and trench features were not generally significantly different from each 
 
 
 
-![Figure 3.6: Principal Components Analysis of metabarcoding compositional community structure for a) Bacterial 16S, b)  Fungal ITS, c) Arthropod F230 d) Eukaryotic 18S. Bladed sites are displayed in maroon as downward facing triangles, Flats are displayed in green with upwards facing triangles, piles are displayed in brown as + symbols, trench communities are displayed as tan circles. Hulls encompass all the observed communities of each microsite type.](Harvesting-site-preparation-Manuscript_files/figure-docx/PCA-topo-1.png)
+![<span id="fig:PCA-topo"></span>Figure 3.6: Principal Components Analysis of metabarcoding compositional community structure for a) Bacterial 16S, b)  Fungal ITS, c) Arthropod F230 d) Eukaryotic 18S. Bladed sites are displayed in maroon as downward facing triangles, Flats are displayed in green with upwards facing triangles, piles are displayed in brown as + symbols, trench communities are displayed as tan circles. Hulls encompass all the observed communities of each microsite type.](Harvesting-site-preparation-Manuscript_files/figure-docx/PCA-topo-1.png)
 
 
 
@@ -203,7 +203,7 @@ Bladed and trench features were not generally significantly different from each 
 
 
 
-![Figure 3.7: Results of orthogonal PERMANOVA tests comparing community structures of the different microtopography features and Bladed sites,orthogonal contrasts are outlined in Table <a href="#tab:topo-ortho">2.2</a>. The variance explained by each comparison (R^2^) is shown on the x axis, and the probability of the effect is along the y axis (Pr (>F)). A black line is used to display p = 0.05.](Harvesting-site-preparation-Manuscript_files/figure-docx/CODA-adonis-plot-3-1.png)
+![<span id="fig:CODA-adonis-plot-3"></span>Figure 3.7: Results of orthogonal PERMANOVA tests comparing community structures of the different microtopography features and Bladed sites,orthogonal contrasts are outlined in Table <a href="#tab:topo-ortho">2.2</a>. The variance explained by each comparison (R^2^) is shown on the x axis, and the probability of the effect is along the y axis (Pr (>F)). A black line is used to display p = 0.05.](Harvesting-site-preparation-Manuscript_files/figure-docx/CODA-adonis-plot-3-1.png)
 
 
 
@@ -220,7 +220,7 @@ ESVs were only significantly different in Trench-Bladed comparisons and exposure
 
 
 ### Diversity and Community Structure
-![Figure 3.8: Diversity (Shannon, Inverse Simpsons, and ESV richness) for each metabarcode target (Bacterial 16S and Fungal ITS2) across three months of sampling for full tree and unharvested treatments. Unharvested is shown in green, and full tree is displayed in blue.](Harvesting-site-preparation-Manuscript_files/figure-docx/alpha-diversity-2-1.png)
+![<span id="fig:alpha-diversity-2"></span>Figure 3.8: Diversity (Shannon, Inverse Simpsons, and ESV richness) for each metabarcode target (Bacterial 16S and Fungal ITS2) across three months of sampling for full tree and unharvested treatments. Unharvested is shown in green, and full tree is displayed in blue.](Harvesting-site-preparation-Manuscript_files/figure-docx/alpha-diversity-2-1.png)
 
 
 There were seasonal changes in the different metabarcode communities that were mostly consistent in full-tree and unharvested treatments. Eukaryotic (18S) diversity metrics were generally elevated in the month of August. Bacterial diversity increased as the season progressed from June through to October. In contrast, arthropod and fungal diversity were generally stable through the months sampled. However, tree removal did result in a relatively stable eukaryotic (18S) community Simpson's diversity across the seasonal sampling periods, compared with an elevated diversity metric in the uncut forest in August (Fig <a href="#fig:alpha-diversity-2">3.8</a>).
@@ -234,10 +234,10 @@ There were seasonal changes in the different metabarcode communities that were m
 
 
 
-![Figure 3.9: Results of PERMANOVA tests comparing community structures of months (J = June, A = August, O = October) within full tree and unharvested treatments. A) Results of interaction of months and harvest treatments. B) Results of pairwise comparisons. The variance explained by each comparison or model parameter (R^2^) is shown on the x axis, and the probability of the effect is along the y axis (Pr (>F)). A black line is used to represent p = 0.05.](Harvesting-site-preparation-Manuscript_files/figure-docx/CODA-adonis-plot-2-1.png)
+![<span id="fig:CODA-adonis-plot-2"></span>Figure 3.9: Results of PERMANOVA tests comparing community structures of months (J = June, A = August, O = October) within full tree and unharvested treatments. A) Results of interaction of months and harvest treatments. B) Results of pairwise comparisons. The variance explained by each comparison or model parameter (R^2^) is shown on the x axis, and the probability of the effect is along the y axis (Pr (>F)). A black line is used to represent p = 0.05.](Harvesting-site-preparation-Manuscript_files/figure-docx/CODA-adonis-plot-2-1.png)
 
 
-![Figure 3.10: Results of pairwise betadispersion tests comparing community structures of months within full tree and unharvested treatments. The betadispersion of each treatment (R^2^) is shown on the y axis, and the treatment is shown along the x-axis. Significant contrasts are indicated at the top of the graph with colour to indicate whether they are harvested or unharvested and significance levels supplied symbolically (* = p < 0.05, ** = p < 0.01, *** = p < 0.001).](Harvesting-site-preparation-Manuscript_files/figure-docx/CODA-bd-plot-2-1.png)
+![<span id="fig:CODA-bd-plot-2"></span>Figure 3.10: Results of pairwise betadispersion tests comparing community structures of months within full tree and unharvested treatments. The betadispersion of each treatment (R^2^) is shown on the y axis, and the treatment is shown along the x-axis. Significant contrasts are indicated at the top of the graph with colour to indicate whether they are harvested or unharvested and significance levels supplied symbolically (* = p < 0.05, ** = p < 0.01, *** = p < 0.001).](Harvesting-site-preparation-Manuscript_files/figure-docx/CODA-bd-plot-2-1.png)
 
 
 While there were significant (p<0.05) effects of tree removal or season on each of the datasets, there was no significant interaction of tree removal and season on any of the diversity metrics for any of the metabarcode groups. There were community compositional changes between sampling months that were different between full-tree harvest and unharvested treatments, but there were no significant (p < 0.05) interaction effects of sampling season and tree removal for any metabarcode group <a href="#fig:CODA-adonis-plot-2">3.9</a> A). Fungal composition was different between June and August in the full-tree treatments. Eukaryotic compositions (18S) only differed in the unharvested sites with June being significantly lower than the other sampled months. Bacterial (16S) compositional changes occurred within both the full-tree and unharvested treatments, with higher variances between June and October. In each dataset, June-October comparisons had the most variance between months, though this was not always significant (Fig <a href="#fig:CODA-adonis-plot-2">3.9</a> B). The differences in composition were driven by differences in average composition, though there were differences in beta dispersion as well (i.e., lower betadispersion in June compared to other months in the full-tree and unharvested treatments for bacterial (16S), eukaryotic (18S) and arthropod (F230) community composition) (Fig <a href="#fig:CODA-bd-plot-2">3.10</a>). In general, the compositional variance between months in all metabarcode groups, in both treatments were lower than 20% of the total variance (Fig <a href="#fig:CODA-adonis-plot-2">3.9</a>).
